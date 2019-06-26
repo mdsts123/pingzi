@@ -456,7 +456,7 @@ class ListBuilder extends ControllerController
       case 'operation':
         // 预定义按钮属性以简化使用
         $my_attribute['name'] = 'operation';
-        if (1 == session('user_auth.level')) {
+        if (0 == session('user_auth.level')) {
           $my_attribute['title'] = '操作';
         }
         $my_attribute['onclick'] = "m.on('open',this)";
@@ -614,11 +614,11 @@ class ListBuilder extends ControllerController
       }
 
       // 权限级别
-      if (1 == $data['level']) {
+      if (0 == $data['level']) {
         $data['level_name'] = "管理员";
-      } elseif (2 == $data['level']) {
+      } elseif (1 == $data['level']) {
         $data['level_name'] = "推广组长";
-      } elseif (3 == $data['level']) {
+      } elseif (2 == $data['level']) {
         $data['level_name'] = "推广组员";
       }
 

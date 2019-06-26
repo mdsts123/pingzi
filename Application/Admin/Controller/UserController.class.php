@@ -98,7 +98,7 @@ class UserController extends AdminController {
                     ->addFormItem('nickname', 'text', '昵称', '昵称')
                     ->addFormItem('username', 'text', '用户名', '用户名')
                     ->addFormItem('password', 'password', '密码', '密码')
-                    ->addFormItem('level', 'radio', '权限级别', '权限级别', array('1' => '管理员', '2' => '推广组长', '3' => '推广组员'))
+                    ->addFormItem('level', 'radio', '权限级别', '权限级别', array('0' => '管理员', '1' => '推广组长', '2' => '推广组员'))
                     ->addFormItem('group_name', 'text', '组别', '组别')
                     ->addFormItem('email', 'text', '邮箱', '邮箱')
                     ->addFormItem('email_bind', 'radio', '邮箱绑定', '手机绑定', array('1' => '已绑定', '0' => '未绑定'))

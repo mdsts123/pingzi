@@ -27,9 +27,9 @@ class TgOrderController extends AdminController {
             '_multi'=>true
         );
 
-        if(2 == session('user_auth.level')){
+        if(1 == session('user_auth.level')){
             $map['groupname'] = session('user_auth.group_name');
-        }elseif (3 == session('user_auth.level')){
+        }elseif (2 == session('user_auth.level')){
             $map['commitname'] = session('user_auth.username');
         }
 
