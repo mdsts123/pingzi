@@ -5,6 +5,10 @@ import store from './store/index.js'
 import './registerServiceWorker'
 import './plugins/iview.js'
 
+import './ui.js'
+import './mock/index.js'
+import './login.js'
+
 Vue.config.productionTip = false
 
 new Vue({
