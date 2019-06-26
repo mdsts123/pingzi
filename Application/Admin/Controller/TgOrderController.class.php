@@ -167,6 +167,18 @@ class TgOrderController extends AdminController {
         // 获取推广订单信息
         $tg_order = D('TgOrder');
         $info = $tg_order->find($id);
+        if(1 == $info['commit_type']){
+            $info['commit_type_name'] = "充值";
+        }elseif (2 == $info['commit_type']){
+            $info['commit_type_name'] = "彩金";
+        }
+        if(1 == $info['pay_type']){
+            $info['pay_type_name'] = "C/B/R扫码";
+        }elseif (2 == $info['pay_type']){
+            $info['pay_type_name'] = "A/D扫码";
+        }elseif (3 == $info['pay_type']){
+            $info['pay_type_name'] = "银行卡转账";
+        }
         $info['pays'] = $this->payStatus();
         $data = array(
             'code'      => 200,
