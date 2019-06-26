@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb6adadf-e135-436b-9080-e19af3f3883d" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Application/Admin/Controller/TgOrderController.class.php" afterPath="$PROJECT_DIR$/Application/Admin/Controller/TgOrderController.class.php" />
       <change beforePath="$PROJECT_DIR$/Runtime/Logs/Admin/19_06_26.log" afterPath="$PROJECT_DIR$/Runtime/Logs/Admin/19_06_26.log" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,7 +16,7 @@
       <file leaf-file-name="TgOrderController.class.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/TgOrderController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="596">
+            <state relative-caret-position="521">
               <caret line="208" column="27" lean-forward="false" selection-start-line="208" selection-start-column="27" selection-end-line="208" selection-end-column="27" />
               <folding />
             </state>
@@ -228,7 +226,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="314" />
     <option name="y" value="124" />
     <option name="width" value="1483" />
@@ -398,15 +396,15 @@
       <workItem from="1561350268178" duration="34849000" />
       <workItem from="1561435247083" duration="26540000" />
       <workItem from="1561465582524" duration="6435000" />
-      <workItem from="1561521473827" duration="10146000" />
+      <workItem from="1561521473827" duration="10236000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="292083000" />
+    <option name="totallyTimeSpent" value="292173000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="314" y="124" width="1483" height="772" extended-state="0" />
+    <frame x="314" y="124" width="1483" height="772" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24595924" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -842,7 +840,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/TgOrderController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="596">
+        <state relative-caret-position="521">
           <caret line="208" column="27" lean-forward="false" selection-start-line="208" selection-start-column="27" selection-end-line="208" selection-end-column="27" />
           <folding />
         </state>
