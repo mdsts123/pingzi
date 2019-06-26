@@ -22,6 +22,23 @@ class order {
       });
     });
   }
+
+  api_toTgOrder(data) {
+    let url = '/admin.php?s=/Admin/TgOrder/toTgOrder';
+    return new Promise((resolve, reject) => {
+      $.ajax({
+        type: 'post',
+        url,
+        data,
+        success(res) {
+          console.log(res);
+
+          res = JSON.parse(res);
+          resolve(res.data);
+        },
+      });
+    });
+  }
 }
 
 /**
@@ -29,6 +46,7 @@ class order {
  */
 class modal extends order {
   clickEl;
+  toTgOrderData={};
   //定义事件
   constructor() {
     super();
@@ -45,6 +63,14 @@ class modal extends order {
   closeModal() {
     $('#order .m-modal').hide();
   }
+  handleSbumit() {
+    let state=$('#pay_status').val();
+    // if(state===null)alert('请选择订单状态')
+    this.toTgOrderData.state=state;
+    this.api_toTgOrder(this.toTgOrderData).then(res => {
+      // console.log(res);
+    });
+  }
   renderOption(data) {
     return data
       .map(
@@ -54,8 +80,13 @@ class modal extends order {
       .join('');
   }
   renderContent(data) {
-    console.log(data);
-
+    this.toTgOrderData = {
+      id: data.id,
+      pay_status: data.pay_status,
+      username: data.username,
+      amount: data.amount,
+      orderno: data.amount,
+    };
     let html = `
 <div class="m-modal-content detail">
 <!-- 图片详情 image-text -->
@@ -76,58 +107,19 @@ class modal extends order {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>订单号</td>
-              <td>afsda是打发地方</td>
-            </tr>
-            <tr>
-              <td>提交类型</td>
-              <td>afsda是打发地方</td>
-            </tr>
-            <tr>
-              <td>支付类型</td>
-              <td>afsda是打发地方</td>
-            </tr>
-            <tr>
-              <td>会员账号</td>
-              <td>afsda是打发地方</td>
-            </tr>
-            <tr>
-              <td>充值金额</td>
-              <td>afsda是打发地方</td>
-            </tr>
-            <tr>
-              <td>赠送金额</td>
-              <td>afsda是打发地方</td>
-            </tr>
-            <tr>
-              <td>状态</td>
-              <td>afsda是打发地方</td>
-            </tr>
-            <tr>
-              <td>收款人</td>
-              <td>afsda是打发地方</td>
-            </tr>
-            <tr>
-              <td>付款人</td>
-              <td>afsda是打发地方</td>
-            </tr>
-            <tr>
-              <td>备注</td>
-              <td>afsda是打发地方</td>
-            </tr>
-            <tr>
-              <td>提交用户</td>
-              <td>afsda是打发地方</td>
-            </tr>
-            <tr>
-              <td>组别</td>
-              <td>afsda是打发地方</td>
-            </tr>
-            <tr>
-              <td>提交时间</td>
-              <td>afsda是打发地方</td>
-            </tr>
+          <tr><td>订单号</td><td>afsda是打发地方</td></tr>
+          <tr><td>提交类型</td><td>afsda是打发地方</td></tr>
+          <tr><td>支付类型</td><td>afsda是打发地方</td></tr>
+          <tr><td>会员账号</td><td>afsda是打发地方</td></tr>
+          <tr><td>充值金额</td><td>afsda是打发地方</td></tr>
+          <tr><td>赠送金额</td><td>afsda是打发地方</td></tr>
+          <tr><td>状态</td><td>afsda是打发地方</td></tr>
+          <tr><td>收款人</td><td>afsda是打发地方</td></tr>
+          <tr><td>付款人</td><td>afsda是打发地方</td></tr>
+          <tr><td>备注</td><td>afsda是打发地方</td></tr>
+          <tr><td>提交用户</td><td>afsda是打发地方</td></tr>
+          <tr><td>组别</td><td>afsda是打发地方</td></tr>
+          <tr><td>提交时间</td><td>afsda是打发地方</td></tr>
           </tbody>
         </table>
       </div>
@@ -138,14 +130,14 @@ class modal extends order {
 </div>
 <section class="state">
   <p class="hint">请选择操作</p>
-  <form action="/admin.php?s=/Admin/TgOrder/toTgOrder" class="m-tool-bar clearfix" method="post">
-    <button class="btn m-fr btn-primary">确认</button>
+  <div id="modalForm" class="m-tool-bar clearfix" method="post">
+    <button class="btn m-fr btn-primary" onclick="m.on('submit')">确认</button>
     <button class="btn m-fr btn-info">取消</button>
-    <select name="pay_status" id="" class="m-fr">
-      <option>请选择</option>
+    <select name="pay_status" id="pay_status" class="m-fr">
+      <option disabled selected value="">请选择</option>
       ${this.renderOption(data.pays)}
     </select>
-  </form>
+  </div>
 </section>
 
 <!-- 操作 -->
@@ -182,7 +174,7 @@ class modal extends order {
     name += '';
     if (name === 'open') this.handleOpen();
     if (name === 'close') this.handleClose();
-    // this.events[name]();
+    if (name === 'submit') this.handleSbumit();
   }
 }
 let m = new modal();
