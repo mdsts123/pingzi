@@ -161,45 +161,39 @@ class TgOrderController extends AdminController {
     /**
      * 操作
      * @param $id
+     * http://www.lingyun.com/admin.php?s=/Admin/TgOrder/payTgOrder/id/11.html
      */
     public function payTgOrder($id) {
-        dump($id);die;
         // 获取推广订单信息
         $tg_order = D('TgOrder');
         $info = $tg_order->find($id);
-        $condition['id'] = $id;
-//        dump($info);die;
-        if(IS_POST){
-            $pay_status = I('post.pay_status');
-            if(1 == $pay_status){
-                $username = $info['username'];
-                $amount = $info['amount'];
-                $order = $info['orderno'];
-                $mes = $this->place_order($username,$amount,$order);
-                $mes = json_decode($mes);
-                if($mes['code']==0){
-                    $this->error($mes['message']);
-                }else{
-                    $condition['pay_status'] = $pay_status;
-                    if($tg_order->create($condition)){
-                        $tg_order->save();
-                    }
-                }
+        $info['pays'] = $this->payStatus();
+        return json_encode($info);
+    }
+
+    public function toTgOrder($pay_status,$username,$amount,$order){
+        $pay_status = I('post.pay_status');
+        $username = I('post.username');
+        $amount = I('post.amount');
+        $order = I('post.orderno');
+        $tg_order = D('TgOrder');
+        if(1 == $pay_status){
+            $mes = $this->place_order($username,$amount,$order);
+            $mes = json_decode($mes);
+            if($mes['code']==0){
+                $this->error($mes['message']);
             }else{
                 $condition['pay_status'] = $pay_status;
                 if($tg_order->create($condition)){
                     $tg_order->save();
                 }
             }
-
         }else{
-            //dump($info);die;
-            $pays = $this->payStatus();
-            $this->assign('info', $info);
-            //$this->redirect('index');
-            //$this->display();
+            $condition['pay_status'] = $pay_status;
+            if($tg_order->create($condition)){
+                $tg_order->save();
+            }
         }
-
     }
 
     public function payStatus(){

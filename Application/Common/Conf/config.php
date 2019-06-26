@@ -32,6 +32,11 @@ $_config = array(
     // URL配置
     'URL_CASE_INSENSITIVE' => true,  // 不区分大小写
 
+    'URL_ROUTER_ON' => true,
+    'URL_MAP_RULES'=>array(
+        'payTgOrder/id' => 'Admin/TgOrder/payTgOrder?id=id'
+    ),
+
     // 应用配置
     'DEFAULT_MODULE'     => 'Home',
     'MODULE_DENY_LIST'   => array('Common'),
