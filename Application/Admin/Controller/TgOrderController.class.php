@@ -198,12 +198,20 @@ class TgOrderController extends AdminController {
             }else{
                 $condition['pay_status'] = $pay_status;
                 $tg_order->where(['id'=>$id])->save($condition);
-                exit('ok');
+                $data = array(
+                    'code'  => 200,
+                    'message'   => "充值成功",
+                );
+                exit(json_encode($data));
             }
         }else if(2 == $pay_status){
             $condition['pay_status'] = $pay_status;
             $tg_order->where(['id'=>$id])->save($condition);
-            exit('ok');
+            $data = array(
+                'code'  => 201,
+                'message'   => "充值失败",
+            );
+            exit(json_encode($data));
         }
     }
 

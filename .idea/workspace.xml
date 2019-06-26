@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb6adadf-e135-436b-9080-e19af3f3883d" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/Runtime/Cache/Admin/b595b808c2ebeeeb0478ffc30bb4e87a.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/Runtime/Logs/Common/19_06_26.log" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/Runtime/Temp/ly_home_95a1fe934b68ebfee8468bf0bc4f0000.php" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/Application/Admin/Controller/TgOrderController.class.php" afterPath="$PROJECT_DIR$/Application/Admin/Controller/TgOrderController.class.php" />
       <change beforePath="$PROJECT_DIR$/Runtime/Logs/Admin/19_06_26.log" afterPath="$PROJECT_DIR$/Runtime/Logs/Admin/19_06_26.log" />
-      <change beforePath="$PROJECT_DIR$/Runtime/Logs/Home/19_06_26.log" afterPath="$PROJECT_DIR$/Runtime/Logs/Home/19_06_26.log" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,8 +17,8 @@
       <file leaf-file-name="TgOrderController.class.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/TgOrderController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="421">
-              <caret line="210" column="9" lean-forward="false" selection-start-line="210" selection-start-column="9" selection-end-line="210" selection-end-column="9" />
+            <state relative-caret-position="360">
+              <caret line="205" column="13" lean-forward="true" selection-start-line="205" selection-start-column="13" selection-end-line="205" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -213,7 +208,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="384" />
     <option name="y" value="331" />
     <option name="width" value="1404" />
@@ -354,15 +349,15 @@
       <workItem from="1561350268178" duration="34849000" />
       <workItem from="1561435247083" duration="26540000" />
       <workItem from="1561465582524" duration="6435000" />
-      <workItem from="1561521473827" duration="13751000" />
+      <workItem from="1561521473827" duration="14411000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="295688000" />
+    <option name="totallyTimeSpent" value="296348000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="384" y="331" width="1404" height="772" extended-state="1" />
+    <frame x="384" y="331" width="1404" height="772" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26041666" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -802,8 +797,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/TgOrderController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="210" column="9" lean-forward="false" selection-start-line="210" selection-start-column="9" selection-end-line="210" selection-end-column="9" />
+        <state relative-caret-position="360">
+          <caret line="205" column="13" lean-forward="true" selection-start-line="205" selection-start-column="13" selection-end-line="205" selection-end-column="13" />
           <folding />
         </state>
       </provider>
