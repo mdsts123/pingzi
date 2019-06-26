@@ -1828,3 +1828,147 @@ INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000511s ]
 INFO: [ app_end ] --END-- [ RunTime:0.000544s ]
 >>>>>>> b8541a38ee046ce372597d6b2785183221806e09
 
+[ 2019-06-26T14:41:16+08:00 ] 127.0.0.1 /Public/libs/lyui/dist/js/lyui.min.js.map
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0106s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0119s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0003s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.030363s ]
+INFO: [ app_init ] --END-- [ RunTime:0.030430s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000385s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitConfigBehavior [ RunTime:0.003519s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003970s ]
+ERR: 无法加载控制器:Public
+
+[ 2019-06-26T14:41:17+08:00 ] 127.0.0.1 /Public/libs/lyui/dist/js/lyui.extend.min.js.map
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0081s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0112s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0002s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.026996s ]
+INFO: [ app_init ] --END-- [ RunTime:0.027063s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000423s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitConfigBehavior [ RunTime:0.003181s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003667s ]
+ERR: 无法加载控制器:Public
+
+[ 2019-06-26T14:41:19+08:00 ] 127.0.0.1 /Public/libs/lyui/dist/css/lyui.min.css.map
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0083s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0129s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0005s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.032099s ]
+INFO: [ app_init ] --END-- [ RunTime:0.032184s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000462s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitConfigBehavior [ RunTime:0.003916s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004457s ]
+ERR: 无法加载控制器:Public
+
+[ 2019-06-26T14:41:19+08:00 ] 127.0.0.1 /Public/libs/lyui/dist/css/lyui.extend.min.css.map
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0146s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0103s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0003s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.043446s ]
+INFO: [ app_init ] --END-- [ RunTime:0.043526s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000406s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitConfigBehavior [ RunTime:0.004597s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005094s ]
+ERR: 无法加载控制器:Public
+
+[ 2019-06-26T14:41:40+08:00 ] 127.0.0.1 /Public/libs/lyui/dist/css/lyui.extend.min.css.map
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0080s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0232s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0001s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.038384s ]
+INFO: [ app_init ] --END-- [ RunTime:0.038448s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000315s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitConfigBehavior [ RunTime:0.003011s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003381s ]
+ERR: 无法加载控制器:Public
+
+[ 2019-06-26T14:41:40+08:00 ] 127.0.0.1 /Public/libs/lyui/dist/js/lyui.min.js.map
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0240s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0038s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0002s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.035205s ]
+INFO: [ app_init ] --END-- [ RunTime:0.035273s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000405s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitConfigBehavior [ RunTime:0.003243s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003706s ]
+ERR: 无法加载控制器:Public
+
+[ 2019-06-26T14:41:40+08:00 ] 127.0.0.1 /Public/libs/lyui/dist/css/lyui.min.css.map
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0215s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0039s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0002s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.036930s ]
+INFO: [ app_init ] --END-- [ RunTime:0.036997s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000482s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitConfigBehavior [ RunTime:0.003207s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003743s ]
+ERR: 无法加载控制器:Public
+
+[ 2019-06-26T14:41:41+08:00 ] 127.0.0.1 /Public/libs/lyui/dist/js/lyui.extend.min.js.map
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0222s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0066s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0002s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.036182s ]
+INFO: [ app_init ] --END-- [ RunTime:0.036242s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000448s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitConfigBehavior [ RunTime:0.002846s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003350s ]
+ERR: 无法加载控制器:Public
+
