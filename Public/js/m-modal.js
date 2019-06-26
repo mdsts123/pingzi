@@ -4,8 +4,6 @@ function preventDefaultEvents() {
   });
 }
 
-
-
 /**
  * 分装订单类 处理订单交互
  */
@@ -17,9 +15,9 @@ class order {
       $.ajax({
         type: 'GET',
         url,
-        success(data) {
-          data = JSON.parse(data);
-          resolve(data);
+        success(res) {
+          res = JSON.parse(res);
+          resolve(res.data);
         },
       });
     });
@@ -47,8 +45,13 @@ class modal extends order {
   closeModal() {
     $('#order .m-modal').hide();
   }
-  renderOption(data){
-  return data.map(opt=>`<option value="${opt.pay_status}">${opt.pay_status_name}</option>`).join('')
+  renderOption(data) {
+    return data
+      .map(
+        opt =>
+          `<option value="${opt.pay_status}">${opt.pay_status_name}</option>`,
+      )
+      .join('');
   }
   renderContent(data) {
     console.log(data);
@@ -135,15 +138,12 @@ class modal extends order {
 </div>
 <section class="state">
   <p class="hint">请选择操作</p>
-  <form action="" class="m-tool-bar clearfix">
+  <form action="/admin.php?s=/Admin/TgOrder/toTgOrder" class="m-tool-bar clearfix" method="post">
     <button class="btn m-fr btn-primary">确认</button>
     <button class="btn m-fr btn-info">取消</button>
     <select name="pay_status" id="" class="m-fr">
       <option>请选择</option>
       ${this.renderOption(data.pays)}
-      <option value="0">充值0</option>
-      <option value="1">充值1</option>
-      <option value="2">充值2</option>
     </select>
   </form>
 </section>
@@ -151,8 +151,9 @@ class modal extends order {
 <!-- 操作 -->
 <span class="m-close" onclick="m.on('close')">&times;</span>
 </div>`;
-$('#order .m-modal').html(html).show()
-
+    $('#order .m-modal')
+      .html(html)
+      .show();
   }
 
   //定义钩子
