@@ -1,7 +1,9 @@
 generalize/
+generalize/*
 Runtime/
 .DS_Store
-node_modules/
+node_modules
+node_modules
 npm-debug.log
 selenium-debug.log
 .idea
