@@ -1,11 +1,11 @@
-[ 2019-06-26T16:02:35+08:00 ] 127.0.0.1 /logo.png
+[ 2019-06-26T17:11:58+08:00 ] 127.0.0.1 /favicon.ico
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
-SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0080s ]
-SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0002s ]
-SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0052s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0077s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0095s ]
 SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0002s ]
 NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
-INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.020075s ]
-INFO: [ app_init ] --END-- [ RunTime:0.020139s ]
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.029361s ]
+INFO: [ app_init ] --END-- [ RunTime:0.029439s ]
 
