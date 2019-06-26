@@ -2,7 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb6adadf-e135-436b-9080-e19af3f3883d" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Runtime/Logs/Admin/19_06_26.log" afterPath="$PROJECT_DIR$/Runtime/Logs/Admin/19_06_26.log" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/Application/Admin/Controller/OrderController.class.php" afterPath="$PROJECT_DIR$/Application/Admin/Controller/OrderController.class.php" />
+      <change beforePath="$PROJECT_DIR$/Application/Admin/Model/UserModel.class.php" afterPath="$PROJECT_DIR$/Application/Admin/Model/UserModel.class.php" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/0cc29a1d3a1913d2b9da175965bdaaca.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/3c5566b2bfbf6ef00ac5366ba47246fe.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/70e589cc6779c5a613d47e9cfe5c2e08.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/b595b808c2ebeeeb0478ffc30bb4e87a.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/d2db961455aa86f1865a8062c7758332.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Cache/Home/2a94b8bda04ff446dcedd42276fc99ee.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Logs/Admin/1561471024-19_06_25.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Logs/Admin/1561526827-19_06_26.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Logs/Admin/1561528166-19_06_26.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Logs/Admin/1561531254-19_06_26.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Logs/Admin/19_06_25.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Logs/Admin/19_06_26.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Logs/Common/19_06_25.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Logs/Common/19_06_26.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Logs/Home/19_06_25.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Logs/Home/19_06_26.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Temp/ly_admin_4b02197d81fed29e0f44f8bab6f71844.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Temp/ly_admin_4e819c837d54a6ed09abc77a8560a66f.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Temp/ly_admin_95a1fe934b68ebfee8468bf0bc4f0000.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Temp/ly_admin_9c3101fc207039d703dba59dd2f41fc6.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Temp/ly_admin_9e98a51a2684e2b77ddd69224f7e7d3b.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Temp/ly_home_4e819c837d54a6ed09abc77a8560a66f.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Temp/ly_home_61e1fb2412c140e361899b7d54832cec.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Temp/ly_home_95a1fe934b68ebfee8468bf0bc4f0000.php" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,8 +42,8 @@
       <file leaf-file-name="TgOrderController.class.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/TgOrderController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="521">
-              <caret line="208" column="27" lean-forward="false" selection-start-line="208" selection-start-column="27" selection-end-line="208" selection-end-column="27" />
+            <state relative-caret-position="296">
+              <caret line="202" column="17" lean-forward="false" selection-start-line="202" selection-start-column="17" selection-end-line="202" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -46,8 +72,28 @@
       <file leaf-file-name="UserModel.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/Admin/Model/UserModel.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+            <state relative-caret-position="609">
+              <caret line="60" column="99" lean-forward="false" selection-start-line="60" selection-start-column="99" selection-end-line="60" selection-end-column="99" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OrderController.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/OrderController.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="885">
+              <caret line="170" column="1" lean-forward="false" selection-start-line="170" selection-start-column="1" selection-end-line="170" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Model.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Framework/Library/Think/Model.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="228">
+              <caret line="23" column="25" lean-forward="false" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -56,48 +102,9 @@
       <file leaf-file-name="Sfzfdd.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/Common/Controller/Sfzfdd.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="14" column="28" lean-forward="false" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+            <state relative-caret-position="1725">
+              <caret line="75" column="57" lean-forward="false" selection-start-line="75" selection-start-column="57" selection-end-line="75" selection-end-column="57" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="m-modal.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Public/js/m-modal.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2793">
-              <caret line="8" column="3" lean-forward="false" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
-              <folding>
-                <marker date="1561532334129" expanded="true" signature="983:3290" ph="..." />
-                <marker date="1561532334129" expanded="true" signature="1043:2746" ph="..." />
-                <marker date="1561532334129" expanded="true" signature="1067:1115" ph="..." />
-                <marker date="1561532334129" expanded="true" signature="1140:2739" ph="..." />
-                <marker date="1561532334129" expanded="true" signature="1166:2729" ph="..." />
-                <marker date="1561532334129" expanded="true" signature="1233:2717" ph="..." />
-                <marker date="1561532334129" expanded="true" signature="1266:2704" ph="..." />
-                <marker date="1561532334129" expanded="true" signature="1284:1398" ph="..." />
-                <marker date="1561532334129" expanded="true" signature="1301:1379" ph="..." />
-                <marker date="1561532334129" expanded="true" signature="1416:2687" ph="..." />
-                <marker date="1561532334129" expanded="true" signature="1433:1512" ph="..." />
-                <marker date="1561532334129" expanded="true" signature="1529:1609" ph="..." />
-                <marker date="1561532334129" expanded="true" signature="1626:1706" ph="..." />
-                <marker date="1561532334129" expanded="true" signature="1723:1803" ph="..." />
-                <marker date="1561532334129" expanded="true" signature="1820:1900" ph="..." />
-                <marker date="1561532334129" expanded="true" signature="1917:1997" ph="..." />
-                <marker date="1561532334129" expanded="true" signature="2014:2092" ph="..." />
-                <marker date="1561532334129" expanded="true" signature="2109:2188" ph="..." />
-                <marker date="1561532334129" expanded="true" signature="2205:2284" ph="..." />
-                <marker date="1561532334129" expanded="true" signature="2301:2379" ph="..." />
-                <marker date="1561532334129" expanded="true" signature="2396:2476" ph="..." />
-                <marker date="1561532334129" expanded="true" signature="2493:2571" ph="..." />
-                <marker date="1561532334129" expanded="true" signature="2588:2668" ph="..." />
-                <marker date="1561532334129" expanded="true" signature="3064:3188" ph="..." />
-                <marker date="1561532334129" expanded="true" signature="3064:3198" ph="..." />
-                <marker date="1561532334129" expanded="true" signature="3064:3209" ph="..." />
-                <marker date="1561532334129" expanded="true" signature="3064:3290" ph="..." />
-                <marker date="1561532334129" expanded="false" signature="3270:3277" ph="×" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -198,7 +205,6 @@
         <option value="$PROJECT_DIR$/Application/Common/Controller/Sfzfxd.class.php" />
         <option value="$PROJECT_DIR$/Application/Common/Controller/Sfzfdd.class.php" />
         <option value="$PROJECT_DIR$/Application/Home/Controller/HomeController.class.php" />
-        <option value="$PROJECT_DIR$/Application/Admin/Controller/OrderController.class.php" />
         <option value="$PROJECT_DIR$/Application/Admin/Controller/PayTypeController.class.php" />
         <option value="$PROJECT_DIR$/Application/Common/Builder/Layout/Admin/list.html" />
         <option value="$PROJECT_DIR$/.htaccess" />
@@ -208,8 +214,9 @@
         <option value="$PROJECT_DIR$/Application/Common/Builder/ListBuilder.class.php" />
         <option value="$PROJECT_DIR$/Public/js/m-modal.js" />
         <option value="$PROJECT_DIR$/Application/Common/Conf/config.php" />
-        <option value="$PROJECT_DIR$/Application/Admin/Model/UserModel.class.php" />
         <option value="$PROJECT_DIR$/Application/Admin/Controller/TgOrderController.class.php" />
+        <option value="$PROJECT_DIR$/Application/Admin/Model/UserModel.class.php" />
+        <option value="$PROJECT_DIR$/Application/Admin/Controller/OrderController.class.php" />
       </list>
     </option>
   </component>
@@ -226,9 +233,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="314" />
-    <option name="y" value="124" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="547" />
+    <option name="y" value="205" />
     <option name="width" value="1483" />
     <option name="height" value="772" />
   </component>
@@ -294,35 +301,6 @@
               <item name="Home" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Controller" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
-            <path>
-              <item name="lingyun" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lingyun" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Public" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="lingyun" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lingyun" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Public" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="lingyun" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lingyun" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Runtime" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="lingyun" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lingyun" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Runtime" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Logs" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="lingyun" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lingyun" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Runtime" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Logs" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Admin" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -333,7 +311,7 @@
   <component name="PropertiesComponent">
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../fh-lottery" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../77678zf" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
@@ -396,15 +374,15 @@
       <workItem from="1561350268178" duration="34849000" />
       <workItem from="1561435247083" duration="26540000" />
       <workItem from="1561465582524" duration="6435000" />
-      <workItem from="1561521473827" duration="10236000" />
+      <workItem from="1561521473827" duration="12511000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="292173000" />
+    <option name="totallyTimeSpent" value="294448000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="314" y="124" width="1483" height="772" extended-state="1" />
+    <frame x="547" y="205" width="1483" height="772" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24595924" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -460,27 +438,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Model/UploadModel.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5550">
-          <caret line="229" column="21" lean-forward="false" selection-start-line="229" selection-start-column="21" selection-end-line="229" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Home/Controller/Pay095qqController.class.php.bak">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Model/TgOrderModel.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="27" column="10" lean-forward="false" selection-start-line="27" selection-start-column="10" selection-end-line="27" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Common/Builder/FormType/select.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -571,13 +528,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4253">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/OrderController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3561">
-          <caret line="160" column="30" lean-forward="false" selection-start-line="160" selection-start-column="30" selection-end-line="160" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -761,26 +711,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Common/Controller/Sfzfdd.class.php">
+    <entry file="file://$PROJECT_DIR$/Runtime/Logs/Admin/1561532421-19_06_26.log">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="14" column="28" lean-forward="false" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+        <state relative-caret-position="-4500">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Model/UserModel.class.php">
+    <entry file="file://$PROJECT_DIR$/Application/Home/Controller/Pay095qqController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+        <state relative-caret-position="436">
+          <caret line="81" column="21" lean-forward="false" selection-start-line="81" selection-start-column="21" selection-end-line="81" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Runtime/Logs/Admin/1561531254-19_06_26.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4950">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Public/js/m-modal.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2793">
-          <caret line="8" column="3" lean-forward="false" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+        <state relative-caret-position="332">
+          <caret line="142" column="37" lean-forward="true" selection-start-line="142" selection-start-column="37" selection-end-line="142" selection-end-column="37" />
           <folding>
             <marker date="1561532334129" expanded="true" signature="983:3290" ph="..." />
             <marker date="1561532334129" expanded="true" signature="1043:2746" ph="..." />
@@ -814,6 +780,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Common/Controller/Sfzfdd.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1725">
+          <caret line="75" column="57" lean-forward="false" selection-start-line="75" selection-start-column="57" selection-end-line="75" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Framework/Library/Think/Model.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="23" column="25" lean-forward="false" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/UserController.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2129">
@@ -822,26 +804,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Runtime/Logs/Admin/1561532421-19_06_26.log">
+    <entry file="file://$PROJECT_DIR$/Application/Admin/Model/UserModel.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4500">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="609">
+          <caret line="60" column="99" lean-forward="false" selection-start-line="60" selection-start-column="99" selection-end-line="60" selection-end-column="99" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Home/Controller/Pay095qqController.class.php">
+    <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/OrderController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="81" column="21" lean-forward="false" selection-start-line="81" selection-start-column="21" selection-end-line="81" selection-end-column="21" />
+        <state relative-caret-position="885">
+          <caret line="170" column="1" lean-forward="false" selection-start-line="170" selection-start-column="1" selection-end-line="170" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/TgOrderController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="208" column="27" lean-forward="false" selection-start-line="208" selection-start-column="27" selection-end-line="208" selection-end-column="27" />
+        <state relative-caret-position="296">
+          <caret line="202" column="17" lean-forward="false" selection-start-line="202" selection-start-column="17" selection-end-line="202" selection-end-column="17" />
           <folding />
         </state>
       </provider>
