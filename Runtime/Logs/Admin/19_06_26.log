@@ -15078,3 +15078,81 @@ NOTIC: [8] Undefined variable: result E:\TRADE\ThinkPHP\pingzi\Application\Admin
 SQL: SHOW COLUMNS FROM `ly_order` [ RunTime:0.0040s ]
 SQL: SELECT COUNT(*) AS tp_count FROM `ly_order` WHERE ( payzt=1 AND status=0 ) LIMIT 1   [ RunTime:0.0002s ]
 
+[ 2019-06-26T14:26:59+08:00 ] 127.0.0.1 /admin.php?s=/Admin/Order/countnow.html&t=0.9015822393543347
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0078s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0046s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0002s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array E:\TRADE\ThinkPHP\pingzi\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.035378s ]
+INFO: [ app_init ] --END-- [ RunTime:0.035509s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000711s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0006s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1  [ RunTime:0.0008s ]
+INFO: Run Common\Behavior\InitConfigBehavior [ RunTime:0.005931s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006795s ]
+NOTIC: [2048] Declaration of Admin\Controller\OrderController::setStatus() should be compatible with Admin\Controller\AdminController::setStatus($model = Admin\Controller\CONTROLLER_NAME, $script = false) E:\TRADE\ThinkPHP\pingzi\Application\Admin\Controller\OrderController.class.php 第 15 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `ly_admin_hook` [ RunTime:0.0053s ]
+SQL: SELECT `name`,`addons` FROM `ly_admin_hook`  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `ly_admin_addon` [ RunTime:0.0060s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('后台首页小工具')  [ RunTime:0.0005s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('RocketToTop')  [ RunTime:0.0005s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.016203s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.016238s ]
+SQL: SHOW COLUMNS FROM `ly_admin_user` [ RunTime:0.0038s ]
+SQL: SHOW COLUMNS FROM `ly_admin_group` [ RunTime:0.0045s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [8] Undefined variable: result E:\TRADE\ThinkPHP\pingzi\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_admin_access` [ RunTime:0.0041s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `ly_admin_group` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1 ORDER BY `sort` asc,`id` asc  [ RunTime:0.0003s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined variable: result E:\TRADE\ThinkPHP\pingzi\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_order` [ RunTime:0.0043s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ly_order` WHERE ( payzt=1 AND status=0 ) LIMIT 1   [ RunTime:0.0002s ]
+
+[ 2019-06-26T14:27:09+08:00 ] 127.0.0.1 /admin.php?s=/Admin/Order/countnow.html&t=0.22089399057706638
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0068s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0040s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0004s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array E:\TRADE\ThinkPHP\pingzi\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.025211s ]
+INFO: [ app_init ] --END-- [ RunTime:0.025331s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000537s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitConfigBehavior [ RunTime:0.003140s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003737s ]
+NOTIC: [2048] Declaration of Admin\Controller\OrderController::setStatus() should be compatible with Admin\Controller\AdminController::setStatus($model = Admin\Controller\CONTROLLER_NAME, $script = false) E:\TRADE\ThinkPHP\pingzi\Application\Admin\Controller\OrderController.class.php 第 15 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `ly_admin_hook` [ RunTime:0.0036s ]
+SQL: SELECT `name`,`addons` FROM `ly_admin_hook`  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `ly_admin_addon` [ RunTime:0.0046s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('后台首页小工具')  [ RunTime:0.0002s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('RocketToTop')  [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.011798s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.011827s ]
+SQL: SHOW COLUMNS FROM `ly_admin_user` [ RunTime:0.0039s ]
+SQL: SHOW COLUMNS FROM `ly_admin_group` [ RunTime:0.0037s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined variable: result E:\TRADE\ThinkPHP\pingzi\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_admin_access` [ RunTime:0.0041s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `ly_admin_group` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1 ORDER BY `sort` asc,`id` asc  [ RunTime:0.0002s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined variable: result E:\TRADE\ThinkPHP\pingzi\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_order` [ RunTime:0.0037s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ly_order` WHERE ( payzt=1 AND status=0 ) LIMIT 1   [ RunTime:0.0002s ]
+
