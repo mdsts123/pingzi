@@ -1,216 +1,119 @@
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/m-index.css">
 <div class="builder listbuilder-box">
-    <!-- Tab导航 -->
-    <notempty name="tab_nav">
-        <div class="builder-tabs">
-            <div class="row">
-                <div class="col-xs-12">
-                    <ul class="nav nav-tabs">
-                        <volist name="tab_nav.tab_list" id="tab">
-                            <li class="<php>if($tab_nav['current_tab'] == $key) echo 'active';</php>"><a href="{$tab.href}">{$tab.title}</a></li>
-                        </volist>
-                    </ul>
-                </div>
-            </div>
+  <!-- Tab导航 -->
+  <notempty name="tab_nav">
+    <div class="builder-tabs">
+      <div class="row">
+        <div class="col-xs-12">
+          <ul class="nav nav-tabs">
+            <volist name="tab_nav.tab_list" id="tab">
+              <li class="<php>if($tab_nav['current_tab'] == $key) echo 'active';</php>"><a
+                  href="{$tab.href}">{$tab.title}</a></li>
+            </volist>
+          </ul>
         </div>
-        <div class="form-group"></div>
-    </notempty>
+      </div>
+    </div>
+    <div class="form-group"></div>
+  </notempty>
 
-    <!-- 顶部工具栏按钮 -->
-    <div class="builder-toolbar">
-        <div class="row">
-            <!-- 工具栏按钮 -->
-            <notempty name="top_button_list">
-                <div class="col-xs-12 col-sm-8 button-list clearfix">
-                    <div class="form-group">
-                        <volist name="top_button_list" id="button">
-                            <a {$button.attribute}>{$button.title}</a>&nbsp;
-                        </volist>
-                    </div>
+  <!-- 顶部工具栏按钮 -->
+  <div class="builder-toolbar">
+    <div class="row">
+      <!-- 工具栏按钮 -->
+      <notempty name="top_button_list">
+        <div class="col-xs-12 col-sm-8 button-list clearfix">
+          <div class="form-group">
+            <volist name="top_button_list" id="button">
+              <a {$button.attribute}>{$button.title}</a>&nbsp;
+            </volist>
+          </div>
+        </div>
+      </notempty>
+
+      <!-- 搜索框 -->
+      <notempty name="search">
+        <empty name="search_form_items">
+          <div class="col-xs-12 col-sm-4 clearfix">
+            <form class="form" method="get" action="{$search.url}">
+              <div class="form-group">
+                <div class="input-group search-form">
+                  <input type="text" name="keyword" class="search-input form-control" value="{$_GET.keyword}"
+                    placeholder="{$search.title}">
+                  <span class="input-group-btn"><a class="btn btn-default search-btn"><i
+                        class="fa fa-search"></i></a></span>
                 </div>
-            </notempty>
+              </div>
+            </form>
+          </div>
+        </empty>
+      </notempty>
+    </div>
+  </div>
 
-            <!-- 搜索框 -->
-            <notempty name="search">
-                <empty name="search_form_items">
-                    <div class="col-xs-12 col-sm-4 clearfix">
-                        <form class="form" method="get" action="{$search.url}">
-                            <div class="form-group">
-                                <div class="input-group search-form">
-                                    <input type="text" name="keyword" class="search-input form-control" value="{$_GET.keyword}" placeholder="{$search.title}">
-                                    <span class="input-group-btn"><a class="btn btn-default search-btn"><i class="fa fa-search"></i></a></span>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+  <!-- 数据列表 -->
+  <div class="builder-container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="builder-table">
+          <div class="panel panel-default table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+              <thead>
+                <tr>
+                  <th><input class="check-all" type="checkbox"></th>
+                  <volist name="table_column_list" id="column">
+                    <th>{$column.title|htmlspecialchars}</th>
+                  </volist>
+                </tr>
+              </thead>
+              <tbody>
+                <volist name="table_data_list" id="data">
+                  <tr>
+                    <td>
+                      <input class="ids" type="checkbox" value="{$data[$table_data_list_key]}" name="ids[]">
+                    </td>
+                    <?php foreach ($table_column_list as $column) :?>
+                    <td>
+                      <?php if ($column['name'] === 'right_button') : ?>
+                      <?php foreach ($data['right_button'] as $rb) : ?>
+                      <a {$rb['attribute']}>{$rb['title']}</a>
+                      <?php endforeach; ?>
+                      <?php else: ?>
+                      {$data[$column['name']]}
+                      <?php endif; ?>
+                    </td>
+                    <?php endforeach; ?>
+                  </tr>
+                </volist>
+
+                <empty name="table_data_list">
+                  <tr class="builder-data-empty">
+                    <php>$tdcolspan = count($table_column_list)+1</php>
+                    <td class="text-center empty-info" colspan="{$tdcolspan}">
+                      <i class="fa fa-database"></i> 暂时没有数据<br>
+                      <span class="small">本系统由 <a href="{:C('WEBSITE_DOMAIN')}" class="text-muted"
+                          target="_blank">{:C('PRODUCT_NAME')}</a> v{:C('CURRENT_VERSION')} 强力驱动</span>
+                    </td>
+                  </tr>
                 </empty>
-            </notempty>
+              </tbody>
+            </table>
+          </div>
+
+          <!--模态框-->
+          <div class="m-app" id="order">
+            <div class="m-modal m-hidden" id='m-modal'></div>
+          </div>
+          <notempty name="table_data_page">
+            <ul class="pagination">{$table_data_page}</ul>
+          </notempty>
         </div>
+      </div>
     </div>
+  </div>
 
-    <!-- 数据列表 -->
-    <div class="builder-container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="builder-table">
-                    <div class="panel panel-default table-responsive">
-                        <table class="table table-bordered table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <th><input class="check-all" type="checkbox"></th>
-                                    <volist name="table_column_list" id="column">
-                                        <th>{$column.title|htmlspecialchars}</th>
-                                    </volist>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <volist name="table_data_list" id="data">
-                                    <tr>
-                                        <td>
-                                            <input class="ids" type="checkbox" value="{$data[$table_data_list_key]}" name="ids[]">
-                                        </td>
-                                        <?php foreach ($table_column_list as $column) :?>
-                                            <td>
-                                                <?php if ($column['name'] === 'right_button') : ?>
-                                                    <?php foreach ($data['right_button'] as $rb) : ?>
-                                                        <a {$rb['attribute']}>{$rb['title']}</a>
-                                                    <?php endforeach; ?>
-                                                <?php else: ?>
-                                                    {$data[$column['name']]}
-                                                <?php endif; ?>
-                                            </td>
-                                        <?php endforeach; ?>
-                                    </tr>
-                                </volist>
-
-                                <empty name="table_data_list">
-                                    <tr class="builder-data-empty">
-                                        <php>$tdcolspan = count($table_column_list)+1</php>
-                                        <td class="text-center empty-info" colspan="{$tdcolspan}">
-                                            <i class="fa fa-database"></i> 暂时没有数据<br>
-                                            <span class="small">本系统由 <a href="{:C('WEBSITE_DOMAIN')}" class="text-muted" target="_blank">{:C('PRODUCT_NAME')}</a> v{:C('CURRENT_VERSION')} 强力驱动</span>
-                                        </td>
-                                    </tr>
-                                </empty>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <!--模态框-->
-                    <div class="m-app" id="order">
-                        <div class="m-modal m-hidden">
-                            <div class="m-modal-content detail">
-                                <!-- 图片详情 image-text -->
-                                <div class="m-row data-container">
-                                    <div class="m-col-6">
-                                        <img src="{$info.img_src}" alt="">
-                                    </div>
-                                    <div class="m-col-6 ">
-                                        <div class="m-debar">
-                                            <!-- 列表 -->
-                                            <!-- 图片数据 -->
-                                            <div class="m-scroll">
-                                                <table class="m-table ">
-                                                    <thead>
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th>{$info.id}</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <td>订单号</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>提交类型</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>支付类型</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>会员账号</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>充值金额</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>赠送金额</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>状态</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>收款人</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>付款人</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>备注</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>提交用户</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>组别</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>提交时间</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <!--  -->
-                                <section class="state">
-                                    <p class="hint">请选择操作</p>
-                                    <form action="" class="m-tool-bar clearfix">
-                                        <button class="btn m-fr btn-primary">确认</button>
-                                        <button class="btn m-fr btn-info">取消</button>
-                                        <select name="pay_status" id="" class="m-fr">
-                                            <option>请选择</option>
-                                            <option value="0">充值0</option>
-                                            <option value="1">充值1</option>
-                                            <option value="2">充值2</option>
-                                        </select>
-                                    </form>
-                                </section>
-
-                                <!-- 操作 -->
-                                <span class="m-close" onclick="m.on('close')">&times;</span>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <notempty name="table_data_page">
-                        <ul class="pagination">{$table_data_page}</ul>
-                    </notempty>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 额外功能代码 -->
-    {$extra_html}
+  <!-- 额外功能代码 -->
+  {$extra_html}
 </div>
 
 <script type="text/javascript" src="__PUBLIC__/js/m-modal.js"></script>

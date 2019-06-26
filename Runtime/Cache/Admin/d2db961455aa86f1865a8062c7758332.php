@@ -261,201 +261,103 @@
     <div class="panel-body">
         <link rel="stylesheet" type="text/css" href="/Public/css/m-index.css">
 <div class="builder listbuilder-box">
-    <!-- Tab导航 -->
-    <?php if(!empty($tab_nav)): ?><div class="builder-tabs">
-            <div class="row">
-                <div class="col-xs-12">
-                    <ul class="nav nav-tabs">
-                        <?php if(is_array($tab_nav["tab_list"])): $i = 0; $__LIST__ = $tab_nav["tab_list"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$tab): $mod = ($i % 2 );++$i;?><li class="<?php if($tab_nav['current_tab'] == $key) echo 'active'; ?>"><a href="<?php echo ($tab["href"]); ?>"><?php echo ($tab["title"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
-                    </ul>
-                </div>
-            </div>
+  <!-- Tab导航 -->
+  <?php if(!empty($tab_nav)): ?><div class="builder-tabs">
+      <div class="row">
+        <div class="col-xs-12">
+          <ul class="nav nav-tabs">
+            <?php if(is_array($tab_nav["tab_list"])): $i = 0; $__LIST__ = $tab_nav["tab_list"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$tab): $mod = ($i % 2 );++$i;?><li class="<?php if($tab_nav['current_tab'] == $key) echo 'active'; ?>"><a
+                  href="<?php echo ($tab["href"]); ?>"><?php echo ($tab["title"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
+          </ul>
         </div>
-        <div class="form-group"></div><?php endif; ?>
-
-    <!-- 顶部工具栏按钮 -->
-    <div class="builder-toolbar">
-        <div class="row">
-            <!-- 工具栏按钮 -->
-            <?php if(!empty($top_button_list)): ?><div class="col-xs-12 col-sm-8 button-list clearfix">
-                    <div class="form-group">
-                        <?php if(is_array($top_button_list)): $i = 0; $__LIST__ = $top_button_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$button): $mod = ($i % 2 );++$i;?><a <?php echo ($button["attribute"]); ?>><?php echo ($button["title"]); ?></a>&nbsp;<?php endforeach; endif; else: echo "" ;endif; ?>
-                    </div>
-                </div><?php endif; ?>
-
-            <!-- 搜索框 -->
-            <?php if(!empty($search)): if(empty($search_form_items)): ?><div class="col-xs-12 col-sm-4 clearfix">
-                        <form class="form" method="get" action="<?php echo ($search["url"]); ?>">
-                            <div class="form-group">
-                                <div class="input-group search-form">
-                                    <input type="text" name="keyword" class="search-input form-control" value="<?php echo ($_GET["keyword"]); ?>" placeholder="<?php echo ($search["title"]); ?>">
-                                    <span class="input-group-btn"><a class="btn btn-default search-btn"><i class="fa fa-search"></i></a></span>
-                                </div>
-                            </div>
-                        </form>
-                    </div><?php endif; endif; ?>
-        </div>
+      </div>
     </div>
+    <div class="form-group"></div><?php endif; ?>
 
-    <!-- 数据列表 -->
-    <div class="builder-container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="builder-table">
-                    <div class="panel panel-default table-responsive">
-                        <table class="table table-bordered table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <th><input class="check-all" type="checkbox"></th>
-                                    <?php if(is_array($table_column_list)): $i = 0; $__LIST__ = $table_column_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$column): $mod = ($i % 2 );++$i;?><th><?php echo (htmlspecialchars($column["title"])); ?></th><?php endforeach; endif; else: echo "" ;endif; ?>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php if(is_array($table_data_list)): $i = 0; $__LIST__ = $table_data_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$data): $mod = ($i % 2 );++$i;?><tr>
-                                        <td>
-                                            <input class="ids" type="checkbox" value="<?php echo ($data[$table_data_list_key]); ?>" name="ids[]">
-                                        </td>
-                                        <?php foreach ($table_column_list as $column) :?>
-                                            <td>
-                                                <?php if ($column['name'] === 'right_button') : ?>
-                                                    <?php foreach ($data['right_button'] as $rb) : ?>
-                                                        <a <?php echo ($rb['attribute']); ?>><?php echo ($rb['title']); ?></a>
-                                                    <?php endforeach; ?>
-                                                <?php else: ?>
-                                                    <?php echo ($data[$column['name']]); ?>
-                                                <?php endif; ?>
-                                            </td>
-                                        <?php endforeach; ?>
-                                    </tr><?php endforeach; endif; else: echo "" ;endif; ?>
+  <!-- 顶部工具栏按钮 -->
+  <div class="builder-toolbar">
+    <div class="row">
+      <!-- 工具栏按钮 -->
+      <?php if(!empty($top_button_list)): ?><div class="col-xs-12 col-sm-8 button-list clearfix">
+          <div class="form-group">
+            <?php if(is_array($top_button_list)): $i = 0; $__LIST__ = $top_button_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$button): $mod = ($i % 2 );++$i;?><a <?php echo ($button["attribute"]); ?>><?php echo ($button["title"]); ?></a>&nbsp;<?php endforeach; endif; else: echo "" ;endif; ?>
+          </div>
+        </div><?php endif; ?>
 
-                                <?php if(empty($table_data_list)): ?><tr class="builder-data-empty">
-                                        <?php $tdcolspan = count($table_column_list)+1 ?>
-                                        <td class="text-center empty-info" colspan="<?php echo ($tdcolspan); ?>">
-                                            <i class="fa fa-database"></i> 暂时没有数据<br>
-                                            <span class="small">本系统由 <a href="<?php echo C('WEBSITE_DOMAIN');?>" class="text-muted" target="_blank"><?php echo C('PRODUCT_NAME');?></a> v<?php echo C('CURRENT_VERSION');?> 强力驱动</span>
-                                        </td>
-                                    </tr><?php endif; ?>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <!--模态框-->
-                    <div class="m-app" id="order">
-                        <div class="m-modal m-hidden">
-                            <div class="m-modal-content detail">
-                                <!-- 图片详情 image-text -->
-                                <div class="m-row data-container">
-                                    <div class="m-col-6">
-                                        <img src="<?php echo ($info["img_src"]); ?>" alt="">
-                                    </div>
-                                    <div class="m-col-6 ">
-                                        <div class="m-debar">
-                                            <!-- 列表 -->
-                                            <!-- 图片数据 -->
-                                            <div class="m-scroll">
-                                                <table class="m-table ">
-                                                    <thead>
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th><?php echo ($info["id"]); ?></th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <td>订单号</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>提交类型</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>支付类型</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>会员账号</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>充值金额</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>赠送金额</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>状态</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>收款人</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>付款人</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>备注</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>提交用户</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>组别</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>提交时间</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <!--  -->
-                                <section class="state">
-                                    <p class="hint">请选择操作</p>
-                                    <form action="" class="m-tool-bar clearfix">
-                                        <button class="btn m-fr btn-primary">确认</button>
-                                        <button class="btn m-fr btn-info">取消</button>
-                                        <select name="pay_status" id="" class="m-fr">
-                                            <option>请选择</option>
-                                            <option value="0">充值0</option>
-                                            <option value="1">充值1</option>
-                                            <option value="2">充值2</option>
-                                        </select>
-                                    </form>
-                                </section>
-
-                                <!-- 操作 -->
-                                <span class="m-close" onclick="m.on('close')">&times;</span>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <?php if(!empty($table_data_page)): ?><ul class="pagination"><?php echo ($table_data_page); ?></ul><?php endif; ?>
+      <!-- 搜索框 -->
+      <?php if(!empty($search)): if(empty($search_form_items)): ?><div class="col-xs-12 col-sm-4 clearfix">
+            <form class="form" method="get" action="<?php echo ($search["url"]); ?>">
+              <div class="form-group">
+                <div class="input-group search-form">
+                  <input type="text" name="keyword" class="search-input form-control" value="<?php echo ($_GET["keyword"]); ?>"
+                    placeholder="<?php echo ($search["title"]); ?>">
+                  <span class="input-group-btn"><a class="btn btn-default search-btn"><i
+                        class="fa fa-search"></i></a></span>
                 </div>
-            </div>
-        </div>
+              </div>
+            </form>
+          </div><?php endif; endif; ?>
     </div>
+  </div>
 
-    <!-- 额外功能代码 -->
-    <?php echo ($extra_html); ?>
+  <!-- 数据列表 -->
+  <div class="builder-container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="builder-table">
+          <div class="panel panel-default table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+              <thead>
+                <tr>
+                  <th><input class="check-all" type="checkbox"></th>
+                  <?php if(is_array($table_column_list)): $i = 0; $__LIST__ = $table_column_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$column): $mod = ($i % 2 );++$i;?><th><?php echo (htmlspecialchars($column["title"])); ?></th><?php endforeach; endif; else: echo "" ;endif; ?>
+                </tr>
+              </thead>
+              <tbody>
+                <?php if(is_array($table_data_list)): $i = 0; $__LIST__ = $table_data_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$data): $mod = ($i % 2 );++$i;?><tr>
+                    <td>
+                      <input class="ids" type="checkbox" value="<?php echo ($data[$table_data_list_key]); ?>" name="ids[]">
+                    </td>
+                    <?php foreach ($table_column_list as $column) :?>
+                    <td>
+                      <?php if ($column['name'] === 'right_button') : ?>
+                      <?php foreach ($data['right_button'] as $rb) : ?>
+                      <a <?php echo ($rb['attribute']); ?>><?php echo ($rb['title']); ?></a>
+                      <?php endforeach; ?>
+                      <?php else: ?>
+                      <?php echo ($data[$column['name']]); ?>
+                      <?php endif; ?>
+                    </td>
+                    <?php endforeach; ?>
+                  </tr><?php endforeach; endif; else: echo "" ;endif; ?>
+
+                <?php if(empty($table_data_list)): ?><tr class="builder-data-empty">
+                    <?php $tdcolspan = count($table_column_list)+1 ?>
+                    <td class="text-center empty-info" colspan="<?php echo ($tdcolspan); ?>">
+                      <i class="fa fa-database"></i> 暂时没有数据<br>
+                      <span class="small">本系统由 <a href="<?php echo C('WEBSITE_DOMAIN');?>" class="text-muted"
+                          target="_blank"><?php echo C('PRODUCT_NAME');?></a> v<?php echo C('CURRENT_VERSION');?> 强力驱动</span>
+                    </td>
+                  </tr><?php endif; ?>
+              </tbody>
+            </table>
+          </div>
+
+          <!--模态框-->
+          <div class="m-app" id="order">
+            <div class="m-modal m-hidden" id='m-modal'></div>
+          </div>
+          <?php if(!empty($table_data_page)): ?><ul class="pagination"><?php echo ($table_data_page); ?></ul><?php endif; ?>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 额外功能代码 -->
+  <?php echo ($extra_html); ?>
 </div>
 
 <script type="text/javascript" src="/Public/js/m-modal.js"></script>
-
     </div>
 
                             </div>
@@ -491,201 +393,103 @@
     <div class="panel-body">
         <link rel="stylesheet" type="text/css" href="/Public/css/m-index.css">
 <div class="builder listbuilder-box">
-    <!-- Tab导航 -->
-    <?php if(!empty($tab_nav)): ?><div class="builder-tabs">
-            <div class="row">
-                <div class="col-xs-12">
-                    <ul class="nav nav-tabs">
-                        <?php if(is_array($tab_nav["tab_list"])): $i = 0; $__LIST__ = $tab_nav["tab_list"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$tab): $mod = ($i % 2 );++$i;?><li class="<?php if($tab_nav['current_tab'] == $key) echo 'active'; ?>"><a href="<?php echo ($tab["href"]); ?>"><?php echo ($tab["title"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
-                    </ul>
-                </div>
-            </div>
+  <!-- Tab导航 -->
+  <?php if(!empty($tab_nav)): ?><div class="builder-tabs">
+      <div class="row">
+        <div class="col-xs-12">
+          <ul class="nav nav-tabs">
+            <?php if(is_array($tab_nav["tab_list"])): $i = 0; $__LIST__ = $tab_nav["tab_list"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$tab): $mod = ($i % 2 );++$i;?><li class="<?php if($tab_nav['current_tab'] == $key) echo 'active'; ?>"><a
+                  href="<?php echo ($tab["href"]); ?>"><?php echo ($tab["title"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
+          </ul>
         </div>
-        <div class="form-group"></div><?php endif; ?>
-
-    <!-- 顶部工具栏按钮 -->
-    <div class="builder-toolbar">
-        <div class="row">
-            <!-- 工具栏按钮 -->
-            <?php if(!empty($top_button_list)): ?><div class="col-xs-12 col-sm-8 button-list clearfix">
-                    <div class="form-group">
-                        <?php if(is_array($top_button_list)): $i = 0; $__LIST__ = $top_button_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$button): $mod = ($i % 2 );++$i;?><a <?php echo ($button["attribute"]); ?>><?php echo ($button["title"]); ?></a>&nbsp;<?php endforeach; endif; else: echo "" ;endif; ?>
-                    </div>
-                </div><?php endif; ?>
-
-            <!-- 搜索框 -->
-            <?php if(!empty($search)): if(empty($search_form_items)): ?><div class="col-xs-12 col-sm-4 clearfix">
-                        <form class="form" method="get" action="<?php echo ($search["url"]); ?>">
-                            <div class="form-group">
-                                <div class="input-group search-form">
-                                    <input type="text" name="keyword" class="search-input form-control" value="<?php echo ($_GET["keyword"]); ?>" placeholder="<?php echo ($search["title"]); ?>">
-                                    <span class="input-group-btn"><a class="btn btn-default search-btn"><i class="fa fa-search"></i></a></span>
-                                </div>
-                            </div>
-                        </form>
-                    </div><?php endif; endif; ?>
-        </div>
+      </div>
     </div>
+    <div class="form-group"></div><?php endif; ?>
 
-    <!-- 数据列表 -->
-    <div class="builder-container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="builder-table">
-                    <div class="panel panel-default table-responsive">
-                        <table class="table table-bordered table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <th><input class="check-all" type="checkbox"></th>
-                                    <?php if(is_array($table_column_list)): $i = 0; $__LIST__ = $table_column_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$column): $mod = ($i % 2 );++$i;?><th><?php echo (htmlspecialchars($column["title"])); ?></th><?php endforeach; endif; else: echo "" ;endif; ?>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php if(is_array($table_data_list)): $i = 0; $__LIST__ = $table_data_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$data): $mod = ($i % 2 );++$i;?><tr>
-                                        <td>
-                                            <input class="ids" type="checkbox" value="<?php echo ($data[$table_data_list_key]); ?>" name="ids[]">
-                                        </td>
-                                        <?php foreach ($table_column_list as $column) :?>
-                                            <td>
-                                                <?php if ($column['name'] === 'right_button') : ?>
-                                                    <?php foreach ($data['right_button'] as $rb) : ?>
-                                                        <a <?php echo ($rb['attribute']); ?>><?php echo ($rb['title']); ?></a>
-                                                    <?php endforeach; ?>
-                                                <?php else: ?>
-                                                    <?php echo ($data[$column['name']]); ?>
-                                                <?php endif; ?>
-                                            </td>
-                                        <?php endforeach; ?>
-                                    </tr><?php endforeach; endif; else: echo "" ;endif; ?>
+  <!-- 顶部工具栏按钮 -->
+  <div class="builder-toolbar">
+    <div class="row">
+      <!-- 工具栏按钮 -->
+      <?php if(!empty($top_button_list)): ?><div class="col-xs-12 col-sm-8 button-list clearfix">
+          <div class="form-group">
+            <?php if(is_array($top_button_list)): $i = 0; $__LIST__ = $top_button_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$button): $mod = ($i % 2 );++$i;?><a <?php echo ($button["attribute"]); ?>><?php echo ($button["title"]); ?></a>&nbsp;<?php endforeach; endif; else: echo "" ;endif; ?>
+          </div>
+        </div><?php endif; ?>
 
-                                <?php if(empty($table_data_list)): ?><tr class="builder-data-empty">
-                                        <?php $tdcolspan = count($table_column_list)+1 ?>
-                                        <td class="text-center empty-info" colspan="<?php echo ($tdcolspan); ?>">
-                                            <i class="fa fa-database"></i> 暂时没有数据<br>
-                                            <span class="small">本系统由 <a href="<?php echo C('WEBSITE_DOMAIN');?>" class="text-muted" target="_blank"><?php echo C('PRODUCT_NAME');?></a> v<?php echo C('CURRENT_VERSION');?> 强力驱动</span>
-                                        </td>
-                                    </tr><?php endif; ?>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <!--模态框-->
-                    <div class="m-app" id="order">
-                        <div class="m-modal m-hidden">
-                            <div class="m-modal-content detail">
-                                <!-- 图片详情 image-text -->
-                                <div class="m-row data-container">
-                                    <div class="m-col-6">
-                                        <img src="<?php echo ($info["img_src"]); ?>" alt="">
-                                    </div>
-                                    <div class="m-col-6 ">
-                                        <div class="m-debar">
-                                            <!-- 列表 -->
-                                            <!-- 图片数据 -->
-                                            <div class="m-scroll">
-                                                <table class="m-table ">
-                                                    <thead>
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th><?php echo ($info["id"]); ?></th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <td>订单号</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>提交类型</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>支付类型</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>会员账号</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>充值金额</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>赠送金额</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>状态</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>收款人</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>付款人</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>备注</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>提交用户</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>组别</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>提交时间</td>
-                                                        <td>afsda是打发地方</td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <!--  -->
-                                <section class="state">
-                                    <p class="hint">请选择操作</p>
-                                    <form action="" class="m-tool-bar clearfix">
-                                        <button class="btn m-fr btn-primary">确认</button>
-                                        <button class="btn m-fr btn-info">取消</button>
-                                        <select name="pay_status" id="" class="m-fr">
-                                            <option>请选择</option>
-                                            <option value="0">充值0</option>
-                                            <option value="1">充值1</option>
-                                            <option value="2">充值2</option>
-                                        </select>
-                                    </form>
-                                </section>
-
-                                <!-- 操作 -->
-                                <span class="m-close" onclick="m.on('close')">&times;</span>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <?php if(!empty($table_data_page)): ?><ul class="pagination"><?php echo ($table_data_page); ?></ul><?php endif; ?>
+      <!-- 搜索框 -->
+      <?php if(!empty($search)): if(empty($search_form_items)): ?><div class="col-xs-12 col-sm-4 clearfix">
+            <form class="form" method="get" action="<?php echo ($search["url"]); ?>">
+              <div class="form-group">
+                <div class="input-group search-form">
+                  <input type="text" name="keyword" class="search-input form-control" value="<?php echo ($_GET["keyword"]); ?>"
+                    placeholder="<?php echo ($search["title"]); ?>">
+                  <span class="input-group-btn"><a class="btn btn-default search-btn"><i
+                        class="fa fa-search"></i></a></span>
                 </div>
-            </div>
-        </div>
+              </div>
+            </form>
+          </div><?php endif; endif; ?>
     </div>
+  </div>
 
-    <!-- 额外功能代码 -->
-    <?php echo ($extra_html); ?>
+  <!-- 数据列表 -->
+  <div class="builder-container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="builder-table">
+          <div class="panel panel-default table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+              <thead>
+                <tr>
+                  <th><input class="check-all" type="checkbox"></th>
+                  <?php if(is_array($table_column_list)): $i = 0; $__LIST__ = $table_column_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$column): $mod = ($i % 2 );++$i;?><th><?php echo (htmlspecialchars($column["title"])); ?></th><?php endforeach; endif; else: echo "" ;endif; ?>
+                </tr>
+              </thead>
+              <tbody>
+                <?php if(is_array($table_data_list)): $i = 0; $__LIST__ = $table_data_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$data): $mod = ($i % 2 );++$i;?><tr>
+                    <td>
+                      <input class="ids" type="checkbox" value="<?php echo ($data[$table_data_list_key]); ?>" name="ids[]">
+                    </td>
+                    <?php foreach ($table_column_list as $column) :?>
+                    <td>
+                      <?php if ($column['name'] === 'right_button') : ?>
+                      <?php foreach ($data['right_button'] as $rb) : ?>
+                      <a <?php echo ($rb['attribute']); ?>><?php echo ($rb['title']); ?></a>
+                      <?php endforeach; ?>
+                      <?php else: ?>
+                      <?php echo ($data[$column['name']]); ?>
+                      <?php endif; ?>
+                    </td>
+                    <?php endforeach; ?>
+                  </tr><?php endforeach; endif; else: echo "" ;endif; ?>
+
+                <?php if(empty($table_data_list)): ?><tr class="builder-data-empty">
+                    <?php $tdcolspan = count($table_column_list)+1 ?>
+                    <td class="text-center empty-info" colspan="<?php echo ($tdcolspan); ?>">
+                      <i class="fa fa-database"></i> 暂时没有数据<br>
+                      <span class="small">本系统由 <a href="<?php echo C('WEBSITE_DOMAIN');?>" class="text-muted"
+                          target="_blank"><?php echo C('PRODUCT_NAME');?></a> v<?php echo C('CURRENT_VERSION');?> 强力驱动</span>
+                    </td>
+                  </tr><?php endif; ?>
+              </tbody>
+            </table>
+          </div>
+
+          <!--模态框-->
+          <div class="m-app" id="order">
+            <div class="m-modal m-hidden" id='m-modal'></div>
+          </div>
+          <?php if(!empty($table_data_page)): ?><ul class="pagination"><?php echo ($table_data_page); ?></ul><?php endif; ?>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 额外功能代码 -->
+  <?php echo ($extra_html); ?>
 </div>
 
 <script type="text/javascript" src="/Public/js/m-modal.js"></script>
-
     </div>
 
             <?php endif; ?>
