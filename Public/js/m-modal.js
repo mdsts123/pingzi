@@ -3,12 +3,60 @@ function preventDefaultEvents() {
     event.preventDefault();
   });
 }
-let str=`
+
+
+
+/**
+ * 分装订单类 处理订单交互
+ */
+
+class order {
+  constructor() {}
+  getDetail(url) {
+    return new Promise((resolve, reject) => {
+      $.ajax({
+        type: 'GET',
+        url,
+        success(data) {
+          data = JSON.parse(data);
+          resolve(data);
+        },
+      });
+    });
+  }
+}
+
+/**
+ * 封装模态类
+ */
+class modal extends order {
+  clickEl;
+  //定义事件
+  constructor() {
+    super();
+    preventDefaultEvents();
+    this.events = {
+      close: this.handleClose,
+      open: this.handleOpen,
+    };
+  }
+  //定义操作
+  openModal() {
+    $('#order .m-modal').show();
+  }
+  closeModal() {
+    $('#order .m-modal').hide();
+  }
+  renderOption(data){
+
+  }
+  renderContent(data) {
+    let html = `
 <div class="m-modal-content detail">
 <!-- 图片详情 image-text -->
 <div class="m-row data-container">
   <div class="m-col-6">
-    <img src="{$info.img_src}" alt="">
+    <img src="${data.img_src}" alt="">
   </div>
   <div class="m-col-6 ">
     <div class="m-debar">
@@ -19,7 +67,7 @@ let str=`
           <thead>
             <tr>
               <th>ID</th>
-              <th>{$info.id}</th>
+              <th>${data.id}</th>
             </tr>
           </thead>
           <tbody>
@@ -83,7 +131,6 @@ let str=`
 
   </div>
 </div>
-<!--  -->
 <section class="state">
   <p class="hint">请选择操作</p>
   <form action="" class="m-tool-bar clearfix">
@@ -100,52 +147,8 @@ let str=`
 
 <!-- 操作 -->
 <span class="m-close" onclick="m.on('close')">&times;</span>
-</div>`
-
-/**
- * 分装订单类 处理订单交互
- */
-
-class order {
-  constructor() {}
-  getDetail(url) {
-   return new Promise((resolve,reject)=>{
-      $.ajax({
-        type: 'GET',
-        url,
-        success(data) {
-          data=JSON.parse(data)
-          resolve(data)
-        },
-      });
-    })
-
-  }
-}
-
-/**
- * 封装模态类
- */
-class modal extends order {
-  clickEl
-  //定义事件
-  constructor() {
-    super()
-    preventDefaultEvents();
-    this.events = {
-      close: this.handleClose,
-      open: this.handleOpen,
-    };
-  }
-  //定义操作
-  openModal() {
-    $('#order .m-modal').show();
-  }
-  closeModal() {
-    $('#order .m-modal').hide();
-  }
-  renderContent(data){
-    console.log(data);
+</div>`;
+$('#order .m-modal').html(html).show()
 
   }
 
@@ -154,9 +157,10 @@ class modal extends order {
     this.closeModal();
   }
   handleOpen() {
-    this.getDetail($(this.clickEl).attr('href')).then(function(data){
-      this.renderContent(data)
-    })
+    let m = this;
+    this.getDetail($(this.clickEl).attr('href')).then(function(data) {
+      m.renderContent(data);
+    });
     // this.openModal();
   }
   //定义事件
@@ -169,11 +173,11 @@ class modal extends order {
    *
    * @param {string} name 事件名
    */
-  on(name,clickEl) {
-    this.clickEl=clickEl
+  on(name, clickEl) {
+    this.clickEl = clickEl;
     name += '';
-    if(name==='open')this.handleOpen()
-    if(name==='close')this.handleClose()
+    if (name === 'open') this.handleOpen();
+    if (name === 'close') this.handleClose();
     // this.events[name]();
   }
 }
