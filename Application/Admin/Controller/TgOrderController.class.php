@@ -168,17 +168,18 @@ class TgOrderController extends AdminController {
         $tg_order = D('TgOrder');
         $info = $tg_order->find($id);
         $info['pays'] = $this->payStatus();
-        return json_encode($info);
+        echo json_encode($info);
+        //return json_encode($info);
     }
 
-    public function toTgOrder($pay_status,$username,$amount,$order){
+    public function toTgOrder(){
         $pay_status = I('post.pay_status');
         $username = I('post.username');
         $amount = I('post.amount');
-        $order = I('post.orderno');
+        $orderno = I('post.orderno');
         $tg_order = D('TgOrder');
         if(1 == $pay_status){
-            $mes = $this->place_order($username,$amount,$order);
+            $mes = $this->place_order($amount,$username,$orderno);
             $mes = json_decode($mes);
             if($mes['code']==0){
                 $this->error($mes['message']);
