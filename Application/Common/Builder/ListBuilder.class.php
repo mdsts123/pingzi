@@ -586,6 +586,19 @@ class ListBuilder extends ControllerController
           }
         }
       }
+      if(1 == $data['cid']){
+          $data['name'] = "微信";
+      }elseif (2 == $data['cid']){
+          $data['name'] = "网银";
+      }elseif (3 == $data['cid']){
+          $data['name'] = "支付宝";
+      }elseif (4 == $data['cid']){
+          $data['name'] = "QQ";
+      }elseif (8 == $data['cid']){
+          $data['name'] = "银联扫码";
+      }elseif (9 == $data['cid']){
+          $data['name'] = "五码合一";
+      }
 
       // 推广订单 - 提交时间
       if (!empty($data['cmit_time'])) {

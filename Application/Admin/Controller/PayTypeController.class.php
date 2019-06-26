@@ -36,7 +36,7 @@ class PayTypeController extends AdminController{
         ->addTopButton('forbid')  // 添加禁用按钮
         ->addTopButton('delete')  // 添加删除按钮
         ->addTableColumn('id', 'PID')
-            ->addTableColumn('cid', '类型','paytype')
+            ->addTableColumn('name', '类型')
             ->addTableColumn('img_src', '二维码','picture',null,true)
             ->addTableColumn('status', '状态', 'status')
             ->addTableColumn('right_button', '操作', 'btn')
