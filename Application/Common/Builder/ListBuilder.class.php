@@ -460,7 +460,7 @@ class ListBuilder extends ControllerController
           $my_attribute['title'] = '操作';
         }
         $my_attribute['onclick'] = "m.on('open',this)";
-        $my_attribute['class'] = 'label label-success-outline '; //label-pill ajax-get confirm'
+        $my_attribute['class'] = 'label label-success-outline label-pill'; // ajax-get confirm'
         // 跳转路径
         $my_attribute['href']  = U(
           MODULE_NAME . '/' . CONTROLLER_NAME . '/payTgOrder',
