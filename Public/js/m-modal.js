@@ -10,7 +10,7 @@ function preventDefaultEvents() {
 
 class order {
   constructor() {}
-  getDetail(url) {
+  api_getDetail(url) {
     return new Promise((resolve, reject) => {
       $.ajax({
         type: 'GET',
@@ -54,6 +54,7 @@ class modal extends order {
     };
   }
   //定义操作
+  nullfy2str(data){return data?data:''}
   openModal() {
     $('#order .m-modal').show();
   }
@@ -66,16 +67,16 @@ class modal extends order {
     // if(state===null)alert('请选择订单状态')
     this.toTgOrderData.pay_status = state;
     this.api_toTgOrder(this.toTgOrderData).then(data => {
+      location.href=location.href
       m.closeModal();
     });
   }
-  renderOption(data) {
+  renderOption(data,current) {
+
+
     return data
       .map(
-        opt =>
-          `<option value="${opt.pay_status}">${opt.pay_status_name}</option>`,
-      )
-      .join('');
+       opt =>  `<option value="${opt.pay_status}" ${(opt.pay_status===current)?'selected':''} >${opt.pay_status_name}</option>`).join('');
   }
   renderContent(data) {
     this.toTgOrderData = {
@@ -86,11 +87,11 @@ class modal extends order {
       orderno: data.amount,
     };
     let html = `
-<div class="m-modal-content detail">
-<!-- 图片详情 image-text -->
-<div class="m-row data-container">
+  <div class="m-modal-content detail">
+  <!-- 图片详情 image-text -->
+  <div class="m-row data-container">
   <div class="m-col-6">
-    <img src="${data.img_src}" alt="">
+    <img src="${this.nullfy2str(data.img_src)}" alt="">
   </div>
   <div class="m-col-6 ">
     <div class="m-debar">
@@ -101,23 +102,23 @@ class modal extends order {
           <thead>
             <tr>
               <th>ID</th>
-              <th>${data.id}</th>
+              <th>${this.nullfy2str(data.id)}</th>
             </tr>
           </thead>
           <tbody>
-          <tr><td>订单号</td><td>${data.orderno}</td></tr>
-          <tr><td>提交类型</td><td>${data.commit_type}</td></tr>
-          <tr><td>支付类型</td><td>${data.pay_type}</td></tr>
-          <tr><td>会员账号</td><td>${data.username}</td></tr>
-          <tr><td>充值金额</td><td>${data.amount}</td></tr>
-          <tr><td>赠送金额</td><td>${data.giv_amount}</td></tr>
-          <tr><td>状态</td><td>${data.pay_status}</td></tr>
-          <tr><td>收款人</td><td></td></tr>
-          <tr><td>付款人</td><td></td></tr>
-          <tr><td>备注</td><td>${data.desc}</td></tr>
-          <tr><td>提交用户</td><td>${data.commitname}</td></tr>
-          <tr><td>组别</td><td>${data.groupname}</td></tr>
-          <tr><td>提交时间</td><td>${data.cmit_time}</td></tr>
+          <tr><td>订单号</td><td>${this.nullfy2str(data.orderno)}</td></tr>
+          <tr><td>提交类型</td><td>${this.nullfy2str(data.commit_type)}</td></tr>
+          <tr><td>支付类型</td><td>${this.nullfy2str(data.pay_type)}</td></tr>
+          <tr><td>会员账号</td><td>${this.nullfy2str(data.username)}</td></tr>
+          <tr><td>充值金额</td><td>${this.nullfy2str(data.amount)}</td></tr>
+          <tr><td>赠送金额</td><td>${this.nullfy2str(data.giv_amount)}</td></tr>
+          <tr><td>状态</td><td>${this.nullfy2str(data.pay_status)}</td></tr>
+          <tr><td>收款人</td><td>${this.nullfy2str(data.collname)}</td></tr>
+          <tr><td>付款人</td><td>${this.nullfy2str(data.payname)}</td></tr>
+          <tr><td>备注</td><td>${this.nullfy2str(data.desc)}</td></tr>
+          <tr><td>提交用户</td><td>${this.nullfy2str(data.commitname)}</td></tr>
+          <tr><td>组别</td><td>${this.nullfy2str(data.groupname)}</td></tr>
+          <tr><td>提交时间</td><td>${this.nullfy2str(data.cmit_time)}</td></tr>
           </tbody>
         </table>
       </div>
@@ -125,27 +126,31 @@ class modal extends order {
     </div>
 
   </div>
-</div>
-<section class="state">
+  </div>
+  <section class="state">
 
   <div id="modalForm" class="m-tool-bar clearfix" method="post">
+
     <button class="btn m-fr btn-primary" onclick="m.on('submit')">确认</button>
     <button class="btn m-fr btn-info" onclick="m.on('close')">取消</button>
-    <p class="hint">请选择操作</p>
-    <select name="pay_status" id="pay_status" class="m-fr">
-      <option disabled selected value="">请选择</option>
-      ${this.renderOption(data.pays)}
+    <p class="select-box m-fr">
+    <b>请选择订单状态</b>
+    <select name="pay_status" id="pay_status" >
+      ${this.renderOption(data.pays,(data.pay_status-0))}
     </select>
-  </div>
-</section>
+    </p>
 
-<!-- 操作 -->
-<span class="m-close" onclick="m.on('close')">&times;</span>
-</div>`;
+  </div>
+  </section>
+
+  <!-- 操作 -->
+  <span class="m-close" onclick="m.on('close')">&times;</span>
+  </div>`;
     $('#order .m-modal')
       .html(html)
       .show();
   }
+
 
   //定义钩子
   handleClose() {
@@ -153,7 +158,7 @@ class modal extends order {
   }
   handleOpen() {
     let m = this;
-    this.getDetail($(this.clickEl).attr('href')).then(function(data) {
+    this.api_getDetail($(this.clickEl).attr('href')).then(function(data) {
       m.renderContent(data);
     });
     // this.openModal();
