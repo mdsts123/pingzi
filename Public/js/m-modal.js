@@ -3,19 +3,123 @@ function preventDefaultEvents() {
     event.preventDefault();
   });
 }
+let str=`
+<div class="m-modal-content detail">
+<!-- 图片详情 image-text -->
+<div class="m-row data-container">
+  <div class="m-col-6">
+    <img src="{$info.img_src}" alt="">
+  </div>
+  <div class="m-col-6 ">
+    <div class="m-debar">
+      <!-- 列表 -->
+      <!-- 图片数据 -->
+      <div class="m-scroll">
+        <table class="m-table ">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>{$info.id}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>订单号</td>
+              <td>afsda是打发地方</td>
+            </tr>
+            <tr>
+              <td>提交类型</td>
+              <td>afsda是打发地方</td>
+            </tr>
+            <tr>
+              <td>支付类型</td>
+              <td>afsda是打发地方</td>
+            </tr>
+            <tr>
+              <td>会员账号</td>
+              <td>afsda是打发地方</td>
+            </tr>
+            <tr>
+              <td>充值金额</td>
+              <td>afsda是打发地方</td>
+            </tr>
+            <tr>
+              <td>赠送金额</td>
+              <td>afsda是打发地方</td>
+            </tr>
+            <tr>
+              <td>状态</td>
+              <td>afsda是打发地方</td>
+            </tr>
+            <tr>
+              <td>收款人</td>
+              <td>afsda是打发地方</td>
+            </tr>
+            <tr>
+              <td>付款人</td>
+              <td>afsda是打发地方</td>
+            </tr>
+            <tr>
+              <td>备注</td>
+              <td>afsda是打发地方</td>
+            </tr>
+            <tr>
+              <td>提交用户</td>
+              <td>afsda是打发地方</td>
+            </tr>
+            <tr>
+              <td>组别</td>
+              <td>afsda是打发地方</td>
+            </tr>
+            <tr>
+              <td>提交时间</td>
+              <td>afsda是打发地方</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<!--  -->
+<section class="state">
+  <p class="hint">请选择操作</p>
+  <form action="" class="m-tool-bar clearfix">
+    <button class="btn m-fr btn-primary">确认</button>
+    <button class="btn m-fr btn-info">取消</button>
+    <select name="pay_status" id="" class="m-fr">
+      <option>请选择</option>
+      <option value="0">充值0</option>
+      <option value="1">充值1</option>
+      <option value="2">充值2</option>
+    </select>
+  </form>
+</section>
+
+<!-- 操作 -->
+<span class="m-close" onclick="m.on('close')">&times;</span>
+</div>`
+
 /**
  * 分装订单类 处理订单交互
  */
+
 class order {
   constructor() {}
   getDetail(url) {
-    $.ajax({
-      type: 'GET',
-      url,
-      success(data) {
-        console.log(data);
-      },
-    });
+   return new Promise((resolve,reject)=>{
+      $.ajax({
+        type: 'GET',
+        url,
+        success(data) {
+          data=JSON.parse(data)
+          resolve(data)
+        },
+      });
+    })
+
   }
 }
 
@@ -40,12 +144,19 @@ class modal extends order {
   closeModal() {
     $('#order .m-modal').hide();
   }
+  renderContent(data){
+    console.log(data);
+
+  }
+
   //定义钩子
   handleClose() {
     this.closeModal();
   }
   handleOpen() {
-    this.getDetail($(this.clickEl).attr('href'))
+    this.getDetail($(this.clickEl).attr('href')).then(function(data){
+      this.renderContent(data)
+    })
     // this.openModal();
   }
   //定义事件
