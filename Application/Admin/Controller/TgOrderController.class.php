@@ -179,6 +179,13 @@ class TgOrderController extends AdminController {
         }elseif (3 == $info['pay_type']){
             $info['pay_type_name'] = "银行卡转账";
         }
+        if(0 == $info['pay_status']){
+            $info['pay_status_name'] = "未处理";
+        }elseif (1 == $info['pay_status']){
+            $info['pay_status_name'] = "充值成功";
+        }elseif (2 == $info['pay_status']){
+            $info['pay_status_name'] = "充值失败";
+        }
         $info['pays'] = $this->payStatus();
         $data = array(
             'code'      => 200,
