@@ -4202,3 +4202,627 @@ NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Applic
 SQL: SHOW COLUMNS FROM `ly_order` [ RunTime:0.0067s ]
 SQL: SELECT COUNT(*) AS tp_count FROM `ly_order` WHERE ( payzt=1 AND status=0 ) LIMIT 1   [ RunTime:0.0003s ]
 
+[ 2019-06-26T14:55:36+08:00 ] 127.0.0.1 /admin.php?s=/Admin/Order/countnow.html&t=0.7355318442145964
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0065s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0075s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0002s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.021710s ]
+INFO: [ app_init ] --END-- [ RunTime:0.021772s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000363s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitConfigBehavior [ RunTime:0.002958s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003366s ]
+NOTIC: [2048] Declaration of Admin\Controller\OrderController::setStatus() should be compatible with Admin\Controller\AdminController::setStatus($model = Admin\Controller\CONTROLLER_NAME, $script = false) D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Controller\OrderController.class.php 第 15 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `ly_admin_hook` [ RunTime:0.0078s ]
+SQL: SELECT `name`,`addons` FROM `ly_admin_hook`  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `ly_admin_addon` [ RunTime:0.0078s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('后台首页小工具')  [ RunTime:0.0002s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('RocketToTop')  [ RunTime:0.0001s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.019810s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.019853s ]
+SQL: SHOW COLUMNS FROM `ly_admin_user` [ RunTime:0.0068s ]
+SQL: SHOW COLUMNS FROM `ly_admin_group` [ RunTime:0.0070s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_admin_access` [ RunTime:0.0063s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `ly_admin_group` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1 ORDER BY `sort` asc,`id` asc  [ RunTime:0.0002s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_order` [ RunTime:0.0067s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ly_order` WHERE ( payzt=1 AND status=0 ) LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2019-06-26T14:55:46+08:00 ] 127.0.0.1 /admin.php?s=/Admin/Order/countnow.html&t=0.5479074924168688
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0078s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0072s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0003s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.022255s ]
+INFO: [ app_init ] --END-- [ RunTime:0.022315s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000386s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitConfigBehavior [ RunTime:0.002873s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003303s ]
+NOTIC: [2048] Declaration of Admin\Controller\OrderController::setStatus() should be compatible with Admin\Controller\AdminController::setStatus($model = Admin\Controller\CONTROLLER_NAME, $script = false) D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Controller\OrderController.class.php 第 15 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `ly_admin_hook` [ RunTime:0.0085s ]
+SQL: SELECT `name`,`addons` FROM `ly_admin_hook`  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `ly_admin_addon` [ RunTime:0.0081s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('后台首页小工具')  [ RunTime:0.0001s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('RocketToTop')  [ RunTime:0.0001s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.020061s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.020091s ]
+SQL: SHOW COLUMNS FROM `ly_admin_user` [ RunTime:0.0073s ]
+SQL: SHOW COLUMNS FROM `ly_admin_group` [ RunTime:0.0080s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_admin_access` [ RunTime:0.0058s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `ly_admin_group` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1 ORDER BY `sort` asc,`id` asc  [ RunTime:0.0002s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_order` [ RunTime:0.0069s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ly_order` WHERE ( payzt=1 AND status=0 ) LIMIT 1   [ RunTime:0.0002s ]
+
+[ 2019-06-26T14:55:56+08:00 ] 127.0.0.1 /admin.php?s=/Admin/Order/countnow.html&t=0.39983967986249835
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0056s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0065s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0002s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.019643s ]
+INFO: [ app_init ] --END-- [ RunTime:0.019700s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000348s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1  [ RunTime:0.0003s ]
+INFO: Run Common\Behavior\InitConfigBehavior [ RunTime:0.002763s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003156s ]
+NOTIC: [2048] Declaration of Admin\Controller\OrderController::setStatus() should be compatible with Admin\Controller\AdminController::setStatus($model = Admin\Controller\CONTROLLER_NAME, $script = false) D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Controller\OrderController.class.php 第 15 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `ly_admin_hook` [ RunTime:0.0078s ]
+SQL: SELECT `name`,`addons` FROM `ly_admin_hook`  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `ly_admin_addon` [ RunTime:0.0068s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('后台首页小工具')  [ RunTime:0.0003s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('RocketToTop')  [ RunTime:0.0001s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.018094s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.018137s ]
+SQL: SHOW COLUMNS FROM `ly_admin_user` [ RunTime:0.0063s ]
+SQL: SHOW COLUMNS FROM `ly_admin_group` [ RunTime:0.0065s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_admin_access` [ RunTime:0.0059s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `ly_admin_group` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1 ORDER BY `sort` asc,`id` asc  [ RunTime:0.0002s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_order` [ RunTime:0.0072s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ly_order` WHERE ( payzt=1 AND status=0 ) LIMIT 1   [ RunTime:0.0002s ]
+
+[ 2019-06-26T14:56:06+08:00 ] 127.0.0.1 /admin.php?s=/Admin/Order/countnow.html&t=0.43495565897588695
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0068s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0054s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0002s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.029123s ]
+INFO: [ app_init ] --END-- [ RunTime:0.029179s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000452s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitConfigBehavior [ RunTime:0.003153s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003663s ]
+NOTIC: [2048] Declaration of Admin\Controller\OrderController::setStatus() should be compatible with Admin\Controller\AdminController::setStatus($model = Admin\Controller\CONTROLLER_NAME, $script = false) D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Controller\OrderController.class.php 第 15 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `ly_admin_hook` [ RunTime:0.0065s ]
+SQL: SELECT `name`,`addons` FROM `ly_admin_hook`  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `ly_admin_addon` [ RunTime:0.0069s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('后台首页小工具')  [ RunTime:0.0003s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('RocketToTop')  [ RunTime:0.0001s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.017215s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.017265s ]
+SQL: SHOW COLUMNS FROM `ly_admin_user` [ RunTime:0.0067s ]
+SQL: SHOW COLUMNS FROM `ly_admin_group` [ RunTime:0.0064s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_admin_access` [ RunTime:0.0056s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `ly_admin_group` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1 ORDER BY `sort` asc,`id` asc  [ RunTime:0.0002s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_order` [ RunTime:0.0065s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ly_order` WHERE ( payzt=1 AND status=0 ) LIMIT 1   [ RunTime:0.0002s ]
+
+[ 2019-06-26T14:56:16+08:00 ] 127.0.0.1 /admin.php?s=/Admin/Order/countnow.html&t=0.3730694458424435
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0218s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0077s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0002s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.046195s ]
+INFO: [ app_init ] --END-- [ RunTime:0.046250s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000393s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitConfigBehavior [ RunTime:0.002872s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003309s ]
+NOTIC: [2048] Declaration of Admin\Controller\OrderController::setStatus() should be compatible with Admin\Controller\AdminController::setStatus($model = Admin\Controller\CONTROLLER_NAME, $script = false) D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Controller\OrderController.class.php 第 15 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `ly_admin_hook` [ RunTime:0.0060s ]
+SQL: SELECT `name`,`addons` FROM `ly_admin_hook`  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `ly_admin_addon` [ RunTime:0.0070s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('后台首页小工具')  [ RunTime:0.0004s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('RocketToTop')  [ RunTime:0.0001s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.016510s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.016539s ]
+SQL: SHOW COLUMNS FROM `ly_admin_user` [ RunTime:0.0071s ]
+SQL: SHOW COLUMNS FROM `ly_admin_group` [ RunTime:0.0075s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_admin_access` [ RunTime:0.0066s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `ly_admin_group` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1 ORDER BY `sort` asc,`id` asc  [ RunTime:0.0001s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_order` [ RunTime:0.0067s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ly_order` WHERE ( payzt=1 AND status=0 ) LIMIT 1   [ RunTime:0.0002s ]
+
+[ 2019-06-26T14:56:26+08:00 ] 127.0.0.1 /admin.php?s=/Admin/Order/countnow.html&t=0.2782837710796655
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0071s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0066s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0002s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.020868s ]
+INFO: [ app_init ] --END-- [ RunTime:0.020925s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000349s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1  [ RunTime:0.0001s ]
+INFO: Run Common\Behavior\InitConfigBehavior [ RunTime:0.002580s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002972s ]
+NOTIC: [2048] Declaration of Admin\Controller\OrderController::setStatus() should be compatible with Admin\Controller\AdminController::setStatus($model = Admin\Controller\CONTROLLER_NAME, $script = false) D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Controller\OrderController.class.php 第 15 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `ly_admin_hook` [ RunTime:0.0077s ]
+SQL: SELECT `name`,`addons` FROM `ly_admin_hook`  [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `ly_admin_addon` [ RunTime:0.0070s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('后台首页小工具')  [ RunTime:0.0002s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('RocketToTop')  [ RunTime:0.0001s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.018246s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.018278s ]
+SQL: SHOW COLUMNS FROM `ly_admin_user` [ RunTime:0.0063s ]
+SQL: SHOW COLUMNS FROM `ly_admin_group` [ RunTime:0.0055s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_admin_access` [ RunTime:0.0065s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `ly_admin_group` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1 ORDER BY `sort` asc,`id` asc  [ RunTime:0.0002s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_order` [ RunTime:0.0071s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ly_order` WHERE ( payzt=1 AND status=0 ) LIMIT 1   [ RunTime:0.0002s ]
+
+[ 2019-06-26T14:56:36+08:00 ] 127.0.0.1 /admin.php?s=/Admin/Order/countnow.html&t=0.3096274547266562
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0078s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0078s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0003s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.032512s ]
+INFO: [ app_init ] --END-- [ RunTime:0.032567s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000310s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitConfigBehavior [ RunTime:0.003263s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003644s ]
+NOTIC: [2048] Declaration of Admin\Controller\OrderController::setStatus() should be compatible with Admin\Controller\AdminController::setStatus($model = Admin\Controller\CONTROLLER_NAME, $script = false) D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Controller\OrderController.class.php 第 15 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `ly_admin_hook` [ RunTime:0.0063s ]
+SQL: SELECT `name`,`addons` FROM `ly_admin_hook`  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `ly_admin_addon` [ RunTime:0.0068s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('后台首页小工具')  [ RunTime:0.0002s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('RocketToTop')  [ RunTime:0.0001s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.017152s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.017193s ]
+SQL: SHOW COLUMNS FROM `ly_admin_user` [ RunTime:0.0069s ]
+SQL: SHOW COLUMNS FROM `ly_admin_group` [ RunTime:0.0064s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_admin_access` [ RunTime:0.0074s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `ly_admin_group` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1 ORDER BY `sort` asc,`id` asc  [ RunTime:0.0002s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_order` [ RunTime:0.0058s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ly_order` WHERE ( payzt=1 AND status=0 ) LIMIT 1   [ RunTime:0.0002s ]
+
+[ 2019-06-26T14:56:46+08:00 ] 127.0.0.1 /admin.php?s=/Admin/Order/countnow.html&t=0.5107559611765813
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0080s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0074s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0002s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.022691s ]
+INFO: [ app_init ] --END-- [ RunTime:0.022767s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000328s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1  [ RunTime:0.0001s ]
+INFO: Run Common\Behavior\InitConfigBehavior [ RunTime:0.002521s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002923s ]
+NOTIC: [2048] Declaration of Admin\Controller\OrderController::setStatus() should be compatible with Admin\Controller\AdminController::setStatus($model = Admin\Controller\CONTROLLER_NAME, $script = false) D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Controller\OrderController.class.php 第 15 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `ly_admin_hook` [ RunTime:0.0066s ]
+SQL: SELECT `name`,`addons` FROM `ly_admin_hook`  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `ly_admin_addon` [ RunTime:0.0073s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('后台首页小工具')  [ RunTime:0.0002s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('RocketToTop')  [ RunTime:0.0001s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.017834s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.017877s ]
+SQL: SHOW COLUMNS FROM `ly_admin_user` [ RunTime:0.0072s ]
+SQL: SHOW COLUMNS FROM `ly_admin_group` [ RunTime:0.0066s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_admin_access` [ RunTime:0.0068s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `ly_admin_group` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1 ORDER BY `sort` asc,`id` asc  [ RunTime:0.0002s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_order` [ RunTime:0.0072s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ly_order` WHERE ( payzt=1 AND status=0 ) LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2019-06-26T14:56:56+08:00 ] 127.0.0.1 /admin.php?s=/Admin/Order/countnow.html&t=0.5354709944651845
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0060s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0076s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0001s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.020674s ]
+INFO: [ app_init ] --END-- [ RunTime:0.020745s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000328s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitConfigBehavior [ RunTime:0.002561s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002937s ]
+NOTIC: [2048] Declaration of Admin\Controller\OrderController::setStatus() should be compatible with Admin\Controller\AdminController::setStatus($model = Admin\Controller\CONTROLLER_NAME, $script = false) D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Controller\OrderController.class.php 第 15 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `ly_admin_hook` [ RunTime:0.0077s ]
+SQL: SELECT `name`,`addons` FROM `ly_admin_hook`  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `ly_admin_addon` [ RunTime:0.0072s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('后台首页小工具')  [ RunTime:0.0002s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('RocketToTop')  [ RunTime:0.0001s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.018711s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.018755s ]
+SQL: SHOW COLUMNS FROM `ly_admin_user` [ RunTime:0.0077s ]
+SQL: SHOW COLUMNS FROM `ly_admin_group` [ RunTime:0.0053s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_admin_access` [ RunTime:0.0060s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `ly_admin_group` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1 ORDER BY `sort` asc,`id` asc  [ RunTime:0.0002s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_order` [ RunTime:0.0072s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ly_order` WHERE ( payzt=1 AND status=0 ) LIMIT 1   [ RunTime:0.0002s ]
+
+[ 2019-06-26T14:57:06+08:00 ] 127.0.0.1 /admin.php?s=/Admin/Order/countnow.html&t=0.9767777853891864
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0070s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0052s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0001s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.019293s ]
+INFO: [ app_init ] --END-- [ RunTime:0.019407s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000322s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitConfigBehavior [ RunTime:0.002436s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002801s ]
+NOTIC: [2048] Declaration of Admin\Controller\OrderController::setStatus() should be compatible with Admin\Controller\AdminController::setStatus($model = Admin\Controller\CONTROLLER_NAME, $script = false) D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Controller\OrderController.class.php 第 15 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `ly_admin_hook` [ RunTime:0.0066s ]
+SQL: SELECT `name`,`addons` FROM `ly_admin_hook`  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `ly_admin_addon` [ RunTime:0.0069s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('后台首页小工具')  [ RunTime:0.0001s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('RocketToTop')  [ RunTime:0.0001s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.016865s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.016896s ]
+SQL: SHOW COLUMNS FROM `ly_admin_user` [ RunTime:0.0062s ]
+SQL: SHOW COLUMNS FROM `ly_admin_group` [ RunTime:0.0062s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_admin_access` [ RunTime:0.0064s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `ly_admin_group` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1 ORDER BY `sort` asc,`id` asc  [ RunTime:0.0002s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_order` [ RunTime:0.0063s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ly_order` WHERE ( payzt=1 AND status=0 ) LIMIT 1   [ RunTime:0.0002s ]
+
+[ 2019-06-26T14:57:16+08:00 ] 127.0.0.1 /admin.php?s=/Admin/Order/countnow.html&t=0.7192603103975677
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0215s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0082s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0003s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.037218s ]
+INFO: [ app_init ] --END-- [ RunTime:0.037271s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000349s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitConfigBehavior [ RunTime:0.002843s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003233s ]
+NOTIC: [2048] Declaration of Admin\Controller\OrderController::setStatus() should be compatible with Admin\Controller\AdminController::setStatus($model = Admin\Controller\CONTROLLER_NAME, $script = false) D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Controller\OrderController.class.php 第 15 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `ly_admin_hook` [ RunTime:0.0061s ]
+SQL: SELECT `name`,`addons` FROM `ly_admin_hook`  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `ly_admin_addon` [ RunTime:0.0070s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('后台首页小工具')  [ RunTime:0.0001s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('RocketToTop')  [ RunTime:0.0001s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.016929s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.017015s ]
+SQL: SHOW COLUMNS FROM `ly_admin_user` [ RunTime:0.0063s ]
+SQL: SHOW COLUMNS FROM `ly_admin_group` [ RunTime:0.0060s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_admin_access` [ RunTime:0.0053s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `ly_admin_group` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1 ORDER BY `sort` asc,`id` asc  [ RunTime:0.0001s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_order` [ RunTime:0.0058s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ly_order` WHERE ( payzt=1 AND status=0 ) LIMIT 1   [ RunTime:0.0002s ]
+
+[ 2019-06-26T14:57:26+08:00 ] 127.0.0.1 /admin.php?s=/Admin/Order/countnow.html&t=0.05073336457206645
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0064s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0067s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0002s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.020497s ]
+INFO: [ app_init ] --END-- [ RunTime:0.020553s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000313s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitConfigBehavior [ RunTime:0.002698s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003053s ]
+NOTIC: [2048] Declaration of Admin\Controller\OrderController::setStatus() should be compatible with Admin\Controller\AdminController::setStatus($model = Admin\Controller\CONTROLLER_NAME, $script = false) D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Controller\OrderController.class.php 第 15 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `ly_admin_hook` [ RunTime:0.0082s ]
+SQL: SELECT `name`,`addons` FROM `ly_admin_hook`  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `ly_admin_addon` [ RunTime:0.0062s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('后台首页小工具')  [ RunTime:0.0002s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('RocketToTop')  [ RunTime:0.0001s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.018153s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.018184s ]
+SQL: SHOW COLUMNS FROM `ly_admin_user` [ RunTime:0.0069s ]
+SQL: SHOW COLUMNS FROM `ly_admin_group` [ RunTime:0.0065s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_admin_access` [ RunTime:0.0060s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `ly_admin_group` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1 ORDER BY `sort` asc,`id` asc  [ RunTime:0.0002s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_order` [ RunTime:0.0071s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ly_order` WHERE ( payzt=1 AND status=0 ) LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2019-06-26T14:57:36+08:00 ] 127.0.0.1 /admin.php?s=/Admin/Order/countnow.html&t=0.2654963690627492
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0065s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0062s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0001s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.020932s ]
+INFO: [ app_init ] --END-- [ RunTime:0.020989s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000410s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitConfigBehavior [ RunTime:0.002957s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003412s ]
+NOTIC: [2048] Declaration of Admin\Controller\OrderController::setStatus() should be compatible with Admin\Controller\AdminController::setStatus($model = Admin\Controller\CONTROLLER_NAME, $script = false) D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Controller\OrderController.class.php 第 15 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `ly_admin_hook` [ RunTime:0.0070s ]
+SQL: SELECT `name`,`addons` FROM `ly_admin_hook`  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `ly_admin_addon` [ RunTime:0.0067s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('后台首页小工具')  [ RunTime:0.0003s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('RocketToTop')  [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.017855s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.017904s ]
+SQL: SHOW COLUMNS FROM `ly_admin_user` [ RunTime:0.0064s ]
+SQL: SHOW COLUMNS FROM `ly_admin_group` [ RunTime:0.0060s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_admin_access` [ RunTime:0.0064s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `ly_admin_group` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1 ORDER BY `sort` asc,`id` asc  [ RunTime:0.0002s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_order` [ RunTime:0.0067s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ly_order` WHERE ( payzt=1 AND status=0 ) LIMIT 1   [ RunTime:0.0005s ]
+
+[ 2019-06-26T14:57:46+08:00 ] 127.0.0.1 /admin.php?s=/Admin/Order/countnow.html&t=0.3480463130744822
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0237s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0068s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0003s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.039986s ]
+INFO: [ app_init ] --END-- [ RunTime:0.040056s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000575s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitConfigBehavior [ RunTime:0.003090s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003780s ]
+NOTIC: [2048] Declaration of Admin\Controller\OrderController::setStatus() should be compatible with Admin\Controller\AdminController::setStatus($model = Admin\Controller\CONTROLLER_NAME, $script = false) D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Controller\OrderController.class.php 第 15 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `ly_admin_hook` [ RunTime:0.0088s ]
+SQL: SELECT `name`,`addons` FROM `ly_admin_hook`  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `ly_admin_addon` [ RunTime:0.0113s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('后台首页小工具')  [ RunTime:0.0003s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('RocketToTop')  [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.024330s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.024377s ]
+SQL: SHOW COLUMNS FROM `ly_admin_user` [ RunTime:0.0105s ]
+SQL: SHOW COLUMNS FROM `ly_admin_group` [ RunTime:0.0078s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_admin_access` [ RunTime:0.0096s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `ly_admin_group` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1 ORDER BY `sort` asc,`id` asc  [ RunTime:0.0002s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_order` [ RunTime:0.0077s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ly_order` WHERE ( payzt=1 AND status=0 ) LIMIT 1   [ RunTime:0.0002s ]
+
+[ 2019-06-26T14:57:56+08:00 ] 127.0.0.1 /admin.php?s=/Admin/Order/countnow.html&t=0.05850661735944507
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0185s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0069s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0003s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.042801s ]
+INFO: [ app_init ] --END-- [ RunTime:0.042871s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000509s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitConfigBehavior [ RunTime:0.002831s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003416s ]
+NOTIC: [2048] Declaration of Admin\Controller\OrderController::setStatus() should be compatible with Admin\Controller\AdminController::setStatus($model = Admin\Controller\CONTROLLER_NAME, $script = false) D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Controller\OrderController.class.php 第 15 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `ly_admin_hook` [ RunTime:0.0062s ]
+SQL: SELECT `name`,`addons` FROM `ly_admin_hook`  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `ly_admin_addon` [ RunTime:0.0073s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('后台首页小工具')  [ RunTime:0.0002s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('RocketToTop')  [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.017467s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.017517s ]
+SQL: SHOW COLUMNS FROM `ly_admin_user` [ RunTime:0.0076s ]
+SQL: SHOW COLUMNS FROM `ly_admin_group` [ RunTime:0.0083s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_admin_access` [ RunTime:0.0060s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `ly_admin_group` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1 ORDER BY `sort` asc,`id` asc  [ RunTime:0.0001s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_order` [ RunTime:0.0065s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ly_order` WHERE ( payzt=1 AND status=0 ) LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2019-06-26T14:58:05+08:00 ] 127.0.0.1 /admin.php?s=/Admin/Order/countnow.html&t=0.9058452472209564
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0214s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0056s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0002s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.043552s ]
+INFO: [ app_init ] --END-- [ RunTime:0.043608s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000530s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitConfigBehavior [ RunTime:0.003735s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004359s ]
+NOTIC: [2048] Declaration of Admin\Controller\OrderController::setStatus() should be compatible with Admin\Controller\AdminController::setStatus($model = Admin\Controller\CONTROLLER_NAME, $script = false) D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Controller\OrderController.class.php 第 15 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `ly_admin_hook` [ RunTime:0.0071s ]
+SQL: SELECT `name`,`addons` FROM `ly_admin_hook`  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `ly_admin_addon` [ RunTime:0.0072s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('后台首页小工具')  [ RunTime:0.0002s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('RocketToTop')  [ RunTime:0.0001s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.018212s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.018242s ]
+SQL: SHOW COLUMNS FROM `ly_admin_user` [ RunTime:0.0082s ]
+SQL: SHOW COLUMNS FROM `ly_admin_group` [ RunTime:0.0071s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_admin_access` [ RunTime:0.0068s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `group` FROM `ly_admin_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `ly_admin_group` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1 ORDER BY `sort` asc,`id` asc  [ RunTime:0.0003s ]
+SQL: SELECT `admin_menu` FROM `ly_admin_module` WHERE `name` = 'Admin' LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined variable: result D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Admin\Model\ModuleModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `ly_order` [ RunTime:0.0067s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ly_order` WHERE ( payzt=1 AND status=0 ) LIMIT 1   [ RunTime:0.0002s ]
+
