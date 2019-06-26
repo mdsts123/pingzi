@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>微信转账</title>
+    <script>
+        (function(b){var d=b.document.documentElement;var c="";function a(){var e=d.getBoundingClientRect().width;if(e>640){e=640}var f=e/10;d.style.fontSize=f+"px"}b.addEventListener("resize",function(){clearTimeout(c);c=setTimeout(a,30)},false);b.addEventListener("pageshow",function(f){if(f.persisted){clearTimeout(c);c=setTimeout(a,30)}},false);a()})(window);
+    </script>
+    <script src="http://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
+    <style type="text/css">
+        *{margin: 0;padding: 0;}
+        #page{ width: 100%; max-width: 740px;  margin: 0 auto; background: #fff; font-size: 0.32rem;font-family: inherit; color: #2f2f2f;}
+
+        p { line-height: 1.5; margin: 0.2rem 0;text-indent: 2em;padding: 0 0.2rem;}
+        p img{ width: 90%; margin: 0 auto;display: block;}
+        .con:after{clear: both;}
+        .warpinfo{   width: 100%;  height: 42px;}
+        #page .left p {      line-height: 24px;  font-size: 16px;      text-indent: 0;  padding: 0 0.2rem; }
+        .left span {  color: #fd5f5d;  }
+        .left .time {  color: #999;  }
+        .bold {  font-size: 18px;  color: #333;  font-weight: bold;  }
+        .left {  width: 75%; float: left;  }
+        .right { width: 23%;  font-size: 16px;  color: #fd5f5d;  font-weight: bold;  float: left; margin: 0.5rem 0 0 0; }
+        .intro {border-bottom: 1px solid #efefef; height: 1rem;}
+        .intro h3{ float: left; width: 50%;height: 1rem; text-align: center;font-family: simhei; color: #000; font-size: 0.54rem; line-height: 1rem;}
+        .intro h3.active{ background: #ff0000;color: #fff;}
+        .container{ display: none;}
+    </style>
+</head>
+<body style="background: #e2e2e2;">
+<div id="page" style="padding-bottom: 1rem">
+    <div class="con">
+        <div class="warpinfo">
+            <div class="left">
+                <p class="bold">请您尽快付款，以便订单及时处理！</p>
+                <p class="time">收款人姓名:<span style="color:red">{$pay.name}</span></p>
+                <p class="time">开户行:<span style="color:red">{$pay.bank}</span></p>
+                <p class="time">收款人卡号:<span style="color:red">{$pay.cardno}</span></p>
+            </div>
+            <div class="right">应付金额：{$order.amount}元</div>
+        </div>
+    </div>
+    <p style="clear: both"></p>
+    <p style="border-bottom: 2px solid #fd5f5d;"></p>
+    <div class="intro">
+        <h3 class="active">微信转账教程</h3>
+        <h3>支付宝转账教程</h3>
+    </div>
+    <div class="detail">
+        <div class="container" style="display: block">
+            <p><br></p>
+            <p>微信支付一直很方便，但也存在一个弊端，只能给别人发红包和转账到别人的微信，却不能转账到别人的银行卡。近日，微信更新了一个新功能：直接转账到他人的银行卡！有了这个新功能，在支付方式上，微信和支付宝几乎一模一样了！</p>
+            <p>微信如何转账到他人的银行卡？</p>
+            <p>点击微信右上角的【+】-【收付款】，下拉即可找到【转账到银行卡】。</p>
+            <p><img src="/Public/bank/weixin1.jpg" alt=""></p>
+            <p>点击【转账到银行卡】，根据页面输入收款人的姓名、卡号，输入完毕卡号，微信会自动识别出属于哪个银行的。</p>
+            <p><img src="/Public/bank/weixin2.jpg" alt=""></p>
+            <p>还可以选择到账时间为“2小时内到账”或“明天24点前到账”。 教授选择“2小时内到账”，转账完约1分钟左右就到账了。</p>
+            <p><img src="/Public/bank/weixin3.jpg" alt=""></p>
+            <p>不过微信转账要收取0.1%的手续费，也就是转100元就要收0.1元的手续费，单笔最低0.1元，哪怕你只转1元，也要收取0.1元手续费。</p>
+            <p><img src="/Public/bank/weixin4.jpg" alt=""></p>
+            <p>目前该功能尚未普及，只有部分苹果用户能用，苹果用户看看你的更新了吗？安卓用户则还得再耐心等待一段时间才能使用。</p>
+            <p>为什么每次微信等软件更新新功能，都是苹果用户先尝鲜，安卓用户总要晚一段时间呢？今天教授在这里也给大家科普一下。</p>
+            <p>为什么APP版本更新安卓总比苹果慢？</p>
+            <p>基本上每个应用都有iOS和安卓两个版本，在软件更新方面，总给人一种安卓比苹果慢一步的感觉，比如微信更新就是每次都是苹果先更新，然后安卓才会更新。究其原因，有以下几点。</p>
+            <p><img src="/Public/bank/weixin5.jpg" alt=""></p>
+            <p><strong>1.应用开发者会先提交iOS版本审核</strong></p>
+            <p>由于平台的差异性，iOS审核所需的时间会比安卓的要长，还存在审核无法通过的风险，所以应用开发者一般都会先提交iOS版本去审核。</p>
+            <p><strong>2.审核制度的差异性</strong></p>
+            <p>众所周知，苹果的审核制度相对来说比较严格，安卓相对宽容一些。所以对于开发者来说，一款软件能顺利通过iOS的审核，在安卓上就没有问题了。因此会考虑把iOS当试金石，也就先发布iOS版本了。</p>
+            <p><strong>3.安卓版的适配性是难点，所需时间多</strong></p>
+            <p>苹果手机系统是唯一的，更新适配非常简单。而安卓手机厂商非常之多，设计UI适配需要投入更多的时间和精力。因此同一款软件更新，iOS系统要比安卓简单费时少，自然就有了先更新的优势。</p>
+            <p><strong>4.认知惯性</strong></p>
+            <p>在很多用户心里早就认定了APP更新会先更新iOS版本，因此就算是安卓先更新了，也没有人关注到。久而久之，自然就认为APP都会优先更新iOS版本了。</p>
+        </div>
+        <div class="container">
+            <p><br></p>
+            <p>1、打开支付宝，主页面，找到转账的图标，并点击它。</p>
+            <p><img src="/Public/bank/zfb1.jpg" alt=""></p>
+            <p>2、点击第三个，转到银行卡；下面打码的地方是近期转账记录。如果你还没有绑定银行卡的话可以点击下面的链接查看如何绑定银行卡！</p>
+            <p><img src="/Public/bank/zfb2.jpg" alt=""></p>
+            <p>3、输入要转到银行卡的姓名，卡号即可，银行会自动选择；别忘了输入要转账的金额哦！</p>
+            <p><img src="/Public/bank/zfb3.jpg" alt=""></p>
+            <p>4、重点来了，下面是选择用什么支付，我们选择“更换”；这个尤其重要，如果你选择的是余额支付，那么就是把余额的钱转到对应的卡上（默认是从余额转到卡上的哦），如果选择的是另一张银行卡，则就完成了卡转卡的操作。</p>
+            <p><img src="/Public/bank/zfb4.jpg" alt=""></p>
+            <p>5、点下一步会有核对信息，还可以填写备注信息，比如“转账”，“还款”等类似字眼，确认无误后，再点击转账！</p>
+            <p><img src="/Public/bank/zfb5.jpg" alt=""></p>
+            <p>6、可以在账单里面查询到进度</p>
+            <p><img src="/Public/bank/zfb6.jpg" alt=""></p>
+            <p>7、过一会就有转账的结果了，一般来说是不会有任何问题的。</p>
+            <p><img src="/Public/bank/zfb7.jpg" alt=""></p>
+            <p><strong>注意事项:</strong>注意在转账的时候，选择要支出的银行卡哦</p>
+
+        </div>
+    </div>
+
+
+
+
+</div>
+
+<script type="text/javascript">
+    $(".intro h3").each(function(s){
+        $(this).click(function(){
+            $(this).addClass("active").siblings().removeClass("active");
+            $(".detail .container").eq(s).show().siblings().hide();
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: #ddd;
+    text-decoration: none;
+}
+
+a:active {
+    color: #ddd;
+}
+
+li,ol,ul {
+    list-style: none;
+}
+
+.m-row {
+    display: -webkit-flex;
+    display: flex;
+    width: 100%;
+}
+[class*=m-col] {
+    padding: 0 5px;
+}
+
+.m-col-4 {
+    width: 33.33333333%;
+}
+
+.m-col-6 {
+    width: 50%;
+}
+
+.m-col-8 {
+    width: 66.66666667%;
+}
+
+.m-fr {
+    float: right;
+}
+
+.m-hidden {
+    display: none;
+}
+
+.m-show {
+    display: block;
+}
+
+.m-table {
+    padding: 5px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
+
+.m-table tr {
+    height: 30px;
+    border-bottom: 1px solid #ddd;
+}
+
+.m-table td,.m-table th {
+    padding-right: 5px;
+    padding-left: 5px;
+    border-right: 1px solid #ddd;
+}
+
+.m-debar {
+    overflow-x: hidden;
+    height: 100%;
+}
+
+.m-debar .m-scroll {
+    overflow-y: scroll;
+    width: calc(100% + 16px);
+}
+
+.m-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.27);
+}
+
+.m-modal-content {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    padding: 10px;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+.detail {
+    width: 980px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.detail .m-close {
+    position: absolute;
+    top: -17px;
+    right: -17px;
+    z-index: 10;
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background-color: #999;
+    color: #333;
+    text-align: center;
+    font-size: 34px;
+    line-height: 30px;
+    transition: 1s;
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+}
+
+.detail .m-close:hover {
+    background-color: red;
+    color: #fff;
+    cursor: pointer;
+    -webkit-transform: rotate(120deg);
+    transform: rotate(120deg);
+}
+
+.detail .m-debar {
+    border: 1px solid #ddd;
+}
+
+.data-container {
+    height: 600px;
+}
+
+.data-container img {
+    width: 100%;
+    height: 100%;
+}
+
+.state {
+    margin-top: 10px;
+}
+
+.state .hint {
+    font-size: 15px;
+}
+
+.m-tool-bar {
+    margin-top: 10px;
+}
+
+.m-tool-bar .btn {
+    margin: 0 10px;
+}
+
+.m-modal {
+    z-index: 10;
+}

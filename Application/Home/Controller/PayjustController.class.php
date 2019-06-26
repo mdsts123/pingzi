@@ -1,0 +1,96 @@
+<?php
+namespace Home\Controller;
+class PayjustController extends HomeController {
+	protected function _initialize(){
+        $this->conf = M('Payapi')->cache('Payjust_conf')->where("payclass='Payjust'")->find();
+    }
+    public function pay() {        
+        $type = I('type','','trim');
+        $orderno = I('orderno','','trim');             
+        
+        if(empty($orderno)){
+           $this->error('参数错误!');
+       }
+        $order = M('Order')->alias('o')->join('LEFT JOIN __CATEGORY__ c ON c.id = o.cid')->field("o.*,c.name as payname,c.title as paytitle")->where("o.orderno='%s'",$orderno)->find();
+       if(!$order) die('定单不存在');
+       if($order['cid']==3){
+         $type = '0102';
+       }elseif($order['cid']==1){
+         $type = '0101';
+       }elseif($order['cid']==2){
+         die("接口维护中");
+       }
+       
+       $gateway_url = "http://payjust.cn/orgReq/qrPay";
+       $params = array(
+        'requestNo'=>date("YmdHis"),
+        'version'=>'V1.0',
+        'productId'=>$type,
+        'transId'=>'01',
+        'merNo'=>$this->conf['accountId'],
+        'orderDate'=>date("Ymd"),
+        'orderNo'=>$order['orderno'],
+        'notifyUrl'=>U('Payjust/notify','',true,true),
+        'transAmt'=>sprintf("%d", $order['amount']*100),
+        'commodityName'=>$order['username'],
+       );
+       $signSource = $params['requestNo'].$params['productId']. $params['transId']. $params['merNo']. $params['orderNo']. $params['transAmt'].$this->conf['accountKey'];
+       $params['signature'] = md5($signSource);
+       //print_r($params);exit;
+       $params = http_build_query($params);
+       $response = $this->request($params, $gateway_url);
+       $res=json_decode($response,true);
+       //dump($res);exit;
+       if('Z000' != $res['respCode']) {
+        $this->error('出错了!'.$res['respDesc']);
+       }else{
+        $pays['barCode'] = $res['codeUrl'];
+        $this->assign('order',$order)->assign($pays)->display('Pay/pay');
+       }
+
+    }
+
+    public function requests($data, $gateway) {
+        $curl = curl_init();
+        $curlData = array();
+        $curlData[CURLOPT_POST] = true;
+        $curlData[CURLOPT_URL] = $gateway;
+        $curlData[CURLOPT_RETURNTRANSFER] = true;
+        $curlData[CURLOPT_TIMEOUT] = 120;
+        #CURLOPT_FOLLOWLOCATION
+        $curlData[CURLOPT_POSTFIELDS] = $data;
+        curl_setopt_array($curl, $curlData);
+        curl_setopt ($curl, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt ($curl, CURLOPT_SSL_VERIFYHOST, 0);
+        $result = curl_exec($curl);
+        
+        if (!$result)
+        {
+            var_dump(curl_error($curl));
+        }
+        curl_close($curl);
+        //echo $result;
+        return $result;
+    }
+
+    public function notify(){
+    	$params = I('request.');
+    	$this->log('notify:'.http_build_query($params));
+      $signSource = $params['merNo'].$params['orderNo'].$params['transAmt'].$params['respCode'].$params['payId'].$params['payTime'].$this->conf['accountKey'];
+      $signSource = md5($signSource);
+      if($signSource!==$params['signature']) die('签名错误！');
+      if($params['payId']<>''){
+          $order = array(
+            'payzt'=>1,
+            'orderno'=>$params['orderNo'],
+            'payno'=>$params['payId'],
+            'paytime'=>NOW_TIME
+          );
+          $this->OrderChangs($order);
+          exit('SUCCESS');
+      }
+
+        
+    }
+
+}

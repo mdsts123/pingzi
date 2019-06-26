@@ -1,0 +1,36 @@
+﻿body{font:12px/24px "宋体"; color:#444; background:#000;}
+*{hide-focus: expression(this.hideFocus=true); /* for ie 5+ */outline: none; /* for firefox 1.5 + */}
+html,body,div,ul,li,ol,dl,dt,dd,p,a,span,img,table,tr,td,form,input,textarea,button,select,h1,h2,h3,h4,h5,h6{ margin:0px; padding:0px;}
+ul,li{ list-style:none;}
+img{ border:0; vertical-align:middle}
+i,em{font-style:normal;}
+.lt{ float:left;}
+.rt{ float:right;}
+a{color:#444;text-decoration:none;}
+a:hover{color:#e5a754;}
+input,button{ border:0; background:none;}
+.href{color:#e5a754;}
+
+.box{ width:1002px; height:auto; overflow:hidden; margin:0 auto;}
+.box .logo{ text-align:center; padding-top:20px; padding-bottom:10px;}
+.mian{ width:902px; height:auto; overflow:hidden; background:#fff;border-radius:5px; padding:30px 50px; margin-bottom:10px;}
+.mian .bt{ font-size:25px; line-height:30px; padding-bottom:15px; font-weight:100; font-family:"Microsoft Yahei";}
+.mian .cn{ width:900px; height:auto; overflow:hidden; border-top:solid 1px #d5d5d5;border-left:solid 1px #d5d5d5; margin-bottom:30px;}
+.mian .cn td{ border-bottom:solid 1px #d5d5d5; border-right:solid 1px #d5d5d5; line-height:58px;}
+.mian .cn td.w1{ font-size:14px; font-weight:bold; text-align:center;}
+.mian .cn td .text{ width:270px; height:38px; border:solid 1px #ccc;border-radius: 2px; line-height:38px; padding-left:0.5%; background: #fff;vertical-align: middle; -moz-box-shadow: inset 0 1px 3px #ddd;-webkit-box-shadow: inset 0 1px 3px #ddd; box-shadow: inset 0 1px 3px #ddd; color: #666; margin-left:20px; margin-right:10px;}
+.mian .cn td .w2{ color:#f00;}
+.mian .cn td input{ margin-left:20px;}
+.mian .cn td img{ padding-left:10px;}
+.mian .btn{ width:150px; height:60px; background:#a28759; line-height:60px; text-align:center; margin:0 50px 30px auto; display:inline-block;border-radius:5px; font-size:20px; color:#fff; font-family:"Microsoft Yahei";}
+.mian .botm{ text-align:center;}
+
+.bottom{ text-align:center; background:#000; line-height:60px; color:#fff; text-transform:uppercase;}
+
+/* 客服浮动代码 */
+#TplFloatPic_1 {right:2px;}
+.TplFloatSet a{margin:0;padding:0;display:block;}
+
+ul {list-style:none;}
+ul li {float:left;width:187px; height:50px; overflow:hidden; }
+.bankon {vertical-align:middle;}

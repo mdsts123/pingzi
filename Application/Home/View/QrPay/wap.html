@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=0" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>{$order.payname}扫码支付 - {:C('WEB_SITE_TITLE')}</title>
+    <link rel="stylesheet" href="__PUBLIC__/css/index.css">
+    <script src="http://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
+</head>
+
+<body>
+<!-- 弹窗 -->
+<!-- 遮罩层-->
+<div class="Layer_Shade" ></div>
+<!-- 微信层-->
+<div class="layer-box" id="layer-wx">
+    <a href="javascript:;" class="close"><img src="__PUBLIC__/images/close.png" alt="关闭"></a>
+    <div class="layer-top" style="text-align: center;color:white;font-size: 14px;letter-spacing:3px;">{$order.title}扫码支付</div>
+    <div class="ewm" id="qrcode">
+        <img  src="{$order.img_src}" >
+
+    </div>
+</div>
+<script>
+    $(".close").click(function () {
+        $(".Layer_Shade").fadeOut();
+        $(".layer-box").fadeOut();
+    });
+</script>
+<!-- page e-->
+<script>
+    (function(win) { //px转rem
+        var docEl = win.document.documentElement;
+        var timer = '';
+
+        function changeRem() {
+            var width = docEl.getBoundingClientRect().width;
+            if(width > 1024) //最大宽度，如果兼容ipad的去掉就行
+            {
+                width = 1024;
+            }
+            //把设备宽度10等分
+            var fontS = width / 10;
+            docEl.style.fontSize = fontS + "px";
+        }
+        //页面尺寸发生改变的时候就再执行changeRem
+        win.addEventListener("resize", function() {
+            clearTimeout(timer);
+            timer = setTimeout(changeRem, 30);
+        }, false);
+        //页面加载的时候，若果是调用缓存的话就再执行changeRem
+        win.addEventListener("pageshow", function(e) {
+            if(e.persisted) //缓存
+            {
+                clearTimeout(timer);
+                timer = setTimeout(changeRem, 30);
+            }
+        }, false);
+        changeRem();
+    })(window)
+</script></body>
+</html>

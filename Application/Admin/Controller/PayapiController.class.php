@@ -1,0 +1,152 @@
+<?php
+// +----------------------------------------------------------------------
+// | 爱云 [ 简单 高效 卓越 ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2016 http://www.22cloud.com All rights reserved.
+// +----------------------------------------------------------------------
+// | Author: jry <93058680@qq.com>
+// +----------------------------------------------------------------------
+namespace Admin\Controller;
+use Common\Util\Think\Page;
+/**
+ * 用户控制器
+ * @author jry <93058680@qq.com>
+ */
+class PayapiController extends AdminController {
+    /**
+     * 用户列表
+     * @author jry <93058680@qq.com>
+     */
+    public function index() {
+        // 搜索
+        $keyword   = I('keyword', '', 'string');
+        $condition = array('like','%'.$keyword.'%');
+        $map['accountId|payclass'] = array(
+            $condition,
+            $condition,
+            '_multi'=>true
+        );
+
+        // 获取所有用户
+        $map['status'] = array('egt', '0'); // 禁用和正常状态
+        $p = !empty($_GET["p"]) ? $_GET['p'] : 1;
+        $api_obj = D('Payapi');
+        $data_list = $api_obj
+                   ->page($p , C('ADMIN_PAGE_ROWS'))
+                   ->where($map)
+                   ->order('status desc,id desc')
+                   ->select();
+        $page = new Page(
+            $api_obj->where($map)->count(),
+            C('ADMIN_PAGE_ROWS')
+        );
+
+        // 使用Builder快速建立列表页面。
+        $builder = new \Common\Builder\ListBuilder();
+        $builder->setMetaTitle('支付接口列表') // 设置页面标题
+                ->addTopButton('addnew')  // 添加新增按钮
+                ->addTopButton('resume')  // 添加启用按钮
+                ->addTopButton('forbid')  // 添加禁用按钮
+                ->addTopButton('delete')  // 添加删除按钮
+                ->setSearch('请输入接口名称／接口类', U('index'))
+                ->addTableColumn('id', 'PID')
+                ->addTableColumn('payclass', '接口类')
+                ->addTableColumn('cid', '类型','paytype')                
+                ->addTableColumn('accountId', '商户号')
+                ->addTableColumn('status', '状态', 'status')
+                ->addTableColumn('right_button', '操作', 'btn')
+                ->setTableDataList($data_list)    // 数据列表
+                ->setTableDataPage($page->show()) // 数据列表分页
+                ->addRightButton('edit')          // 添加编辑按钮
+                ->addRightButton('forbid')        // 添加禁用/启用按钮
+                ->addRightButton('delete')        // 添加删除按钮
+                ->display();
+    }
+
+    /**
+     * 新增用户
+     * @author jry <93058680@qq.com>
+     */
+    public function add() {
+        if (IS_POST) {
+            $api_obj = D('Payapi');
+            $data = $api_obj->create();
+            if ($data) {
+                $id = $api_obj->add($data);
+                if ($id) {
+                    $this->success('新增成功', U('index'));
+                } else {
+                    $this->error('新增失败');
+                }
+            } else {
+                $this->error($api_obj->getError());
+            }
+        } else {
+            // 使用FormBuilder快速建立表单页面。
+            $builder = new \Common\Builder\FormBuilder();
+            $builder->setMetaTitle('新增') //设置页面标题
+                    ->setPostUrl(U('add'))    //设置表单提交地址
+                    ->addFormItem('cid', 'select', '接口类型', '接口支付类型',array('3'=>'支付宝','1'=>'微信','2'=>'网银','4'=>'QQ','8'=>'银联扫码'))
+                    ->addFormItem('payclass', 'text', '接口类', '接口类')
+                    ->addFormItem('accountId', 'text', '商户号', '接口商户号')
+                    ->addFormItem('accountName', 'text', '商户账号', '商户账号')
+                    ->addFormItem('accountKey', 'text', '商户密钥', '商户密钥') 
+                    ->addFormItem('private_key', 'textarea', '商家私钥', '商家生成私钥')
+                    ->addFormItem('public_key', 'textarea', '接口公钥', '接口商提供公钥')
+                    ->addFormItem('gourl', 'text', '跳转域名', '如需请设置，带http://')
+                    ->addFormItem('sort', 'text', '排序值', '(越大越靠前)')
+                    ->addFormItem('status', 'select', '状态', '',array('1'=>'启用','0'=>'禁用'))
+                    ->display();
+        }
+    }
+
+    /**
+     * 编辑用户
+     * @author jry <93058680@qq.com>
+     */
+    public function edit($id) {
+        if (IS_POST) {
+            // 密码为空表示不修改密码
+            if ($_POST['password'] === '') {
+                unset($_POST['password']);
+            }
+
+            // 提交数据
+            $api_obj = D('Payapi');
+            $data = $api_obj->create();
+            if ($data) {
+                $result = $api_obj->save($data);
+                if ($result) {
+                    $this->success('更新成功', U('index'));
+                } else {
+                    $this->error('更新失败', $api_obj->getError());
+                }
+            } else {
+                $this->error($api_obj->getError());
+            }
+        } else {
+            // 获取账号信息
+            $info = D('Payapi')->find($id);
+            unset($info['password']);
+
+            // 使用FormBuilder快速建立表单页面。
+            $builder = new \Common\Builder\FormBuilder();
+            $builder->setMetaTitle('编辑用户')  // 设置页面标题
+                    ->setPostUrl(U('edit'))    // 设置表单提交地址
+                    ->addFormItem('id', 'hidden', 'ID', 'ID')
+                    ->addFormItem('cid', 'select', '接口类型', '接口支付类型',array('3'=>'支付宝','1'=>'微信','2'=>'网银','4'=>'QQ','8'=>'银联扫码'))
+                    ->addFormItem('payclass', 'text', '接口类', '接口类')
+                    ->addFormItem('accountId', 'text', '商户号', '接口商户号')
+                    ->addFormItem('accountName', 'text', '商户账号', '商户账号')
+                    ->addFormItem('accountKey', 'text', '商户密钥', '商户密钥') 
+                    ->addFormItem('private_key', 'textarea', '商家私钥', '商家生成私钥')
+                    ->addFormItem('public_key', 'textarea', '接口公钥', '接口商提供公钥')
+                    ->addFormItem('gourl', 'text', '跳转域名', '如需请设置，带http://')
+                    ->addFormItem('sort', 'text', '排序值', '(越大越靠前)')
+                    ->addFormItem('status', 'select', '状态', '',array('1'=>'启用','0'=>'禁用'))
+                    ->setFormData($info)
+                    ->display();
+        }
+    }
+
+}

@@ -1,0 +1,159 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2018/1/20
+ * Time: 19:23
+ */
+
+namespace Home\Controller;
+
+
+class Hczfbh5Controller extends HomeController
+{
+    public $conf;
+    protected function _initialize()
+    {
+        $this->conf = M('Payapi')->where("payclass='Hczfbh5'")->find();
+    }
+    /**
+     * 支付宝扫码支付
+     */
+    public function pay()
+    {
+		
+        $orderno = I('orderno', '', 'trim');
+        if (empty($orderno)) {
+            $this->error('参数错误!');
+        }
+        $order = M('Order')->alias('o')->join('LEFT JOIN __CATEGORY__ c ON c.id = o.cid')->field("o.*,c.name as payname,c.title as paytitle")->where("o.orderno='%s'", $orderno)->find();
+        if (!$order) die('定单不存在');
+        if(isMobile()){
+            //客户端ip
+            $data['deviceIp'] = get_client_ip();
+            // 商户编号
+            $data['merchNo'] = $this->conf['accountId'];
+            // 商户通知地址
+            $data['notifyUrl'] = U('Hczfbh5/notify', '', false, true);
+            // 商户订单号
+            $data['orderNo'] = $order['orderno'];
+            // 商品名称
+            $data['productName'] = 'zfbh5';
+            // 订单金额
+            $data['transAmount'] =  (string)(intval($order['amount'])*100);
+            // 数据签名
+            $data['sign'] = $this->prepareSign($data);
+            $to_requset = json_encode($data);
+            $url ="http://47.98.115.134:8080/app/doALIH5Pay.do";
+            $resultData  = $this->request($to_requset, $url,'POST');
+            $result_array =  json_decode($resultData,true);
+            $result_code = $result_array['respCode'];
+            if($result_array['qrcodeUrl']<>'' && $result_code=='00000'){
+                $sign = $this->prepareSign($result_array);
+                $flag = $this->verify($sign,$result_array['sign']);
+                if($flag){
+                    $url = $result_array['qrcodeUrl'];
+                    header("Location: $url");
+                    exit;
+                }else{
+                    $this->error("签名错误！");
+                }
+
+            }else{
+                $this->error($result_array['respDesc']);
+            }
+        }else{
+            $this->error('此通道只支持手机端支付');
+        }
+
+    }
+    /**
+     * 扫码异步地址
+     * @return bool
+     */
+    public  function notify()
+    {
+        //商户编号
+        $data['merchNo'] = $_REQUEST["merchNo"];
+        // 商户订单编号
+        $data['orderNo'] = $_REQUEST["orderNo"];
+        // 平台订单号
+        $data['orderId'] = $_REQUEST["orderId"];
+        // 支付金额
+        $data['transAmount'] = $_REQUEST["transAmount"];
+        // 订单状态1.支付成功2.支付失败
+        $data['orderStatus'] = $_REQUEST["orderStatus"];
+        // 支付时间
+        $data['orderPayTime'] = $_REQUEST["orderPayTime"];
+        //通知时间
+        $data['notifyTime'] = $_REQUEST["notifyTime"];
+        // 签名数据
+        $data['sign'] = $_REQUEST["sign"];
+        // 生成签名
+        $str_to_sign = $this->prepareSign($data);
+        // 验证签名
+        $resultVerify = $this->verify($str_to_sign,$data['sign']);
+        if($data['orderStatus']=="1"){
+			$order_info = M('Order')->where("orderno='%s'",$data['orderNo'])->find();
+            $username = $order_info['username'];
+            if($order_info['payzt']==1){
+                echo 'success';
+                return true;
+            }
+            if($resultVerify){
+                $order = array(
+                    'payzt'=>1,
+                    'orderno'=>$data['orderNo'],
+                    'paytime'=>NOW_TIME
+                );
+                $re = $this->OrderChangs($order);
+				if($re){
+                    //$username = M('Order')->where("orderno='%s'",$data['orderNo'])->getField("username");
+                    $mes = $this->place_order($data['transAmount'],$username,$data['orderNo']);
+					$mes = json_decode($mes);
+                    if($mes['code']==0){
+                        $this->error($mes['message']);
+                    }
+                    echo 'success';
+                    return true;
+                }
+            }
+            else
+                echo '验签出错';
+        }
+        else
+            return false;
+    }
+    /**
+     * 生成签名
+     * @param $data
+     * @return string
+     */
+    public function prepareSign($data)
+    {
+        ksort($data);
+        $arg  = "";
+        while (list ($key, $val) = each ($data)) {
+            if($key!='sign' && $val<>''){
+                $arg .=$key."=".$val."&";
+            }
+        }
+        $arg =substr($arg,0,strlen($arg)-1);
+        $signature = MD5($arg.$this->conf['accountKey']);
+        return $signature;
+    }
+    /*
+     * @name	验证签名
+     * @param	signData 签名数据
+     * @param	sourceData 原数据
+     * @return
+     */
+    public function verify($mySign, $signature)
+    {
+        if ($mySign === $signature) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}

@@ -1,0 +1,143 @@
+[ 2019-06-25T21:01:03+08:00 ] 127.0.0.1 /img/b.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0091s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0106s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0002s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.028852s ]
+INFO: [ app_init ] --END-- [ RunTime:0.028945s ]
+
+[ 2019-06-25T21:01:05+08:00 ] 127.0.0.1 /img/b.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0092s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0107s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0003s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.031045s ]
+INFO: [ app_init ] --END-- [ RunTime:0.031145s ]
+
+[ 2019-06-25T21:03:50+08:00 ] 127.0.0.1 /img/b.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0112s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0098s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0003s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.031378s ]
+INFO: [ app_init ] --END-- [ RunTime:0.031453s ]
+
+[ 2019-06-25T21:31:44+08:00 ] 127.0.0.1 /logo.png
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0082s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0171s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0002s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.033092s ]
+INFO: [ app_init ] --END-- [ RunTime:0.033189s ]
+
+[ 2019-06-25T21:33:49+08:00 ] 127.0.0.1 /logo.png
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0091s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0079s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0002s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.023898s ]
+INFO: [ app_init ] --END-- [ RunTime:0.023972s ]
+
+[ 2019-06-25T21:34:04+08:00 ] 127.0.0.1 /logo.png
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0103s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0081s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0002s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.026242s ]
+INFO: [ app_init ] --END-- [ RunTime:0.026303s ]
+
+[ 2019-06-25T21:37:48+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0084s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0138s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0002s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.032539s ]
+INFO: [ app_init ] --END-- [ RunTime:0.032608s ]
+
+[ 2019-06-25T21:40:54+08:00 ] 127.0.0.1 /logo.png
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0090s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0135s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0003s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.030837s ]
+INFO: [ app_init ] --END-- [ RunTime:0.030906s ]
+
+[ 2019-06-25T21:46:07+08:00 ] 127.0.0.1 /logo.png
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0097s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0088s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0002s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.028321s ]
+INFO: [ app_init ] --END-- [ RunTime:0.028392s ]
+
+[ 2019-06-25T21:47:43+08:00 ] 127.0.0.1 /logo.png
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0107s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0061s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0001s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.026587s ]
+INFO: [ app_init ] --END-- [ RunTime:0.026667s ]
+
+[ 2019-06-25T21:48:16+08:00 ] 127.0.0.1 /logo.png
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0103s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0068s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0004s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.026099s ]
+INFO: [ app_init ] --END-- [ RunTime:0.026246s ]
+
+[ 2019-06-25T21:48:46+08:00 ] 127.0.0.1 /logo.png
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0074s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0098s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0003s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.027468s ]
+INFO: [ app_init ] --END-- [ RunTime:0.027530s ]
+
+[ 2019-06-25T22:00:28+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0115s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0112s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0001s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array D:\phpStudy\PHPTutorial\WWW\lingyun\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.029946s ]
+INFO: [ app_init ] --END-- [ RunTime:0.030006s ]
+

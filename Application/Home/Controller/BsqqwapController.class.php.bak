@@ -1,0 +1,130 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2018/1/20
+ * Time: 19:23
+ */
+
+namespace Home\Controller;
+header("content-type:text/html; charset=utf-8");
+class BsqqwapController extends HomeController {
+    protected function _initialize(){
+        $this->conf = M('Payapi')->where("payclass='Bsqqsm'")->find();//->cache('Bsqqsm_conf')
+    }
+
+    public function pay() {
+        $orderno = I('orderno','','trim');
+        if(empty($orderno)){
+            $this->error('参数错误!');
+        }
+        $order = M('Order')->alias('o')->join('LEFT JOIN __CATEGORY__ c ON c.id = o.cid')->field("o.*,c.name as payname,c.title as paytitle")->where("o.orderno='%s'",$orderno)->find();
+        if(!$order) die('定单不存在');
+
+        $data = array(
+            'Timestamp' => date('Y-m-d H:m:s'),
+            'PaymentTypeCode' => 'QQ_WAP_PAY',
+            'PaymentMethod' => '1',
+            'OutPaymentNo' => $order['orderno'],
+            'PaymentAmount' => sprintf('%s',$order['amount']*100),
+//            'PaymentAmount' => '1',
+            'NotifyUrl' =>  U('Bsqqsm/notify', '',false,true),
+//            'NotifyUrl' =>  'http://www.baidu.com',
+            'ReturnUrl' => U('Bsqqsm/hrefback', '',false,true),
+//            'ReturnUrl' => 'http://www.baidu.com',
+            'PassbackParams' => $order['orderno'],
+        );
+//echo $data[ 'ReturnUrl'];exit;
+//        echo $data['NotifyUrl'];exit;
+//var_dump($data);exit;
+        $BizContent = json_encode($data);
+
+//        var_dump($BizContent);exit;
+
+        $post_data = array(
+            'MerchantId' => $this->conf['accountId'],
+            'BizContent' => $BizContent,
+            //'Method' => 'bspay.payment.create',
+        );
+
+
+        ksort($post_data);
+        $tmp_str = '';
+        foreach($post_data as $k=>$a){
+            if($tmp_str <> ''){
+                $tmp_str = $tmp_str.'&'.$k.'='.$a;
+            }
+            else
+                $tmp_str = $k.'='.$a;
+        }
+
+        $rsa2_private = "-----BEGIN RSA PRIVATE KEY-----\n".$this->conf['private_key']."\n-----END RSA PRIVATE KEY-----";
+//        echo $rsa2_private;
+        $private_key = openssl_get_privatekey($rsa2_private);
+
+//echo $private_key;
+        openssl_sign($tmp_str,$Sign,$rsa2_private,OPENSSL_ALGO_SHA256);
+//        echo $Sign;
+//
+        $Sign=base64_encode($Sign);
+//        echo $Sign;
+//
+        $post_data['Sign'] = $Sign;
+//var_dump($post_data);exit;
+        $res = $this->buildForm($post_data,'https://payment.baishengpay.com');
+//
+        echo $res;
+//        echo 'end';
+
+    }
+    public function notify(){
+        $tmp_str = file_get_contents('php://input', 'r');
+//        file_put_contents('abc.txt',$tmp_str);
+        $notify_arr = json_decode($tmp_str,true);
+        var_dump($notify_arr);
+        $Sign =  $notify_arr['Sign'];
+        $Code =  $notify_arr['Code'];
+        $BizContent = $notify_arr['BizContent'];
+        $Biz_arr = json_decode($BizContent,true);
+        $OutPaymentNo = $Biz_arr['OutPaymentNo'];
+        $PaymentAmount = $Biz_arr['PaymentAmount'];
+        $PaymentNo = $Biz_arr['PaymentNo'];
+        //校验sign
+        $signStr = 'BizContent='.$BizContent.'&Code='.$Code;
+        $Sign = base64_decode($Sign);
+        $public_key = "-----BEGIN PUBLIC KEY-----\n" .$this->conf['public_key'] . "\n-----END PUBLIC KEY-----";
+        $public_key = openssl_get_publickey($public_key);
+        $flag = openssl_verify($signStr,$Sign,$public_key,OPENSSL_ALGO_SHA256);
+
+        if($flag){
+            if($Code == 0){
+                $order = array(
+                    'payzt'=>1,
+                    'orderno'=>$OutPaymentNo,
+                    'payno'=>$PaymentNo,
+                    'paytime'=>NOW_TIME
+                );
+                $this->OrderChangs($order);
+            }
+            exit("SUCCESS");
+
+        }else{
+            echo "Signature error";
+        }
+
+    }
+
+    public function hrefback(){
+        //同步没有进行验签，也不更改数据库
+        $Code =   $_GET['Code'];
+        $BizContent = str_replace('\\','',trim($_GET['BizContent'],'\"'));
+        $Bizarr = json_decode($BizContent,true);
+        if($Code=='0'&& $Bizarr['PaymentState'] == 'S'){
+            $this->success('支付成功！','/');
+        }else{
+            $this->error('支付失败','/');
+        }
+
+    }
+
+}
