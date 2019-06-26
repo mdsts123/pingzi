@@ -68,7 +68,7 @@ class OrderController extends AdminController {
             ->addTableColumn('amount', '金额')
             ->addTableColumn('username', '用户名')
             ->addTableColumn('payid', '接口','payname')
-            ->addTableColumn('desc', '类型')
+            ->addTableColumn('cid', '类型','paytype')
             ->addTableColumn('ip', 'IP')
             ->addTableColumn('addtime', '下单时间', 'time')
             ->addTableColumn('paytime', '付款时间', 'time')
@@ -80,9 +80,6 @@ class OrderController extends AdminController {
             ->addRightButton('forbid')        // 添加禁用/启用按钮
             ->display();
     }
-    /**
-     *五码合一
-     **/
     public function indexwm($group='') {
         // 搜索
         $keyword   = I('keyword', '', 'string');
@@ -152,6 +149,7 @@ class OrderController extends AdminController {
      * @author jry <93058680@qq.com>
      */
     public function setStatus($model = CONTROLLER_NAME){
+
         $ids = I('request.ids');
         if (is_array($ids)) {
             if(in_array('1', $ids)) {

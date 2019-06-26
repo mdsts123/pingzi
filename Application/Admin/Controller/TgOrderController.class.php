@@ -186,7 +186,7 @@ class TgOrderController extends AdminController {
         $amount = I('post.amount');
         $orderno = I('post.orderno');
         // 获取操作数据
-        $condition['id'] = I('post.id');
+        $id = I('post.id');
         $condition['operatime'] = time();
         $condition['operaname'] = session('user_auth.username');
         $tg_order = D('TgOrder');
@@ -197,17 +197,13 @@ class TgOrderController extends AdminController {
                 $this->error($mes['message']);
             }else{
                 $condition['pay_status'] = $pay_status;
-                if($tg_order->create($condition)){
-                    $tg_order->save();
-                    exit('ok');
-                }
-            }
-        }else{
-            $condition['pay_status'] = $pay_status;
-            if($tg_order->create($condition)){
-                $tg_order->save();
+                $tg_order->where(['id'=>$id])->save($condition);
                 exit('ok');
             }
+        }else if(2 == $pay_status){
+            $condition['pay_status'] = $pay_status;
+            $tg_order->where(['id'=>$id])->save($condition);
+            exit('ok');
         }
     }
 
