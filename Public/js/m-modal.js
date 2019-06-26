@@ -66,7 +66,7 @@ class modal extends order {
   handleSbumit() {
     let state=$('#pay_status').val();
     // if(state===null)alert('请选择订单状态')
-    this.toTgOrderData.state=state;
+    this.toTgOrderData.pay_status=state;
     this.api_toTgOrder(this.toTgOrderData).then(res => {
       // console.log(res);
     });
