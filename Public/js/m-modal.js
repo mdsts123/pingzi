@@ -31,10 +31,7 @@ class order {
         url,
         data,
         success(res) {
-          console.log(res);
-
-          res = JSON.parse(res);
-          resolve(res.data);
+          resolve(res);
         },
       });
     });
@@ -46,7 +43,7 @@ class order {
  */
 class modal extends order {
   clickEl;
-  toTgOrderData={};
+  toTgOrderData = {};
   //定义事件
   constructor() {
     super();
@@ -64,11 +61,12 @@ class modal extends order {
     $('#order .m-modal').hide();
   }
   handleSbumit() {
-    let state=$('#pay_status').val();
+    let m=this;
+    let state = $('#pay_status').val();
     // if(state===null)alert('请选择订单状态')
-    this.toTgOrderData.pay_status=state;
-    this.api_toTgOrder(this.toTgOrderData).then(res => {
-      // console.log(res);
+    this.toTgOrderData.pay_status = state;
+    this.api_toTgOrder(this.toTgOrderData).then(data => {
+      m.closeModal();
     });
   }
   renderOption(data) {
@@ -132,7 +130,7 @@ class modal extends order {
 
   <div id="modalForm" class="m-tool-bar clearfix" method="post">
     <button class="btn m-fr btn-primary" onclick="m.on('submit')">确认</button>
-    <button class="btn m-fr btn-info">取消</button>
+    <button class="btn m-fr btn-info" onclick="m.on('close')">取消</button>
     <p class="hint">请选择操作</p>
     <select name="pay_status" id="pay_status" class="m-fr">
       <option disabled selected value="">请选择</option>
