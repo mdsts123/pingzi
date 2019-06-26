@@ -629,8 +629,7 @@ class ListBuilder extends ControllerController
 
       // 根据表格标题字段指定类型编译列表数据
       $wmdata = $this->_table_column_list;
-      //            dump($data);
-      //            die;
+
       foreach ($this->_table_column_list as &$column) {
         switch ($column['type']) {
           case 'status':
@@ -673,23 +672,22 @@ class ListBuilder extends ControllerController
             }
             $data[$column['name']] = '<img class="picture" src="' . get_cover($temp[0]) . '">';
             break;
-
-            //                    case 'type':
-            //                        $form_item_type = C('FORM_ITEM_TYPE');
-            //                        $data[$column['name']] = $form_item_type[$data[$column['name']]][0];
-            //                        break;
-            //                    case 'paytype':
-            //                        $data[$column['name']] = M("Category")->where("id='".$data[$column['name']]."'")->getField("title");
-            //                        break;
-            //                    case 'payname':
-            //                        if($data['cid'] ==6){
-            //                            $data[$column['name']] = M("Bankpay")->where("id='".$data[$column['name']]."'")->getField("bank");
-            //                        }elseif($data['payid'] == 0){
-            //                            $data[$column['name']]='五码合一';
-            //                        }else{
-            //                            $data[$column['name']] = M("Payapi")->where("id='".$data[$column['name']]."'")->getField("desc");
-            //                        }
-            //                        break;
+            case 'type':
+                $form_item_type = C('FORM_ITEM_TYPE');
+                $data[$column['name']] = $form_item_type[$data[$column['name']]][0];
+                break;
+            case 'paytype':
+                $data[$column['name']] = M("Category")->where("id='".$data[$column['name']]."'")->getField("title");
+                break;
+            case 'payname':
+                if($data['cid'] ==6){
+                    $data[$column['name']] = M("Bankpay")->where("id='".$data[$column['name']]."'")->getField("bank");
+                }elseif($data['payid'] == 0){ // && $data['cid'] == 9
+                    $data[$column['name']]='五码合一';
+                }else{
+                    $data[$column['name']] = M("Payapi")->where("id='".$data[$column['name']]."'")->getField("desc");
+                }
+                break;
           case 'callback': // 调用函数
             if (is_array($column['param'])) {
               $data[$column['name']] = call_user_func_array($column['param'], array($data[$column['name']]));

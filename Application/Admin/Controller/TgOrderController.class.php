@@ -200,7 +200,7 @@ class TgOrderController extends AdminController {
                 $tg_order->where(['id'=>$id])->save($condition);
                 $data = array(
                     'code'  => 200,
-                    'message'   => "充值成功",
+                    'message'   => "操作成功",
                 );
                 exit(json_encode($data));
             }
@@ -208,8 +208,8 @@ class TgOrderController extends AdminController {
             $condition['pay_status'] = $pay_status;
             $tg_order->where(['id'=>$id])->save($condition);
             $data = array(
-                'code'  => 201,
-                'message'   => "充值失败",
+                'code'  => 200,
+                'message'   => "操作成功",
             );
             exit(json_encode($data));
         }
