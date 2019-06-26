@@ -180,10 +180,15 @@ class TgOrderController extends AdminController {
      * 操作处理方法
      */
     public function toTgOrder(){
+        // 获取下单数据
         $pay_status = I('post.pay_status');
         $username = I('post.username');
         $amount = I('post.amount');
         $orderno = I('post.orderno');
+        // 获取操作数据
+        $condition['id'] = I('post.id');
+        $condition['operatime'] = time();
+        $condition['operaname'] = session('user_auth.username');
         $tg_order = D('TgOrder');
         if(1 == $pay_status){
             $mes = $this->place_order($amount,$username,$orderno);
@@ -194,12 +199,14 @@ class TgOrderController extends AdminController {
                 $condition['pay_status'] = $pay_status;
                 if($tg_order->create($condition)){
                     $tg_order->save();
+                    exit('ok');
                 }
             }
         }else{
             $condition['pay_status'] = $pay_status;
             if($tg_order->create($condition)){
                 $tg_order->save();
+                exit('ok');
             }
         }
     }
