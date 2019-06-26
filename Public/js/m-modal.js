@@ -48,9 +48,11 @@ class modal extends order {
     $('#order .m-modal').hide();
   }
   renderOption(data){
-
+  return data.map(opt=>`<option value="${opt.pay_status}">${opt.pay_status_name}</option>`).join('')
   }
   renderContent(data) {
+    console.log(data);
+
     let html = `
 <div class="m-modal-content detail">
 <!-- 图片详情 image-text -->
@@ -138,6 +140,7 @@ class modal extends order {
     <button class="btn m-fr btn-info">取消</button>
     <select name="pay_status" id="" class="m-fr">
       <option>请选择</option>
+      ${this.renderOption(data.pays)}
       <option value="0">充值0</option>
       <option value="1">充值1</option>
       <option value="2">充值2</option>
