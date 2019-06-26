@@ -447,7 +447,7 @@ class ListBuilder extends ControllerController {
                 if(1 == session('user_auth.level')){
                     $my_attribute['title'] = '操作';
                 }
-                $my_attribute['onclick']="m.on('open')";
+                $my_attribute['onclick']="m.on('open',this)";
                 $my_attribute['class'] = 'label label-success-outline ';//label-pill ajax-get confirm'
                 // 跳转路径
                 $my_attribute['href']  = U(

@@ -70,3 +70,53 @@ INFO: Run Common\Behavior\InitConfigBehavior [ RunTime:0.004155s ]
 INFO: [ app_begin ] --END-- [ RunTime:0.004620s ]
 ERR: 无法加载控制器:Public
 
+[ 2019-06-26T12:50:22+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+SQL: SHOW COLUMNS FROM `ly_admin_config` [ RunTime:0.0141s ]
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0018s ]
+SQL: SHOW COLUMNS FROM `ly_admin_module` [ RunTime:0.0054s ]
+SQL: SELECT `name` FROM `ly_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.0008s ]
+NOTIC: [2] array_merge(): Argument #2 is not an array E:\TRADE\ThinkPHP\pingzi\Application\Common\Behavior\InitModuleBehavior.class.php 第 42 行.
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.054219s ]
+INFO: [ app_init ] --END-- [ RunTime:0.055456s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000536s ]
+NOTIC: [8] unserialize(): Error at offset 0 of 1414 bytes E:\TRADE\ThinkPHP\pingzi\Framework\Library\Think\Cache\Driver\File.class.php 第 115 行.
+SQL: SELECT `name`,`value`,`type` FROM `ly_admin_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `ly_admin_module` WHERE `status` = 1  [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitConfigBehavior [ RunTime:0.003786s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004388s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `ly_admin_hook` [ RunTime:0.0051s ]
+SQL: SELECT `name`,`addons` FROM `ly_admin_hook`  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `ly_admin_addon` [ RunTime:0.0056s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('后台首页小工具')  [ RunTime:0.0009s ]
+SQL: SELECT `id`,`name` FROM `ly_admin_addon` WHERE `status` = 1 AND `name` IN ('RocketToTop')  [ RunTime:0.0001s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.015809s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.015856s ]
+SQL: SHOW COLUMNS FROM `ly_payapi` [ RunTime:0.0049s ]
+SQL: SELECT p.*,c.name,c.title FROM ly_payapi p LEFT JOIN ly_category c ON c.id = p.cid  WHERE ( p.status=1 ) ORDER BY p.sort desc,p.id desc  [ RunTime:0.0056s ]
+SQL: SHOW COLUMNS FROM `ly_bankpay` [ RunTime:0.0048s ]
+SQL: SELECT * FROM `ly_bankpay` WHERE ( status=1 ) ORDER BY `id` desc  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `ly_paywm` [ RunTime:0.0047s ]
+SQL: SELECT p.*,c.name,c.title FROM ly_paywm p LEFT JOIN ly_category c on c.id =p.cid  WHERE ( p.status=1 ) ORDER BY p.sort desc,p.id desc  [ RunTime:0.0002s ]
+SQL: SELECT `user_nav` FROM `ly_admin_module` WHERE `status` = 1  [ RunTime:0.0001s ]
+SQL: SELECT `title` FROM `ly_admin_module` WHERE `name` = 'Home' LIMIT 1   [ RunTime:0.0001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000557s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000622s ]
+NOTIC: [8] Undefined index: host E:\TRADE\ThinkPHP\pingzi\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 55 行.
+NOTIC: [8] Undefined index: host E:\TRADE\ThinkPHP\pingzi\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 67 行.
+NOTIC: [8] Undefined index: host E:\TRADE\ThinkPHP\pingzi\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 67 行.
+NOTIC: [8] Undefined index: host E:\TRADE\ThinkPHP\pingzi\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 79 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022009s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022043s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000329s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000354s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000944s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000976s ]
+
