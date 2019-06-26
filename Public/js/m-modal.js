@@ -107,19 +107,19 @@ class modal extends order {
             </tr>
           </thead>
           <tbody>
-          <tr><td>订单号</td><td>afsda是打发地方</td></tr>
-          <tr><td>提交类型</td><td>afsda是打发地方</td></tr>
-          <tr><td>支付类型</td><td>afsda是打发地方</td></tr>
-          <tr><td>会员账号</td><td>afsda是打发地方</td></tr>
-          <tr><td>充值金额</td><td>afsda是打发地方</td></tr>
-          <tr><td>赠送金额</td><td>afsda是打发地方</td></tr>
-          <tr><td>状态</td><td>afsda是打发地方</td></tr>
-          <tr><td>收款人</td><td>afsda是打发地方</td></tr>
-          <tr><td>付款人</td><td>afsda是打发地方</td></tr>
-          <tr><td>备注</td><td>afsda是打发地方</td></tr>
-          <tr><td>提交用户</td><td>afsda是打发地方</td></tr>
-          <tr><td>组别</td><td>afsda是打发地方</td></tr>
-          <tr><td>提交时间</td><td>afsda是打发地方</td></tr>
+          <tr><td>订单号</td><td>${data.orderno}</td></tr>
+          <tr><td>提交类型</td><td>${data.commit_type}</td></tr>
+          <tr><td>支付类型</td><td>${data.pay_type}</td></tr>
+          <tr><td>会员账号</td><td>${data.username}</td></tr>
+          <tr><td>充值金额</td><td>${data.amount}</td></tr>
+          <tr><td>赠送金额</td><td>${data.giv_amount}</td></tr>
+          <tr><td>状态</td><td>${data.pay_status}</td></tr>
+          <tr><td>收款人</td><td></td></tr>
+          <tr><td>付款人</td><td></td></tr>
+          <tr><td>备注</td><td>${data.desc}</td></tr>
+          <tr><td>提交用户</td><td>${data.commitname}</td></tr>
+          <tr><td>组别</td><td>${data.groupname}</td></tr>
+          <tr><td>提交时间</td><td>${data.cmit_time}</td></tr>
           </tbody>
         </table>
       </div>
@@ -129,10 +129,11 @@ class modal extends order {
   </div>
 </div>
 <section class="state">
-  <p class="hint">请选择操作</p>
+
   <div id="modalForm" class="m-tool-bar clearfix" method="post">
     <button class="btn m-fr btn-primary" onclick="m.on('submit')">确认</button>
     <button class="btn m-fr btn-info">取消</button>
+    <p class="hint">请选择操作</p>
     <select name="pay_status" id="pay_status" class="m-fr">
       <option disabled selected value="">请选择</option>
       ${this.renderOption(data.pays)}
