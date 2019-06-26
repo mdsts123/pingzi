@@ -77,6 +77,7 @@ class Sfzfdd extends \Think\Controller
 		//$test = new Log();
 		//$test::record($data['MemberAccount']);
         $result_array = json_decode($resultData,true);
+
         if(empty($result_array)){
             return json_encode(array('code'=>0,'message'=>'下单接口维护中,请联系客服!'));
         }

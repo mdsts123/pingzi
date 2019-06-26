@@ -192,9 +192,13 @@ class TgOrderController extends AdminController {
         $tg_order = D('TgOrder');
         if(1 == $pay_status){
             $mes = $this->place_order($amount,$username,$orderno);
-            $mes = json_decode($mes);
+            //$mes = json_decode($mes);
             if($mes['code']==0){
-                $this->error($mes['message']);
+                $data = array(
+                    'code'  => 201,
+                    'message'   => $mes['message'],
+                );
+                exit(json_encode($data));
             }else{
                 $condition['pay_status'] = $pay_status;
                 $tg_order->where(['id'=>$id])->save($condition);
