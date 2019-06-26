@@ -199,12 +199,14 @@ class TgOrderController extends AdminController {
                 $condition['pay_status'] = $pay_status;
                 if($tg_order->create($condition)){
                     $tg_order->save();
+                    exit('ok');
                 }
             }
         }else{
             $condition['pay_status'] = $pay_status;
             if($tg_order->create($condition)){
                 $tg_order->save();
+                exit('ok');
             }
         }
     }
