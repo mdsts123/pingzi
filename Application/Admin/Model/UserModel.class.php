@@ -57,6 +57,9 @@ class UserModel extends ModelModel {
         // 验证注册来源
         array('reg_type', 'require', '注册来源不能为空', self::MUST_VALIDATE, 'regex', self::MODEL_INSERT),
 
+        // 验证组别
+        array('group_name', 'require', '组别不能为空', self::MUST_VALIDATE, 'regex', self::MODEL_BOTH),
+
     );
 
     /**

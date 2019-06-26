@@ -159,7 +159,7 @@ class TgOrderController extends AdminController {
     }
 
     /**
-     * 操作
+     * 订单详情
      * @param $id
      * http://www.lingyun.com/admin.php?s=/Admin/TgOrder/payTgOrder/id/11.html
      */
@@ -168,10 +168,17 @@ class TgOrderController extends AdminController {
         $tg_order = D('TgOrder');
         $info = $tg_order->find($id);
         $info['pays'] = $this->payStatus();
-        echo json_encode($info);
-        //return json_encode($info);
+        $data = array(
+            'code'      => 200,
+            'message'   => "成功",
+            'data'      => $info,
+        );
+        echo json_encode($data);
     }
 
+    /**
+     * 操作处理方法
+     */
     public function toTgOrder(){
         $pay_status = I('post.pay_status');
         $username = I('post.username');
@@ -197,6 +204,10 @@ class TgOrderController extends AdminController {
         }
     }
 
+    /**
+     * 状态
+     * @return array
+     */
     public function payStatus(){
         $arr = array(
             '0' => array(
