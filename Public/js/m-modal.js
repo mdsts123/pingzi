@@ -107,7 +107,7 @@ class modal extends order {
   <div class="m-modal-content detail">
   <!-- 图片详情 image-text -->
   <div class="m-row data-container">
-  <div class="m-col-6">
+  <div class="m-col-6 m-img-box">
     <img src="${this.nullfy2str(data.img_src)}" alt="">
   </div>
   <div class="m-col-6 ">
@@ -124,14 +124,12 @@ class modal extends order {
           </thead>
           <tbody>
           <tr><td>订单号</td><td>${this.nullfy2str(data.orderno)}</td></tr>
-          <tr><td>提交类型</td><td>${this.nullfy2str(
-            data.commit_type,
-          )}</td></tr>
-          <tr><td>支付类型</td><td>${this.nullfy2str(data.pay_type)}</td></tr>
+          <tr><td>提交类型</td><td>${this.nullfy2str(data.commit_type_name)}</td></tr>
+          <tr><td>支付类型</td><td>${this.nullfy2str(data.pay_type_name)}</td></tr>
           <tr><td>会员账号</td><td>${this.nullfy2str(data.username)}</td></tr>
           <tr><td>充值金额</td><td>${this.nullfy2str(data.amount)}</td></tr>
           <tr><td>赠送金额</td><td>${this.nullfy2str(data.giv_amount)}</td></tr>
-          <tr><td>状态</td><td>${this.nullfy2str(data.pay_status)}</td></tr>
+          <tr><td>状态</td><td>${this.nullfy2str(data.pay_status_name)}</td></tr>
           <tr><td>收款人</td><td>${this.nullfy2str(data.collname)}</td></tr>
           <tr><td>付款人</td><td>${this.nullfy2str(data.payname)}</td></tr>
           <tr><td>备注</td><td>${this.nullfy2str(data.desc)}</td></tr>
