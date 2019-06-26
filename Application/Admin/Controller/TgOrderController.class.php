@@ -168,7 +168,8 @@ class TgOrderController extends AdminController {
         $tg_order = D('TgOrder');
         $info = $tg_order->find($id);
         $info['pays'] = $this->payStatus();
-        return json_encode($info);
+        echo json_encode($info);
+        //return json_encode($info);
     }
 
     public function toTgOrder($pay_status,$username,$amount,$order){
