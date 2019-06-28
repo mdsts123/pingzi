@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="eb6adadf-e135-436b-9080-e19af3f3883d" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Application/Admin/Controller/TgOrderController.class.php" afterPath="$PROJECT_DIR$/Application/Admin/Controller/TgOrderController.class.php" />
+      <change beforePath="$PROJECT_DIR$/Application/Admin/Controller/AdminController.class.php" afterPath="$PROJECT_DIR$/Application/Admin/Controller/AdminController.class.php" />
+      <change beforePath="$PROJECT_DIR$/Application/Admin/Model/GroupModel.class.php" afterPath="$PROJECT_DIR$/Application/Admin/Model/GroupModel.class.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,11 +15,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TgOrderController.class.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TgOrderController.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/TgOrderController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="545">
-              <caret line="280" column="0" lean-forward="true" selection-start-line="280" selection-start-column="0" selection-end-line="280" selection-end-column="0" />
+            <state relative-caret-position="345">
+              <caret line="260" column="9" lean-forward="false" selection-start-line="260" selection-start-column="9" selection-end-line="260" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AdminController.class.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/AdminController.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="850">
+              <caret line="41" column="43" lean-forward="true" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GroupModel.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Admin/Model/GroupModel.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="263">
+              <caret line="49" column="73" lean-forward="false" selection-start-line="49" selection-start-column="64" selection-end-line="49" selection-end-column="73" />
               <folding />
             </state>
           </provider>
@@ -45,7 +66,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>LOGO</find>
       <find>Uploade</find>
       <find>网站LOGO</find>
       <find>lyui.min</find>
@@ -75,6 +95,7 @@
       <find>超级管理员不允许操作</find>
       <find>ids</find>
       <find>operation</find>
+      <find>checkMenuAuth</find>
     </findStrings>
     <replaceStrings>
       <replace>Qlaizfb</replace>
@@ -91,7 +112,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Application/Admin/Controller/PublicController.class.php" />
         <option value="$PROJECT_DIR$/Application/Admin/Controller/AddonController.class.php" />
         <option value="$PROJECT_DIR$/Application/Admin/Controller/ConfigController.class.php" />
         <option value="$PROJECT_DIR$/Framework/Mode/Lite/functions.php" />
@@ -106,7 +126,6 @@
         <option value="$PROJECT_DIR$/Application/Common/Util/Tree.class.php" />
         <option value="$PROJECT_DIR$/Application/Admin/Model/ModuleModel.class.php" />
         <option value="$PROJECT_DIR$/Application/Admin/opencmf.php" />
-        <option value="$PROJECT_DIR$/Application/Admin/Controller/AdminController.class.php" />
         <option value="$PROJECT_DIR$/Application/Admin/View/TgOrder/index.html" />
         <option value="$PROJECT_DIR$/ly_tg_order.sql" />
         <option value="$PROJECT_DIR$/lingyun.sql" />
@@ -142,6 +161,8 @@
         <option value="$PROJECT_DIR$/Application/Common/Common/function.php" />
         <option value="$PROJECT_DIR$/Application/Common/Builder/ListBuilder.class.php" />
         <option value="$PROJECT_DIR$/Application/Admin/Controller/TgOrderController.class.php" />
+        <option value="$PROJECT_DIR$/Application/Admin/Model/GroupModel.class.php" />
+        <option value="$PROJECT_DIR$/Application/Admin/Controller/AdminController.class.php" />
       </list>
     </option>
   </component>
@@ -159,8 +180,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="344" />
-    <option name="y" value="217" />
+    <option name="x" value="462" />
+    <option name="y" value="201" />
     <option name="width" value="1404" />
     <option name="height" value="782" />
   </component>
@@ -301,15 +322,15 @@
       <workItem from="1561465582524" duration="6435000" />
       <workItem from="1561521473827" duration="28085000" />
       <workItem from="1561607849816" duration="32683000" />
-      <workItem from="1561694325924" duration="18872000" />
+      <workItem from="1561694325924" duration="20454000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="361577000" />
+    <option name="totallyTimeSpent" value="363159000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="344" y="217" width="1404" height="782" extended-state="0" />
+    <frame x="462" y="201" width="1404" height="782" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26785713" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -365,13 +386,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/IndexController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-150">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/NavController.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4253">
@@ -571,14 +585,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Model/GroupModel.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Admin/Model/AccessModel.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -685,8 +691,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/TgOrderController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="545">
-          <caret line="280" column="0" lean-forward="true" selection-start-line="280" selection-start-column="0" selection-end-line="280" selection-end-column="0" />
+        <state relative-caret-position="345">
+          <caret line="260" column="9" lean-forward="false" selection-start-line="260" selection-start-column="9" selection-end-line="260" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/Model/GroupModel.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="49" column="73" lean-forward="false" selection-start-line="49" selection-start-column="64" selection-end-line="49" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/AdminController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="41" column="43" lean-forward="true" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="43" />
           <folding />
         </state>
       </provider>

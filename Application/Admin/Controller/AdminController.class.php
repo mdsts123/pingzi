@@ -31,9 +31,9 @@ class AdminController extends ControllerController {
 
         // 权限检测
         $current_url = MODULE_NAME.'/'.CONTROLLER_NAME.'/'.ACTION_NAME;
-        if ('Admin/Index/index' !== $current_url) {
+        if ('Admin/Index/index' !== $current_url && '0'!== session('user_auth.level')) {
             if (!D('Admin/Group')->checkMenuAuth()) {
-                $this->error('权限不足！', U('Admin/Index/index'));
+                $this->error('权限不足1111！', U('Admin/Index/index'));
             }
             $this->assign('_admin_tabs', C('ADMIN_TABS'));
         }
