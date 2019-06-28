@@ -24,6 +24,8 @@ class order {
   }
 
   api_toTgOrder(data) {
+    console.log(data);
+
     let url = '/admin.php?s=/Admin/TgOrder/toTgOrder';
     return new Promise((resolve, reject) => {
       $.ajax({
@@ -31,7 +33,6 @@ class order {
         url,
         data,
         success(res) {
-          res = JSON.parse(res);
           if (res.code !== 200) {
             return reject(res);
           }
