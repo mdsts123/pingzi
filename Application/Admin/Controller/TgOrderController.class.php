@@ -268,10 +268,14 @@ class TgOrderController extends AdminController {
     public function payStatus(){
         $arr = array(
             '0' => array(
+                'pay_status'        => 0,
+                'pay_status_name'   => '未处理',
+            ),
+            '1' => array(
                 'pay_status'        => 1,
                 'pay_status_name'   => '自动下单',
             ),
-            '1' => array(
+            '2' => array(
                 'pay_status'        => 2,
                 'pay_status_name'   => '充值失败',
             )
