@@ -33,6 +33,7 @@ class order {
         url,
         data,
         success(res) {
+        res=JSON.parse(res)
           if (res.code !== 200) {
             return reject(res);
           }
@@ -82,7 +83,7 @@ class modal extends order {
         m.closeModal();
       })
       .catch(res => {
-        alert(res.message);
+       alert(res.message);
         m.closeModal();
       });
   }
