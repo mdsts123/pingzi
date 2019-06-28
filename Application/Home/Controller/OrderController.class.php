@@ -1,9 +1,9 @@
 <?php
 namespace Home\Controller;
 class OrderController extends HomeController {
-	public function index(){
+    public function index(){
 
-	}
+    }
     public function pay() {
 
         $data = array();
@@ -16,7 +16,6 @@ class OrderController extends HomeController {
         $wm=str_replace('wm','',$data['payid']);
         $wm=intval($wm);
         $count_wm=substr_count($wm1,'wm');
-
         $data['ip'] = get_client_ip();
         if(substr_count($data['payid'],'bank')){
             $data['payid'] = str_replace('bank', '', $data['payid']);
@@ -46,7 +45,6 @@ class OrderController extends HomeController {
         if(!$data['amount']){
             $this->error('金额不能为空');
         }
-
         if ($data['username']!=I('rusername','','trim')) {
             $this->error('两次会员名称不一致，请核对！');
         }
@@ -66,7 +64,6 @@ class OrderController extends HomeController {
                 $this->error("充值金额不能大于".C("PAY_MAX")."元！");
             }
         }
-
 
         if (M('Order')->data($data)->add()) {
             $payclass = $pay['payclass'];

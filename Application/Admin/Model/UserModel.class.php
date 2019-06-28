@@ -58,7 +58,7 @@ class UserModel extends ModelModel {
         array('reg_type', 'require', '注册来源不能为空', self::MUST_VALIDATE, 'regex', self::MODEL_INSERT),
 
         // 验证组别
-        array('group_name', 'require', '组别不能为空', self::EXISTS_VALIDATE, 'regex', self::MODEL_BOTH),
+        array('group_name', 'require', '组别不能为空', self::MUST_VALIDATE, 'regex', self::MODEL_BOTH),
 
     );
 
@@ -74,7 +74,6 @@ class UserModel extends ModelModel {
         array('create_time', 'time', self::MODEL_INSERT, 'function'),
         array('update_time', 'time', self::MODEL_BOTH, 'function'),
         array('status', '1', self::MODEL_INSERT),
-        array('level', '3', self::MODEL_INSERT),
     );
 
     /**

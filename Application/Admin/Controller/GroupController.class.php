@@ -21,6 +21,7 @@ class GroupController extends AdminController {
         // 搜索
         $keyword = I('keyword', '', 'string');
         $condition = array('like','%'.$keyword.'%');
+
         $map['id|title'] = array(
             $condition,
             $condition,

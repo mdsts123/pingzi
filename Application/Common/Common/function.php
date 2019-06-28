@@ -97,13 +97,22 @@ function select_list_as_tree($model, $map = null, $extra = null, $key = 'id') {
     if ($map) {
         $con = array_merge($con, $map);
     }
+    // 管理员
+    if('0' === session('user_auth.level') && '1' !== session('user_auth.uid')){
+        $con['id'] = array('gt','1');
+    }
+    // 推广组长
+    if('1' === session('user_auth.level')){
+        $con['id'] = array('gt','1');
+        $con['pid'] = array('gt','1');
+    }
+
     $model_object = D($model);
     if (in_array('sort', $model_object->getDbFields())) {
         $list = $model_object->where($con)->order('sort asc, id asc')->select();
     } else {
         $list = $model_object->where($con)->order('id asc')->select();
     }
-
     //转换成树状列表(非严格模式)
     $tree = new \Common\Util\Tree();
     $list = $tree->toFormatTree($list, 'title', 'id', 'pid', 0, false);

@@ -22,6 +22,15 @@ class AccessController extends AdminController {
         // 搜索
         $keyword = I('keyword', '', 'string');
         $condition = array('like','%'.$keyword.'%');
+        // 管理员
+        if('0' === session('user_auth.level') && '1' !== session('user_auth.uid')){
+            $map['id'] = ['gt','1'];
+        }
+        // 推广组长
+        if('1' === session('user_auth.level')){
+            $map['id'] = ['gt','1'];
+            $map['group_name'] = session('user_auth.group_name');
+        }
         $map['id|uid'] = array(
             $condition,
             $condition,
@@ -50,6 +59,9 @@ class AccessController extends AdminController {
             $val['group_title'] = $group_object->getFieldById($val['group'], 'title');
         }
 
+        $right_button['no']['title'] = '超级管理员无需操作';
+        $right_button['no']['attribute'] = 'class="label label-warning" href="#"';
+
         // 使用Builder快速建立列表页面。
         $builder = new \Common\Builder\ListBuilder();
         $builder->setMetaTitle('管理员列表')  // 设置页面标题
@@ -69,6 +81,10 @@ class AccessController extends AdminController {
                 ->addRightButton('edit')           // 添加编辑按钮
                 ->addRightButton('forbid')         // 添加禁用/启用按钮
                 ->addRightButton('delete')         // 添加删除按钮
+                ->alterTableData(  // 修改列表数据
+                    array('key' => 'id', 'value' => '1'),
+                    array('right_button' => $right_button)
+                )
                 ->display();
     }
 
@@ -79,7 +95,46 @@ class AccessController extends AdminController {
     public function add(){
         if (IS_POST) {
             $access_object = D('Access');
+            $map['uid'] = $_POST['uid'];
+            $auth = $access_object->where($map)->find();
+            $where['id'] = $_POST['uid'];
+            $user = D('User')->where($where)->find();
+            if(empty($user)){
+                $this->error('该用户不存在，请先添加用户');
+            }
+            if(!empty($auth)){
+                $this->error('UID已存在，请仔细检查用户');
+            }
+            // 管理员
+            if('0' === session('user_auth.level')){
+                if(empty($_POST['group'])){
+                    $this->error('请选择用户组');
+                }
+                if(empty($_POST['group_name'])){
+                    $this->error('请输入组别');
+                }
+                if($_POST['group_name'] !== $user['group_name']){
+                    $this->error('组别只能是：'.$user['group_name']);
+                }
+            }
+            // 推广组长
+            if('1' === session('user_auth.level')){
+                if(empty($_POST['group'])){
+                    $this->error('请选择用户组');
+                }
+                if(empty($_POST['group_name'])){
+                    $this->error('请输入组别');
+                }
+                if($_POST['group_name'] !== $user['group_name']){
+                    $this->error('该用户的组别只能是：'.$user['group_name']);
+                }
+                if($user['group_name'] !== session('user_auth.group_name')){
+                    $this->error('您暂时没有权限操作该用户');
+                }
+            }
+
             $data = $access_object->create();
+
             if ($data) {
                 if ($access_object->add($data)) {
                     $this->success('新增成功', U('index'));
@@ -96,6 +151,7 @@ class AccessController extends AdminController {
                     ->setPostUrl(U('add')) //设置表单提交地址
                     ->addFormItem('uid', 'uid', 'UID', '用户ID')
                     ->addFormItem('group', 'select', '用户组', '不同用户组对应相应的权限', select_list_as_tree('Group'))
+                    ->addFormItem('group_name', 'text', '组别', '组别')
                     ->display();
         }
     }
@@ -105,8 +161,48 @@ class AccessController extends AdminController {
      * @author jry <93058680@qq.com>
      */
     public function edit($id){
+        $map['id'] = $id;
+        $access_object = D('Access');
+        $auth = $access_object->where($map)->find();
+        if(session('user_auth.uid') == $auth['uid']){
+            $this->error('系统不允许用户操作自己所属用户组');
+        }
+
         if (IS_POST) {
-            $access_object = D('Access');
+            $where['id'] = $_POST['uid'];
+            $user = D('User')->where($where)->find();
+            if(empty($user)){
+                $this->error('该用户不存在，请先添加用户');
+            }
+            // 管理员
+            if('0' === session('user_auth.level')){
+                if(empty($_POST['group'])){
+                    $this->error('请选择用户组');
+                }
+                if(empty($_POST['group_name'])){
+                    $this->error('请输入组别');
+                }
+                if($_POST['group_name'] !== $user['group_name']){
+                    $this->error('组别只能是：'.$user['group_name']);
+                }
+            }
+
+            // 推广组长
+            if('1' === session('user_auth.level')){
+                if(empty($_POST['group'])){
+                    $this->error('请选择用户组');
+                }
+                if(empty($_POST['group_name'])){
+                    $this->error('请输入组别');
+                }
+                if($_POST['group_name'] !== $user['group_name']){
+                    $this->error('该用户的组别只能是：'.$user['group_name']);
+                }
+                if($user['group_name'] !== session('user_auth.group_name')){
+                    $this->error('您暂时没有权限操作该用户');
+                }
+            }
+
             $data = $access_object->create();
             if ($data) {
                 if ($access_object->save($data)) {
@@ -125,8 +221,36 @@ class AccessController extends AdminController {
                     ->addFormItem('id', 'hidden', 'ID', 'ID')
                     ->addFormItem('uid', 'uid', 'UID', '用户ID')
                     ->addFormItem('group', 'select', '用户组', '不同用户组对应相应的权限', select_list_as_tree('Group'))
+                    ->addFormItem('group_name', 'text', '组别', '组别')
                     ->setFormData(D('Access')->find($id))
                     ->display();
         }
     }
+
+    /**
+     * 设置一条或者多条数据的状态
+     * @author jry <93058680@qq.com>
+     */
+    public function setStatus($model = CONTROLLER_NAME){
+        $ids = I('request.ids');
+        $map['id'] = $ids;
+        $auth = D('Access')->where($map)->find();
+        if (is_array($ids)) {
+            if(in_array('1', $ids)) {
+                $this->error('超级管理员不允许操作');
+            }
+            if(in_array(session('user_auth.uid'), $auth['uid'])){
+                $this->error('系统不允许用户操作自己所属用户组');
+            }
+        } else {
+            if($ids === '1') {
+                $this->error('超级管理员不允许操作');
+            }
+            if(session('user_auth.uid') === $auth['uid']){
+                $this->error('系统不允许用户操作自己所属用户组');
+            }
+        }
+        parent::setStatus($model);
+    }
+
 }

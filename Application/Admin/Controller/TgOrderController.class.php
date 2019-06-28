@@ -14,7 +14,7 @@ use Common\Controller\Sfzfdd;
  * @author jry <93058680@qq.com>
  */
 class TgOrderController extends AdminController {
-    public function index(){
+    public function index($group=''){
         // 搜索
         $keyword   = I('keyword', '', 'string');
         $condition = array('like','%'.$keyword.'%');
@@ -26,13 +26,23 @@ class TgOrderController extends AdminController {
             $condition,
             '_multi'=>true
         );
-
+        // 判断用户权限级别
         if(1 == session('user_auth.level')){
             $map['groupname'] = session('user_auth.group_name');
         }elseif (2 == session('user_auth.level')){
             $map['commitname'] = session('user_auth.username');
         }
-
+        switch ($group) {
+            case '1':
+                $map['pay_status'] = array('eq','0');
+                break;
+            case '2':
+                $map['pay_status'] = array('eq','1');
+                break;
+            case '3':
+                $map['pay_status'] = array('eq','2');
+                break;
+        }
         $p = !empty($_GET["p"]) ? $_GET['p'] : 1;
 
         $order_object = D('TgOrder');
@@ -46,12 +56,22 @@ class TgOrderController extends AdminController {
             C('ADMIN_PAGE_ROWS')
         );
 
+        $tab_list[0]['title'] = '全部订单';
+        $tab_list[0]['href']  = U('index');
+        $tab_list[1]['title'] = '未处理';
+        $tab_list[1]['href']  = U('index', array('group' => '1'));
+        $tab_list[2]['title'] = '充值成功';
+        $tab_list[2]['href']  = U('index', array('group' => '2'));
+        $tab_list[3]['title'] = '充值失败';
+        $tab_list[3]['href']  = U('index', array('group' => '3'));
+
         // 使用Builder快速建立列表页面。
         $builder = new \Common\Builder\ListBuilder();
         $builder->setMetaTitle('订单列表') // 设置页面标题
         ->addTopButton('addnew')  // 添加新增按钮
         ->addTopButton('delete')  // 添加删除按钮
-        ->setSearch('请输入订单号/会员账号/收款人/付款人/提交用户', U('index'))
+        ->setTabNav($tab_list, $group)
+            ->setSearch('请输入订单号/会员账号/收款人/付款人/提交用户', U('index'))
             ->addTableColumn('id', 'ID')
             ->addTableColumn('orderno', '订单号')
             ->addTableColumn('img_src', '凭证', 'picture', null, true)
@@ -106,8 +126,8 @@ class TgOrderController extends AdminController {
             ->addFormItem('img_src', 'picture', '上传凭证', '上传凭证')
             ->addFormItem('cmit_time', 'hidden', '提交时间', '提交时间')
             ->addFormItem('groupname', 'hidden', '组别', '组别')
-                ->addFormItem('commit_type', 'radio', '提交类型', '提交类型', array('1' => '充值', '2' => '彩金'))
-                ->addFormItem('pay_type', 'radio', '付款类型', '付款类型', array('1' => 'C/B/R扫码', '2' => 'A/D扫码', '3' => '银行卡转账'))
+                ->addFormItem('commit_type', 'radio', '提交类型', '提交类型', array('0' => '充值', '1' => '彩金'))
+                ->addFormItem('pay_type', 'radio', '付款类型', '付款类型', array('0' => 'C/B/R扫码', '1' => 'A/D扫码', '2' => '银行卡转账', '3' => '第三方'))
                 ->addFormItem('username', 'text', '会员账号', '会员账号')
                 ->addFormItem('reusername', 'text', '确认账号', '确认账号')
                 ->addFormItem('amount', 'text', '充值金额', '充值金额')
@@ -147,8 +167,8 @@ class TgOrderController extends AdminController {
             ->addFormItem('id', 'hidden', 'ID', 'ID')
                 ->addFormItem('cmit_time', 'hidden', '提交时间', '提交时间')
                 ->addFormItem('img_src', 'picture', '上传凭证', '上传凭证')
-                ->addFormItem('commit_type', 'radio', '提交类型', '提交类型', array('1' => '充值', '2' => '彩金'))
-                ->addFormItem('pay_type', 'radio', '付款类型', '付款类型', array('1' => 'C/B/R扫码', '2' => 'A/D扫码', '3' => '银行卡转账'))
+                ->addFormItem('commit_type', 'radio', '提交类型', '提交类型', array('0' => '充值', '1' => '彩金'))
+                ->addFormItem('pay_type', 'radio', '付款类型', '付款类型', array('0' => 'C/B/R扫码', '1' => 'A/D扫码', '2' => '银行卡转账', '3' => '第三方'))
                 ->addFormItem('username', 'text', '会员账号', '会员账号')
                 ->addFormItem('amount', 'text', '充值金额', '充值金额')
                 ->addFormItem('desc', 'text', '备注', '备注')
@@ -167,17 +187,19 @@ class TgOrderController extends AdminController {
         // 获取推广订单信息
         $tg_order = D('TgOrder');
         $info = $tg_order->find($id);
-        if(1 == $info['commit_type']){
+        if(0 == $info['commit_type']){
             $info['commit_type_name'] = "充值";
-        }elseif (2 == $info['commit_type']){
+        }elseif (1 == $info['commit_type']){
             $info['commit_type_name'] = "彩金";
         }
-        if(1 == $info['pay_type']){
+        if(0 == $info['pay_type']){
             $info['pay_type_name'] = "C/B/R扫码";
-        }elseif (2 == $info['pay_type']){
+        }elseif (1 == $info['pay_type']){
             $info['pay_type_name'] = "A/D扫码";
-        }elseif (3 == $info['pay_type']){
+        }elseif (2 == $info['pay_type']){
             $info['pay_type_name'] = "银行卡转账";
+        }elseif (3 == $info['pay_type']){
+            $info['pay_type_name'] = "第三方";
         }
         if(0 == $info['pay_status']){
             $info['pay_status_name'] = "未处理";
@@ -186,13 +208,14 @@ class TgOrderController extends AdminController {
         }elseif (2 == $info['pay_status']){
             $info['pay_status_name'] = "充值失败";
         }
+        $info['cmit_time'] = date( "Y-m-d H:i:s",$info['cmit_time']);
         $info['pays'] = $this->payStatus();
         $data = array(
             'code'      => 200,
             'message'   => "成功",
             'data'      => $info,
         );
-        echo json_encode($data);
+        exit(json_encode($data));
     }
 
     /**
@@ -228,6 +251,7 @@ class TgOrderController extends AdminController {
                 exit(json_encode($data));
             }
         }else if(2 == $pay_status){
+
             $condition['pay_status'] = $pay_status;
             $tg_order->where(['id'=>$id])->save($condition);
             $data = array(

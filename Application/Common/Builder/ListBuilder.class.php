@@ -431,12 +431,16 @@ class ListBuilder extends ControllerController
         $this->_right_button_list[] = $my_attribute;
         break;
       case 'delete':
-        // 预定义按钮属性以简化使用
-        $my_attribute['name'] = 'delete';
-        $my_attribute['title'] = '删除';
-        $my_attribute['class'] = 'label label-danger-outline label-pill ajax-get confirm';
-        $my_attribute['model'] = $attribute['model'] ?: CONTROLLER_NAME;
-        $my_attribute['href'] = U(
+          // 预定义按钮属性以简化使用
+          $my_attribute['name'] = 'delete';
+
+          $my_attribute['title'] = '删除';
+
+
+
+          $my_attribute['class'] = 'label label-danger-outline label-pill ajax-get confirm';
+          $my_attribute['model'] = $attribute['model'] ?: CONTROLLER_NAME;
+          $my_attribute['href'] = U(
           MODULE_NAME . '/' . CONTROLLER_NAME . '/setStatus',
           array(
             'status' => 'delete',
@@ -623,12 +627,14 @@ class ListBuilder extends ControllerController
       }
 
       // 支付类型
-      if (1 == $data['pay_type']) {
+      if (0 == $data['pay_type']) {
         $data['pay_type_name'] = "C/B/R扫码";
-      } elseif (2 == $data['pay_type']) {
+      } elseif (1 == $data['pay_type']) {
         $data['pay_type_name'] = "A/D扫码";
-      } elseif (3 == $data['pay_type']) {
+      } elseif (2 == $data['pay_type']) {
         $data['pay_type_name'] = "银行卡转账";
+      } elseif (3 == $data['pay_type']) {
+          $data['pay_type_name'] = "第三方";
       }
 
       // 状态
@@ -695,7 +701,7 @@ class ListBuilder extends ControllerController
             case 'payname':
                 if($data['cid'] ==6){
                     $data[$column['name']] = M("Bankpay")->where("id='".$data[$column['name']]."'")->getField("bank");
-                }elseif($data['payid'] == 0){ // && $data['cid'] == 9
+                }elseif($data['payid'] == 0){
                     $data[$column['name']]='五码合一';
                 }else{
                     $data[$column['name']] = M("Payapi")->where("id='".$data[$column['name']]."'")->getField("desc");

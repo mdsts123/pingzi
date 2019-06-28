@@ -39,6 +39,8 @@ class PayTypeController extends AdminController{
             ->addTableColumn('name', '类型')
             ->addTableColumn('img_src', '二维码','picture',null,true)
             ->addTableColumn('status', '状态', 'status')
+            ->addTableColumn('minmoney', '最小金额', 'minmoney')
+            ->addTableColumn('maxmoney', '最大金额', 'maxmoney')
             ->addTableColumn('right_button', '操作', 'btn')
             ->setTableDataList($data_list)    // 数据列表
             ->setTableDataPage($page->show()) // 数据列表分页
@@ -73,6 +75,8 @@ class PayTypeController extends AdminController{
                 ->addFormItem('img_src', 'picture', '支付二维码', '支付的二维码')
                 ->addFormItem('sort', 'text', '排序值', '(越大越靠前)')
                 ->addFormItem('status', 'select', '状态', '',array('1'=>'启用','0'=>'禁用'))
+                ->addFormItem('minmoney', 'text', '最小金额', '(最小金额)')
+                ->addFormItem('maxmoney', 'text', '最大金额', '(最大金额)')
                 ->display();
         }
 
@@ -102,7 +106,6 @@ class PayTypeController extends AdminController{
             // 使用FormBuilder快速建立表单页面。
             $builder = new \Common\Builder\FormBuilder();
 
-
             $builder->setMetaTitle('编辑五码合一') //设置页面标题
             ->setPostUrl(U('edit'))    //设置表单提交地址
             ->addFormItem('id', 'hidden', 'ID', 'ID')
@@ -110,6 +113,8 @@ class PayTypeController extends AdminController{
                 ->addFormItem('img_src', 'picture', '支付二维码', '支付的二维码')
                 ->addFormItem('sort', 'text', '排序值', '(越大越靠前)')
                 ->addFormItem('status', 'select', '状态', '',array('1'=>'启用','0'=>'禁用'))
+                ->addFormItem('minmoney', 'text', '最小金额', '(最小金额)')
+                ->addFormItem('maxmoney', 'text', '最大金额', '(最大金额)')
                 ->setFormData($info)
                 ->display();
         }
