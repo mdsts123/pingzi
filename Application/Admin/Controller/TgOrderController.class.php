@@ -251,7 +251,6 @@ class TgOrderController extends AdminController {
                 exit(json_encode($data));
             }
         }else if(2 == $pay_status){
-
             $condition['pay_status'] = $pay_status;
             $tg_order->where(['id'=>$id])->save($condition);
             $data = array(
@@ -268,10 +267,6 @@ class TgOrderController extends AdminController {
      */
     public function payStatus(){
         $arr = array(
-            '0' => array(
-                'pay_status'        => 0,
-                'pay_status_name'   => '未处理',
-            ),
             '1' => array(
                 'pay_status'        => 1,
                 'pay_status_name'   => '自动下单',
