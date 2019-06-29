@@ -4,26 +4,33 @@ function preventDefaultEvents() {
   });
 }
 /**
- * *
-*/
-class Utils{
-  constructor(){}
+ *工具类
+ */
+class Utils {
+  constructor() {}
   /**
    *只要纯数字字符
    * @param {str} string
    */
-   verifyNumber(str) {
-     return (str-0)+''===(str+'')
+  verifyNumber(str) {
+    return str - 0 + '' === str + '';
   }
-  logout(){
-    location.href="/admin.php?s=/Admin/Public/logout.html"
+  logout() {
+    location.href = '/admin.php?s=/Admin/Public/logout.html';
+  }
+  refresh() {
+    location.href = location.href;
+  }
+  nullfy2str(data) {
+    return data ? data : '';
   }
 }
-/**
- * 分装订单类 处理订单交互
- */
 
-class Order {
+
+/**
+ * API类 后端交互
+ */
+class API {
   constructor() {}
   api_getDetail(url) {
     return new Promise((resolve, reject) => {
@@ -60,26 +67,25 @@ class Order {
 /**
  * 封装模态类
  */
-class Modal extends Order {
+class Modal extends API {
   eventEl;
   toTgOrderData = {};
   status = 0; //默认未处理
-  u=new Utils()
+  u = new Utils();
+  events = []; //时间列表
   //定义事件
   constructor() {
     super();
     preventDefaultEvents();
-    this.events = {
-      close: this.handleClose,
-      open: this.handleOpen,
-    };
+    this.initEvents();
+
   }
   //定义操作
-  refresh() {
-    location.href = location.href;
-  }
-  nullfy2str(data) {
-    return data ? data : '';
+  initEvents(){
+    this.events['open'] = this.handleOpen;
+    this.events['close'] = this.handleClose;
+    this.events['submit'] = this.handleSbumit;
+    this.events['change'] = this.handleChange;
   }
   openModal() {
     $('#order .m-modal').show();
@@ -87,14 +93,12 @@ class Modal extends Order {
   closeModal() {
     $('#order .m-modal').hide();
   }
-  changeSureBtnClass(){
-    if((this.eventEl.value-0)===0){
-      $('#sureBtn').attr({disabled:"disabled"})
-    }else{
-      $('#sureBtn').removeAttr('disabled')
+  changeSureBtnClass() {
+    if (this.eventEl.value-0 === 0) {
+      $('#sureBtn').attr({ disabled: 'disabled' });
+    } else {
+      $('#sureBtn').removeAttr('disabled');
     }
-
-
   }
   renderOption(data, current) {
     return data
@@ -119,7 +123,7 @@ class Modal extends Order {
   <!-- 图片详情 image-text -->
   <div class="m-row data-container">
   <div class="m-col-6 m-img-box">
-    <img src="${this.nullfy2str(data.img_src)}" alt="">
+    <img src="${this.u.nullfy2str(data.img_src)}" alt="">
   </div>
   <div class="m-col-6 ">
     <div class="m-debar">
@@ -130,29 +134,29 @@ class Modal extends Order {
           <thead>
             <tr>
               <th>ID</th>
-              <th>${this.nullfy2str(data.id)}</th>
+              <th>${this.u.nullfy2str(data.id)}</th>
             </tr>
           </thead>
           <tbody>
-          <tr><td>订单号</td><td>${this.nullfy2str(data.orderno)}</td></tr>
-          <tr><td>提交类型</td><td>${this.nullfy2str(
+          <tr><td>订单号</td><td>${this.u.nullfy2str(data.orderno)}</td></tr>
+          <tr><td>提交类型</td><td>${this.u.nullfy2str(
             data.commit_type_name,
           )}</td></tr>
-          <tr><td>支付类型</td><td>${this.nullfy2str(
+          <tr><td>支付类型</td><td>${this.u.nullfy2str(
             data.pay_type_name,
           )}</td></tr>
-          <tr><td>会员账号</td><td>${this.nullfy2str(data.username)}</td></tr>
-          <tr><td>充值金额</td><td>${this.nullfy2str(data.amount)}</td></tr>
-          <tr><td>赠送金额</td><td>${this.nullfy2str(data.giv_amount)}</td></tr>
-          <tr><td>状态</td><td>${this.nullfy2str(
+          <tr><td>会员账号</td><td>${this.u.nullfy2str(data.username)}</td></tr>
+          <tr><td>充值金额</td><td>${this.u.nullfy2str(data.amount)}</td></tr>
+          <tr><td>赠送金额</td><td>${this.u.nullfy2str(data.giv_amount)}</td></tr>
+          <tr><td>状态</td><td>${this.u.nullfy2str(
             data.pay_status_name,
           )}</td></tr>
-          <tr><td>收款人</td><td>${this.nullfy2str(data.collname)}</td></tr>
-          <tr><td>付款人</td><td>${this.nullfy2str(data.payname)}</td></tr>
-          <tr><td>备注</td><td>${this.nullfy2str(data.desc)}</td></tr>
-          <tr><td>提交用户</td><td>${this.nullfy2str(data.commitname)}</td></tr>
-          <tr><td>组别</td><td>${this.nullfy2str(data.groupname)}</td></tr>
-          <tr><td>提交时间</td><td>${this.nullfy2str(data.cmit_time)}</td></tr>
+          <tr><td>收款人</td><td>${this.u.nullfy2str(data.collname)}</td></tr>
+          <tr><td>付款人</td><td>${this.u.nullfy2str(data.payname)}</td></tr>
+          <tr><td>备注</td><td>${this.u.nullfy2str(data.desc)}</td></tr>
+          <tr><td>提交用户</td><td>${this.u.nullfy2str(data.commitname)}</td></tr>
+          <tr><td>组别</td><td>${this.u.nullfy2str(data.groupname)}</td></tr>
+          <tr><td>提交时间</td><td>${this.u.nullfy2str(data.cmit_time)}</td></tr>
           </tbody>
         </table>
       </div>
@@ -183,6 +187,7 @@ class Modal extends Order {
     $('#order .m-modal')
       .html(html)
       .show();
+      html=null;
   }
 
   //定义钩子
@@ -190,40 +195,37 @@ class Modal extends Order {
     this.closeModal();
   }
   handleOpen() {
-    let m = this;
+    let m=this
     this.api_getDetail($(this.eventEl).attr('href')).then(function(data) {
       m.renderContent(data);
+      m.openModal();
+      m=null
     });
-    // this.openModal();
+
   }
   handleChange() {
     this.changeSureBtnClass();
-
   }
   handleSbumit() {
     let m = this;
     let state = $('#pay_status').val();
-    if(!this.u.verifyNumber(state)){
-      alert('输入内容不合规范，请重新登录。请确保安全环境后再次执行！')
+    if (!this.u.verifyNumber(state)) {
+      alert('输入内容不合规范，请重新登录。请确保安全环境后再次执行！');
       this.u.logout();
-      return
+      return;
     }
-    
+
     this.toTgOrderData.pay_status = state;
     this.api_toTgOrder(this.toTgOrderData)
       .then(data => {
-        m.refresh();
+        m.u.refresh();
         m.closeModal();
-        state=null;
+        m=state = null;
       })
       .catch(res => {
         alert(res.message);
         m.closeModal();
-      })
-  }
-  //定义事件
-  initEvents(obj) {
-    this.events = obj;
+      });
   }
 
   //执行器
@@ -233,13 +235,8 @@ class Modal extends Order {
    */
   on(name, eventEl) {
     this.eventEl = eventEl;
-
-
     name += '';
-    if (name === 'open') this.handleOpen();
-    if (name === 'close') this.handleClose();
-    if (name === 'submit') this.handleSbumit();
-    if (name === 'change') this.handleChange();
+    this.events[name].call(this);
   }
 }
 let m = new Modal();
