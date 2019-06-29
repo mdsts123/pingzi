@@ -3,12 +3,27 @@ function preventDefaultEvents() {
     event.preventDefault();
   });
 }
-
+/**
+ * *
+*/
+class Utils{
+  constructor(){}
+  /**
+   *只要纯数字字符
+   * @param {str} string
+   */
+   verifyNumber(str) {
+     return (str-0)+''===(str+'')
+  }
+  logout(){
+    location.href="/admin.php?s=/Admin/Public/logout.html"
+  }
+}
 /**
  * 分装订单类 处理订单交互
  */
 
-class order {
+class Order {
   constructor() {}
   api_getDetail(url) {
     return new Promise((resolve, reject) => {
@@ -24,8 +39,6 @@ class order {
   }
 
   api_toTgOrder(data) {
-    console.log(data);
-
     let url = '/admin.php?s=/Admin/TgOrder/toTgOrder';
     return new Promise((resolve, reject) => {
       $.ajax({
@@ -33,7 +46,7 @@ class order {
         url,
         data,
         success(res) {
-        res=JSON.parse(res)
+          res = JSON.parse(res);
           if (res.code !== 200) {
             return reject(res);
           }
@@ -47,9 +60,11 @@ class order {
 /**
  * 封装模态类
  */
-class modal extends order {
-  clickEl;
+class Modal extends Order {
+  eventEl;
   toTgOrderData = {};
+  status = 0; //默认未处理
+  u=new Utils()
   //定义事件
   constructor() {
     super();
@@ -72,20 +87,14 @@ class modal extends order {
   closeModal() {
     $('#order .m-modal').hide();
   }
-  handleSbumit() {
-    let m = this;
-    let state = $('#pay_status').val();
-    // if(state===null)alert('请选择订单状态')
-    this.toTgOrderData.pay_status = state;
-    this.api_toTgOrder(this.toTgOrderData)
-      .then(data => {
-        m.refresh();
-        m.closeModal();
-      })
-      .catch(res => {
-       alert(res.message);
-        m.closeModal();
-      });
+  changeSureBtnClass(){
+    if((this.eventEl.value-0)===0){
+      $('#sureBtn').attr({disabled:"disabled"})
+    }else{
+      $('#sureBtn').removeAttr('disabled')
+    }
+
+
   }
   renderOption(data, current) {
     return data
@@ -126,12 +135,18 @@ class modal extends order {
           </thead>
           <tbody>
           <tr><td>订单号</td><td>${this.nullfy2str(data.orderno)}</td></tr>
-          <tr><td>提交类型</td><td>${this.nullfy2str(data.commit_type_name)}</td></tr>
-          <tr><td>支付类型</td><td>${this.nullfy2str(data.pay_type_name)}</td></tr>
+          <tr><td>提交类型</td><td>${this.nullfy2str(
+            data.commit_type_name,
+          )}</td></tr>
+          <tr><td>支付类型</td><td>${this.nullfy2str(
+            data.pay_type_name,
+          )}</td></tr>
           <tr><td>会员账号</td><td>${this.nullfy2str(data.username)}</td></tr>
           <tr><td>充值金额</td><td>${this.nullfy2str(data.amount)}</td></tr>
           <tr><td>赠送金额</td><td>${this.nullfy2str(data.giv_amount)}</td></tr>
-          <tr><td>状态</td><td>${this.nullfy2str(data.pay_status_name)}</td></tr>
+          <tr><td>状态</td><td>${this.nullfy2str(
+            data.pay_status_name,
+          )}</td></tr>
           <tr><td>收款人</td><td>${this.nullfy2str(data.collname)}</td></tr>
           <tr><td>付款人</td><td>${this.nullfy2str(data.payname)}</td></tr>
           <tr><td>备注</td><td>${this.nullfy2str(data.desc)}</td></tr>
@@ -150,11 +165,11 @@ class modal extends order {
 
   <div id="modalForm" class="m-tool-bar clearfix" method="post">
 
-    <button class="btn m-fr btn-primary" onclick="m.on('submit')">确认</button>
+    <button id="sureBtn" class="btn m-fr btn-primary" onclick="m.on('submit')">确认</button>
     <button class="btn m-fr btn-info" onclick="m.on('close')">取消</button>
     <p class="select-box m-fr">
     <b>请选择订单状态</b>
-    <select name="pay_status" id="pay_status" >
+    <select name="pay_status" id="pay_status" onchange="m.on('change',this)" >
       ${this.renderOption(data.pays, data.pay_status - 0)}
     </select>
     </p>
@@ -176,10 +191,35 @@ class modal extends order {
   }
   handleOpen() {
     let m = this;
-    this.api_getDetail($(this.clickEl).attr('href')).then(function(data) {
+    this.api_getDetail($(this.eventEl).attr('href')).then(function(data) {
       m.renderContent(data);
     });
     // this.openModal();
+  }
+  handleChange() {
+    this.changeSureBtnClass();
+
+  }
+  handleSbumit() {
+    let m = this;
+    let state = $('#pay_status').val();
+    if(!this.u.verifyNumber(state)){
+      alert('输入内容不合规范，请重新登录。请确保安全环境后再次执行！')
+      this.u.logout();
+      return
+    }
+    
+    this.toTgOrderData.pay_status = state;
+    this.api_toTgOrder(this.toTgOrderData)
+      .then(data => {
+        m.refresh();
+        m.closeModal();
+        state=null;
+      })
+      .catch(res => {
+        alert(res.message);
+        m.closeModal();
+      })
   }
   //定义事件
   initEvents(obj) {
@@ -191,12 +231,15 @@ class modal extends order {
    *
    * @param {string} name 事件名
    */
-  on(name, clickEl) {
-    this.clickEl = clickEl;
+  on(name, eventEl) {
+    this.eventEl = eventEl;
+
+
     name += '';
     if (name === 'open') this.handleOpen();
     if (name === 'close') this.handleClose();
     if (name === 'submit') this.handleSbumit();
+    if (name === 'change') this.handleChange();
   }
 }
-let m = new modal();
+let m = new Modal();
