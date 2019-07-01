@@ -1,242 +1,320 @@
-function preventDefaultEvents() {
-  $('.label-success-outline').on('click', function(event) {
-    event.preventDefault();
-  });
-}
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _instanceof(left, right) { if (right != null && typeof Symbol !== "undefined" && right[Symbol.hasInstance]) { return right[Symbol.hasInstance](left); } else { return left instanceof right; } }
+
+function _classCallCheck(instance, Constructor) { if (!_instanceof(instance, Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 /**
  *工具类
  */
-class Utils {
-  constructor() {}
+var Utils =
+/*#__PURE__*/
+function () {
+  function Utils() {
+    _classCallCheck(this, Utils);
+  }
   /**
    *只要纯数字字符
    * @param {str} string
    */
-  verifyNumber(str) {
-    return str - 0 + '' === str + '';
-  }
-  logout() {
-    location.href = '/admin.php?s=/Admin/Public/logout.html';
-  }
-  refresh() {
-    location.href = location.href;
-  }
-  nullfy2str(data) {
-    return data ? data : '';
-  }
-}
 
 
+  _createClass(Utils, [{
+    key: "verifyNumber",
+    value: function verifyNumber(str) {
+      return str - 0 + '' === str + '';
+    }
+  }, {
+    key: "logout",
+    value: function logout() {
+      location.href = '/admin.php?s=/Admin/Public/logout.html';
+    }
+  }, {
+    key: "refresh",
+    value: function refresh() {
+      location.href = location.href;
+    }
+  }, {
+    key: "nullfy2str",
+    value: function nullfy2str(data) {
+      return data ? data : '';
+    }
+  }, {
+    key: "removeHref",
+    value: function removeHref(select) {
+      select += '';
+      $(select).removeAttr('href');
+    }
+  }]);
+
+  return Utils;
+}();
 /**
  * API类 后端交互
  */
-class API {
-  constructor() {}
-  api_getDetail(url) {
-    return new Promise((resolve, reject) => {
-      $.ajax({
-        type: 'GET',
-        url,
-        success(res) {
-          res = JSON.parse(res);
-          resolve(res.data);
-        },
-      });
-    });
+
+
+var API =
+/*#__PURE__*/
+function () {
+  function API() {
+    _classCallCheck(this, API);
   }
 
-  api_toTgOrder(data) {
-    let url = '/admin.php?s=/Admin/TgOrder/toTgOrder';
-    return new Promise((resolve, reject) => {
-      $.ajax({
-        type: 'post',
-        url,
-        data,
-        success(res) {
-          res = JSON.parse(res);
-          if (res.code !== 200) {
-            return reject(res);
+  _createClass(API, [{
+    key: "api_getDetail",
+    value: function api_getDetail() {
+      return new Promise(function (resolve, reject) {
+        $.ajax({
+          type: 'GET',
+          url: '/admin.php?s=/Admin/TgOrder/payTgOrder/id/4.html',
+          success: function success(res) {
+            res = JSON.parse(res);
+            resolve(res.data);
           }
-          resolve(res);
-        },
+        });
       });
-    });
-  }
-}
+    }
+  }, {
+    key: "api_toTgOrder",
+    value: function api_toTgOrder(data) {
+      console.log(1);
+      var url = '/admin.php?s=/Admin/TgOrder/toTgOrder';
+      return new Promise(function (resolve, reject) {
+        $.ajax({
+          type: 'post',
+          url: url,
+          data: data,
+          success: function success(res) {
+            url = null;
+            res = JSON.parse(res);
 
+            if (res.code !== 200) {
+              return reject(res);
+            }
+
+            resolve(res);
+          }
+        });
+      });
+    }
+  }]);
+
+  return API;
+}();
 /**
  * 封装模态类
  */
-class Modal extends API {
-  eventEl;
-  toTgOrderData = {};
-  status = 0; //默认未处理
-  u = new Utils();
-  events = []; //时间列表
+
+
+var Modal =
+/*#__PURE__*/
+function (_API) {
+  _inherits(Modal, _API);
+
+  //默认未处理
+  //时间列表
   //定义事件
-  constructor() {
-    super();
-    preventDefaultEvents();
-    this.initEvents();
+  function Modal() {
+    var _this;
 
-  }
-  //定义操作
-  initEvents(){
-    this.events['open'] = this.handleOpen;
-    this.events['close'] = this.handleClose;
-    this.events['submit'] = this.handleSbumit;
-    this.events['change'] = this.handleChange;
-  }
-  openModal() {
-    $('#order .m-modal').show();
-  }
-  closeModal() {
-    $('#order .m-modal').hide();
-  }
-  changeSureBtnClass() {
-    if (this.eventEl.value-0 === 0) {
-      $('#sureBtn').attr({ disabled: 'disabled' });
-    } else {
-      $('#sureBtn').removeAttr('disabled');
+    _classCallCheck(this, Modal);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Modal).call(this));
+
+    _defineProperty(_assertThisInitialized(_this), "eventEl", void 0);
+
+    _defineProperty(_assertThisInitialized(_this), "toTgOrderData", {});
+
+    _defineProperty(_assertThisInitialized(_this), "status", 0);
+
+    _defineProperty(_assertThisInitialized(_this), "u", new Utils());
+
+    _defineProperty(_assertThisInitialized(_this), "events", []);
+
+    _this.compatiblePrompt();
+
+    _this.preventOperationEvents();
+
+    _this.initEvents();
+
+    return _this;
+  } //定义操作
+
+  /**
+   * 兼容提示
+   * ie全不支持Promise
+   */
+
+
+  _createClass(Modal, [{
+    key: "compatiblePrompt",
+    value: function compatiblePrompt() {
+      if (!window['Promise']) {
+        $('.m-accidentalTip').show();
+        alert('请使用急速模式或谷歌浏览器');
+      } else {
+        $('.m-accidentalTip').hide();
+      }
+    } //阻止操作按钮默认事件
+
+  }, {
+    key: "preventOperationEvents",
+    value: function preventOperationEvents() {
+      this.u.removeHref("[name='operation']");
     }
-  }
-  renderOption(data, current) {
-    return data
-      .map(
-        opt =>
-          `<option value="${opt.pay_status}" ${
-            opt.pay_status === current ? 'selected' : ''
-          } >${opt.pay_status_name}</option>`,
-      )
-      .join('');
-  }
-  renderContent(data) {
-    this.toTgOrderData = {
-      id: data.id,
-      pay_status: data.pay_status,
-      username: data.username,
-      amount: data.amount,
-      orderno: data.amount,
-    };
-    let html = `
-  <div class="m-modal-content detail">
-  <!-- 图片详情 image-text -->
-  <div class="m-row data-container">
-  <div class="m-col-6 m-img-box">
-    <img src="${this.u.nullfy2str(data.img_src)}" alt="">
-  </div>
-  <div class="m-col-6 ">
-    <div class="m-debar">
-      <!-- 列表 -->
-      <!-- 图片数据 -->
-      <div class="m-scroll">
-        <table class="m-table ">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>${this.u.nullfy2str(data.id)}</th>
-            </tr>
-          </thead>
-          <tbody>
-          <tr><td>订单号</td><td>${this.u.nullfy2str(data.orderno)}</td></tr>
-          <tr><td>提交类型</td><td>${this.u.nullfy2str(
-            data.commit_type_name,
-          )}</td></tr>
-          <tr><td>支付类型</td><td>${this.u.nullfy2str(
-            data.pay_type_name,
-          )}</td></tr>
-          <tr><td>会员账号</td><td>${this.u.nullfy2str(data.username)}</td></tr>
-          <tr><td>充值金额</td><td>${this.u.nullfy2str(data.amount)}</td></tr>
-          <tr><td>赠送金额</td><td>${this.u.nullfy2str(data.giv_amount)}</td></tr>
-          <tr><td>状态</td><td>${this.u.nullfy2str(
-            data.pay_status_name,
-          )}</td></tr>
-          <tr><td>收款人</td><td>${this.u.nullfy2str(data.collname)}</td></tr>
-          <tr><td>付款人</td><td>${this.u.nullfy2str(data.payname)}</td></tr>
-          <tr><td>备注</td><td>${this.u.nullfy2str(data.desc)}</td></tr>
-          <tr><td>提交用户</td><td>${this.u.nullfy2str(data.commitname)}</td></tr>
-          <tr><td>组别</td><td>${this.u.nullfy2str(data.groupname)}</td></tr>
-          <tr><td>提交时间</td><td>${this.u.nullfy2str(data.cmit_time)}</td></tr>
-          </tbody>
-        </table>
-      </div>
+    /**
+     * 初始 状态选项
+     */
 
-    </div>
-
-  </div>
-  </div>
-  <section class="state">
-
-  <div id="modalForm" class="m-tool-bar clearfix" method="post">
-
-    <button id="sureBtn" class="btn m-fr btn-primary" onclick="m.on('submit')">确认</button>
-    <button class="btn m-fr btn-info" onclick="m.on('close')">取消</button>
-    <p class="select-box m-fr">
-    <b>请选择订单状态</b>
-    <select name="pay_status" id="pay_status" onchange="m.on('change',this)" >
-      ${this.renderOption(data.pays, data.pay_status - 0)}
-    </select>
-    </p>
-
-  </div>
-  </section>
-
-  <!-- 操作 -->
-  <span class="m-close" onclick="m.on('close')">&times;</span>
-  </div>`;
-    $('#order .m-modal')
-      .html(html)
-      .show();
-      html=null;
-  }
-
-  //定义钩子
-  handleClose() {
-    this.closeModal();
-  }
-  handleOpen() {
-    let m=this
-    this.api_getDetail($(this.eventEl).attr('href')).then(function(data) {
-      m.renderContent(data);
-      m.openModal();
-      m=null
-    });
-
-  }
-  handleChange() {
-    this.changeSureBtnClass();
-  }
-  handleSbumit() {
-    let m = this;
-    let state = $('#pay_status').val();
-    if (!this.u.verifyNumber(state)) {
-      alert('输入内容不合规范，请重新登录。请确保安全环境后再次执行！');
-      this.u.logout();
-      return;
+  }, {
+    key: "initStatusSelect",
+    value: function initStatusSelect(data) {
+      data = data || $('#pay_status [selected]').val();
+      this.eventEl = $('#pay_status')[0];
+      this.eventEl.value = data;
+      this.events['pay-status-change'].call(this);
     }
+  }, {
+    key: "initEvents",
+    value: function initEvents() {
+      this.events['open'] = this.handleOpen;
+      this.events['close'] = this.handleClose;
+      this.events['submit'] = this.handleSbumit;
+      this.events['pay-status-change'] = this.handleChange;
+    }
+  }, {
+    key: "openModal",
+    value: function openModal() {
+      $('#order .m-modal').show();
+    }
+  }, {
+    key: "closeModal",
+    value: function closeModal() {
+      $('#order .m-modal').hide();
+    }
+  }, {
+    key: "changeSureBtnClass",
+    value: function changeSureBtnClass() {
+      if (this.eventEl.value - 0 === 0) {
+        $('#sureBtn').attr({
+          disabled: 'disabled'
+        });
+      } else {
+        $('#sureBtn').removeAttr('disabled');
+      }
+    }
+  }, {
+    key: "renderOption",
+    value: function renderOption(data, current) {
+      return data.map(function (opt) {
+        return "<option value=\"".concat(opt.pay_status, "\" ").concat(opt.pay_status === current ? 'selected' : '', " >").concat(opt.pay_status_name, "</option>");
+      }).join('');
+    }
+  }, {
+    key: "renderContent",
+    value: function renderContent(data) {
+      var m = this;
+      this.toTgOrderData = {
+        id: data.id,
+        pay_status: data.pay_status,
+        username: data.username,
+        amount: data.amount,
+        orderno: data.amount
+      };
+      var html = "\n  <div class=\"m-modal-content detail\">\n  <!-- \u56FE\u7247\u8BE6\u60C5 image-text -->\n  <div class=\"m-row data-container\">\n  <div class=\"m-col-6 m-img-box\">\n    <img src=\"".concat(this.u.nullfy2str(data.img_src), "\" alt=\"\">\n  </div>\n  <div class=\"m-col-6 \">\n    <div class=\"m-debar\">\n      <!-- \u5217\u8868 -->\n      <!-- \u56FE\u7247\u6570\u636E -->\n      <div class=\"m-scroll\">\n        <table class=\"m-table \">\n          <thead>\n            <tr>\n              <th>ID</th>\n              <th>").concat(this.u.nullfy2str(data.id), "</th>\n            </tr>\n          </thead>\n          <tbody>\n          <tr><td>\u8BA2\u5355\u53F7</td><td>").concat(this.u.nullfy2str(data.orderno), "</td></tr>\n          <tr><td>\u63D0\u4EA4\u7C7B\u578B</td><td>").concat(this.u.nullfy2str(data.commit_type_name), "</td></tr>\n          <tr><td>\u652F\u4ED8\u7C7B\u578B</td><td>").concat(this.u.nullfy2str(data.pay_type_name), "</td></tr>\n          <tr><td>\u4F1A\u5458\u8D26\u53F7</td><td>").concat(this.u.nullfy2str(data.username), "</td></tr>\n          <tr><td>\u5145\u503C\u91D1\u989D</td><td>").concat(this.u.nullfy2str(data.amount), "</td></tr>\n          <tr><td>\u8D60\u9001\u91D1\u989D</td><td>").concat(this.u.nullfy2str(data.giv_amount), "</td></tr>\n          <tr><td>\u72B6\u6001</td><td>").concat(this.u.nullfy2str(data.pay_status_name), "</td></tr>\n          <tr><td>\u6536\u6B3E\u4EBA</td><td>").concat(this.u.nullfy2str(data.collname), "</td></tr>\n          <tr><td>\u4ED8\u6B3E\u4EBA</td><td>").concat(this.u.nullfy2str(data.payname), "</td></tr>\n          <tr><td>\u5907\u6CE8</td><td>").concat(this.u.nullfy2str(data.desc), "</td></tr>\n          <tr><td>\u63D0\u4EA4\u7528\u6237</td><td>").concat(this.u.nullfy2str(data.commitname), "</td></tr>\n          <tr><td>\u7EC4\u522B</td><td>").concat(this.u.nullfy2str(data.groupname), "</td></tr>\n          <tr><td>\u63D0\u4EA4\u65F6\u95F4</td><td>").concat(this.u.nullfy2str(data.cmit_time), "</td></tr>\n          </tbody>\n        </table>\n      </div>\n\n    </div>\n\n  </div>\n  </div>\n  <section class=\"state\">\n\n  <div id=\"modalForm\" class=\"m-tool-bar clearfix\" method=\"post\">\n\n    <button id=\"sureBtn\" class=\"btn m-fr btn-primary\" onclick=\"m.on('submit')\">\u786E\u8BA4</button>\n    <button class=\"btn m-fr btn-info\" onclick=\"m.on('close')\">\u53D6\u6D88</button>\n    <p class=\"select-box m-fr\">\n    <b>\u8BF7\u9009\u62E9\u8BA2\u5355\u72B6\u6001</b>\n    <select name=\"pay_status\" id=\"pay_status\" onchange=\"m.on('pay-status-change',this)\" >\n      ").concat(this.renderOption(data.pays, data.pay_status - 0), "\n    </select>\n    </p>\n\n  </div>\n  </section>\n\n  <!-- \u64CD\u4F5C -->\n  <span class=\"m-close\" onclick=\"m.on('close')\">&times;</span>\n  </div>");
+      $('#order .m-modal').html(html).show();
+      setTimeout(function () {
+        m.handleModalRendered();
+        html = null;
+        m = null;
+      }, 500);
+    } //定义钩子
 
-    this.toTgOrderData.pay_status = state;
-    this.api_toTgOrder(this.toTgOrderData)
-      .then(data => {
+  }, {
+    key: "handleModalRendered",
+    value: function handleModalRendered() {
+      this.initStatusSelect();
+    }
+  }, {
+    key: "handleClose",
+    value: function handleClose() {
+      this.closeModal();
+    }
+  }, {
+    key: "handleOpen",
+    value: function handleOpen() {
+      var m = this;
+      this.api_getDetail().then(function (data) {
+        m.changeSureBtnClass();
+        setTimeout(function name() {
+          m.changeSureBtnClass();
+        }, 500);
+        m.renderContent(data);
+        m.openModal(); // m=null
+      });
+    }
+  }, {
+    key: "handleChange",
+    value: function handleChange() {
+      this.changeSureBtnClass();
+    }
+  }, {
+    key: "handleSbumit",
+    value: function handleSbumit() {
+      var m = this;
+      var state = $('#pay_status').val();
+
+      if (!this.u.verifyNumber(state)) {
+        alert('输入内容不合规范，请重新登录。请确保安全环境后再次执行！');
+        this.u.logout();
+        return;
+      }
+
+      this.toTgOrderData.pay_status = state;
+      this.api_toTgOrder(this.toTgOrderData).then(function (data) {
         m.u.refresh();
         m.closeModal();
-        m=state = null;
-      })
-      .catch(res => {
+        m = state = null;
+      }).catch(function (res) {
         alert(res.message);
         m.closeModal();
       });
-  }
+    } //执行器
 
-  //执行器
-  /**
-   *
-   * @param {string} name 事件名
-   */
-  on(name, eventEl) {
-    this.eventEl = eventEl;
-    name += '';
-    this.events[name].call(this);
-  }
-}
-let m = new Modal();
+    /**
+     *
+     * @param {string} name 事件名
+     */
+
+  }, {
+    key: "on",
+    value: function on(name, eventEl) {
+      this.eventEl = eventEl;
+      name += '';
+      this.events[name].call(this);
+    }
+  }]);
+
+  return Modal;
+}(API);
+
+var m = new Modal();

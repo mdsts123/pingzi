@@ -38,12 +38,15 @@ ol {
   float: right;
 }
 
-//显示
+//样式
 .m-hidden {
   display: none;
 }
 .m-show {
   display: block;
+}
+.m-danger{
+  color: red;
 }
 
 //组件样式
@@ -140,7 +143,7 @@ ol {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
   }
 }
 .state {
@@ -167,4 +170,15 @@ ol {
   .btn {
     margin: 0 10px;
   }
+}
+.m-accidentalTip {
+  background: rgba(221, 221, 221, 0.78);
+  font-size: 1.4em;
+  line-height: 2.2em;
+  padding: .2em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2000;
 }
