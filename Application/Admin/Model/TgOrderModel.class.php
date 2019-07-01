@@ -1,10 +1,10 @@
 <?php
 // +----------------------------------------------------------------------
-// | 爱云 [ 简单 高效 卓越 ]
+// | 推广订单模型
 // +----------------------------------------------------------------------
 // | Copyright (c) 2016 http://www.22cloud.com All rights reserved.
 // +----------------------------------------------------------------------
-// | Author: jry <93058680@qq.com>
+// | Author: andy <3297123230@qq.com>
 // +----------------------------------------------------------------------
 namespace Admin\Model;
 use Common\Model\ModelModel;
@@ -24,8 +24,6 @@ class TgOrderModel extends ModelModel {
      * @author jry <93058680@qq.com>
      */
     protected $_validate = array(
-        //验证订单号
-        //array('orderno', 'require', '订单号不能为空', self::MUST_VALIDATE, 'regex', self::MODEL_BOTH),
         //验证提交类型
         array('commit_type', 'require', '提交类型不能为空', self::MUST_VALIDATE, 'regex', self::MODEL_BOTH),
         //验证付款类型
@@ -33,7 +31,6 @@ class TgOrderModel extends ModelModel {
         // 验证会员账号
         array('username', 'require', '会员账号不能为空', self::MUST_VALIDATE, 'regex', self::MODEL_BOTH),
         array('username', '3,32', '会员账号长度为1-32个字符', self::MUST_VALIDATE, 'length', self::MODEL_BOTH),
-//        array('username', '/^(?!_)(?!\d)(?!.*?_$)[\w]+$/', '会员账号只可含有数字、字母、下划线且不以下划线开头结尾，不以数字开头！', self::MUST_VALIDATE, 'regex', self::MODEL_BOTH),
         array('reusername', 'username', '两次输入的会员账号不一致', self::EXISTS_VALIDATE, 'confirm', self::MODEL_INSERT),
 
     );

@@ -22,8 +22,9 @@ class UserController extends AdminController {
         $keyword   = I('keyword', '', 'string');
         $condition = array('like','%'.$keyword.'%');
         // 普通管理员
-        if('0' === session('user_auth.level') && '1' !== session('user_auth.uid')){
-            $map['id'] = ['gt','1'];
+        if('0' === session('user_auth.level')){
+            $map['level'] = ['egt','0'];
+            $map['level'] = ['elt','1'];
         }
         // 推广组长只能看到自己、自己组下的组员
         if('1' === session('user_auth.level')){
@@ -85,19 +86,51 @@ class UserController extends AdminController {
      */
     public function add() {
         if (IS_POST) {
+            if('0' === session('user_auth.level')){
+//                if('2' == $_POST['level']){
+//                    $this->error('权限级别不能选择：推广组员');
+//                }
+                if(null == $_POST['group_name']){
+                    $this->error('组别不能为空');
+                }
+            }
             if('1' === session('user_auth.level')){
-                if($_POST['level'] !== '2'){
+                if('2' !== $_POST['level']){
                     $this->error('权限级别只能选择：推广组员');
                 }
-                if(session('user_auth.group_name') !== $_POST['group_name']){
+                if(null == $_POST['group_name']){
+                    $_POST['group_name'] = session('user_auth.group_name');
+                }else{
                     $this->error('组别只能是：'.session('user_auth.group_name'));
                 }
             }
+
             $user_object = D('User');
             $data = $user_object->create();
             if ($data) {
-                $id = $user_object->add($data);
+                $id = $user_object->add($data); // user id
                 if ($id) {
+                    if('1' == session('user_auth.level')){
+                        $auth = select_list_as_tree('Group');
+                        foreach ($auth as $k => $v){
+                            $group_id = $k;
+                        }
+                        $access = D('Access');
+                        $arr = array(
+                            'uid'           => $id,
+                            'group'         => $group_id,
+                            'create_time'   => time(),
+                            'update_time'   => time(),
+                            'status'        => 1,
+                            'group_name'    => session('user_auth.group_name'),
+                            'level'         => 2,
+                        );
+                        if($access->create($arr)){
+                            if($access->add()){
+                                $this->success('新增成功', U('index'));
+                            }
+                        }
+                    }
                     $this->success('新增成功', U('index'));
                 } else {
                     $this->error('新增失败');

@@ -23,14 +23,16 @@ class AccessController extends AdminController {
         $keyword = I('keyword', '', 'string');
         $condition = array('like','%'.$keyword.'%');
         // 管理员
-        if('0' === session('user_auth.level') && '1' !== session('user_auth.uid')){
+        if('0' === session('user_auth.level')){
             $map['id'] = ['gt','1'];
+            $map['level'] = ['egt','0'];
+            $map['level'] = ['elt','1'];
         }
         // 推广组长
-        if('1' === session('user_auth.level')){
-            $map['id'] = ['gt','1'];
-            $map['group_name'] = session('user_auth.group_name');
-        }
+//        if('1' === session('user_auth.level')){
+//            $map['id'] = ['gt','1'];
+//            $map['group_name'] = session('user_auth.group_name');
+//        }
         $map['id|uid'] = array(
             $condition,
             $condition,
@@ -93,12 +95,13 @@ class AccessController extends AdminController {
      * @author jry <93058680@qq.com>
      */
     public function add(){
+        $where['id'] = $_POST['uid'];
+        $user = D('User')->where($where)->find();
+
         if (IS_POST) {
             $access_object = D('Access');
             $map['uid'] = $_POST['uid'];
             $auth = $access_object->where($map)->find();
-            $where['id'] = $_POST['uid'];
-            $user = D('User')->where($where)->find();
             if(empty($user)){
                 $this->error('该用户不存在，请先添加用户');
             }
@@ -110,31 +113,16 @@ class AccessController extends AdminController {
                 if(empty($_POST['group'])){
                     $this->error('请选择用户组');
                 }
-                if(empty($_POST['group_name'])){
-                    $this->error('请输入组别');
-                }
-                if($_POST['group_name'] !== $user['group_name']){
-                    $this->error('组别只能是：'.$user['group_name']);
-                }
             }
             // 推广组长
             if('1' === session('user_auth.level')){
                 if(empty($_POST['group'])){
                     $this->error('请选择用户组');
                 }
-                if(empty($_POST['group_name'])){
-                    $this->error('请输入组别');
-                }
-                if($_POST['group_name'] !== $user['group_name']){
-                    $this->error('该用户的组别只能是：'.$user['group_name']);
-                }
-                if($user['group_name'] !== session('user_auth.group_name')){
-                    $this->error('您暂时没有权限操作该用户');
-                }
             }
-
             $data = $access_object->create();
-
+            $data['group_name'] = $user['group_name'];
+            $data['level'] = $user['level'];
             if ($data) {
                 if ($access_object->add($data)) {
                     $this->success('新增成功', U('index'));
@@ -149,9 +137,11 @@ class AccessController extends AdminController {
             $builder = new \Common\Builder\FormBuilder();
             $builder->setMetaTitle('新增配置')  //设置页面标题
                     ->setPostUrl(U('add')) //设置表单提交地址
+                    ->addFormItem('group_name', 'hidden', '组别', '组别')
+                    ->addFormItem('level', 'hidden', '权限级别', '权限级别')
                     ->addFormItem('uid', 'uid', 'UID', '用户ID')
                     ->addFormItem('group', 'select', '用户组', '不同用户组对应相应的权限', select_list_as_tree('Group'))
-                    ->addFormItem('group_name', 'text', '组别', '组别')
+                    ->setFormData(array('group_name'=> $user['group_name'], 'level'=> $user['level']))
                     ->display();
         }
     }
@@ -167,10 +157,10 @@ class AccessController extends AdminController {
         if(session('user_auth.uid') == $auth['uid']){
             $this->error('系统不允许用户操作自己所属用户组');
         }
-
+        $where['id'] = $_POST['uid'];
+        $user = D('User')->where($where)->find();
         if (IS_POST) {
-            $where['id'] = $_POST['uid'];
-            $user = D('User')->where($where)->find();
+
             if(empty($user)){
                 $this->error('该用户不存在，请先添加用户');
             }
@@ -179,12 +169,6 @@ class AccessController extends AdminController {
                 if(empty($_POST['group'])){
                     $this->error('请选择用户组');
                 }
-                if(empty($_POST['group_name'])){
-                    $this->error('请输入组别');
-                }
-                if($_POST['group_name'] !== $user['group_name']){
-                    $this->error('组别只能是：'.$user['group_name']);
-                }
             }
 
             // 推广组长
@@ -192,18 +176,11 @@ class AccessController extends AdminController {
                 if(empty($_POST['group'])){
                     $this->error('请选择用户组');
                 }
-                if(empty($_POST['group_name'])){
-                    $this->error('请输入组别');
-                }
-                if($_POST['group_name'] !== $user['group_name']){
-                    $this->error('该用户的组别只能是：'.$user['group_name']);
-                }
-                if($user['group_name'] !== session('user_auth.group_name')){
-                    $this->error('您暂时没有权限操作该用户');
-                }
             }
 
             $data = $access_object->create();
+            $data['group_name'] = $user['group_name'];
+            $data['level'] = $user['level'];
             if ($data) {
                 if ($access_object->save($data)) {
                     $this->success('更新成功', U('index'));
@@ -219,9 +196,11 @@ class AccessController extends AdminController {
             $builder->setMetaTitle('编辑配置')  // 设置页面标题
                     ->setPostUrl(U('edit'))    // 设置表单提交地址
                     ->addFormItem('id', 'hidden', 'ID', 'ID')
+                    ->addFormItem('group_name', 'hidden', '组别', '组别')
+                    ->addFormItem('level', 'hidden', '权限级别', '权限级别')
                     ->addFormItem('uid', 'uid', 'UID', '用户ID')
                     ->addFormItem('group', 'select', '用户组', '不同用户组对应相应的权限', select_list_as_tree('Group'))
-                    ->addFormItem('group_name', 'text', '组别', '组别')
+                    ->setFormData(array('group_name'=> $user['group_name'], 'level'=> $user['level']))
                     ->setFormData(D('Access')->find($id))
                     ->display();
         }

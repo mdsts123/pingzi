@@ -1,10 +1,10 @@
 <?php
 // +----------------------------------------------------------------------
-// | 爱云 [ 简单 高效 卓越 ]
+// | 推广订单
 // +----------------------------------------------------------------------
 // | Copyright (c) 2016 http://www.22cloud.com All rights reserved.
 // +----------------------------------------------------------------------
-// | Author: jry <93058680@qq.com>
+// | Author: andy <3297123230@qq.com>
 // +----------------------------------------------------------------------
 namespace Admin\Controller;
 use Common\Util\Think\Page;
@@ -127,7 +127,8 @@ class TgOrderController extends AdminController {
             ->addFormItem('cmit_time', 'hidden', '提交时间', '提交时间')
             ->addFormItem('groupname', 'hidden', '组别', '组别')
                 ->addFormItem('commit_type', 'radio', '提交类型', '提交类型', array('0' => '充值', '1' => '彩金'))
-                ->addFormItem('pay_type', 'radio', '付款类型', '付款类型', array('0' => 'C/B/R扫码', '1' => 'A/D扫码', '2' => '银行卡转账', '3' => '第三方'))
+                ->addFormItem('pay_type', 'radio', '付款类型', '付款类型', array('0' => 'A扫码', '1' => 'B扫码','2'=> 'C扫码', '3'=>'D扫码', '4' => '银行卡转账', '5' => '第三方')) //凤凰
+            //    ->addFormItem('pay_type', 'radio', '付款类型', '付款类型', array('0' => 'A扫码', '1' => 'B扫码','2'=> 'C扫码', '3'=>'D扫码','4'=>'E扫码', '5' => '银行卡转账', '6' => '第三方'))
                 ->addFormItem('username', 'text', '会员账号', '会员账号')
                 ->addFormItem('reusername', 'text', '确认账号', '确认账号')
                 ->addFormItem('amount', 'text', '充值金额', '充值金额')
@@ -168,7 +169,8 @@ class TgOrderController extends AdminController {
                 ->addFormItem('cmit_time', 'hidden', '提交时间', '提交时间')
                 ->addFormItem('img_src', 'picture', '上传凭证', '上传凭证')
                 ->addFormItem('commit_type', 'radio', '提交类型', '提交类型', array('0' => '充值', '1' => '彩金'))
-                ->addFormItem('pay_type', 'radio', '付款类型', '付款类型', array('0' => 'C/B/R扫码', '1' => 'A/D扫码', '2' => '银行卡转账', '3' => '第三方'))
+                ->addFormItem('pay_type', 'radio', '付款类型', '付款类型', array('0' => 'A扫码', '1' => 'B扫码','2'=> 'C扫码', '3'=>'D扫码', '4' => '银行卡转账', '5' => '第三方')) //凤凰
+            //    ->addFormItem('pay_type', 'radio', '付款类型', '付款类型', array('0' => 'A扫码', '1' => 'B扫码','2'=> 'C扫码', '3'=>'D扫码','4'=>'E扫码', '5' => '银行卡转账', '6' => '第三方'))
                 ->addFormItem('username', 'text', '会员账号', '会员账号')
                 ->addFormItem('amount', 'text', '充值金额', '充值金额')
                 ->addFormItem('desc', 'text', '备注', '备注')
@@ -192,15 +194,38 @@ class TgOrderController extends AdminController {
         }elseif (1 == $info['commit_type']){
             $info['commit_type_name'] = "彩金";
         }
+        // 凤凰
         if(0 == $info['pay_type']){
-            $info['pay_type_name'] = "C/B/R扫码";
+            $info['pay_type_name'] = "A扫码";
         }elseif (1 == $info['pay_type']){
-            $info['pay_type_name'] = "A/D扫码";
+            $info['pay_type_name'] = "B扫码";
         }elseif (2 == $info['pay_type']){
-            $info['pay_type_name'] = "银行卡转账";
+            $info['pay_type_name'] = "C扫码";
         }elseif (3 == $info['pay_type']){
+            $info['pay_type_name'] = "D扫码";
+        }elseif (4 == $info['pay_type']){
+            $info['pay_type_name'] = "银行卡转账";
+        }elseif (5 == $info['pay_type']){
             $info['pay_type_name'] = "第三方";
         }
+
+        // 天天
+//        if(0 == $info['pay_type']){
+//            $info['pay_type_name'] = "A扫码";
+//        }elseif (1 == $info['pay_type']){
+//            $info['pay_type_name'] = "B扫码";
+//        }elseif (2 == $info['pay_type']){
+//            $info['pay_type_name'] = "C扫码";
+//        }elseif (3 == $info['pay_type']){
+//            $info['pay_type_name'] = "D扫码";
+//        }elseif (4 == $info['pay_type']){
+//            $info['pay_type_name'] = "E扫码";
+//        }elseif (5 == $info['pay_type']){
+//            $info['pay_type_name'] = "银行卡转账";
+//        }elseif (6 == $info['pay_type']){
+//            $info['pay_type_name'] = "第三方";
+//        }
+
         if(0 == $info['pay_status']){
             $info['pay_status_name'] = "未处理";
         }elseif (1 == $info['pay_status']){

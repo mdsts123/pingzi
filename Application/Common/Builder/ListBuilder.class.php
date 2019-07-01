@@ -626,16 +626,36 @@ class ListBuilder extends ControllerController
         $data['level_name'] = "推广组员";
       }
 
-      // 支付类型
+      // 支付类型 - 凤凰
       if (0 == $data['pay_type']) {
-        $data['pay_type_name'] = "C/B/R扫码";
+        $data['pay_type_name'] = "A扫码";
       } elseif (1 == $data['pay_type']) {
-        $data['pay_type_name'] = "A/D扫码";
+        $data['pay_type_name'] = "B扫码";
       } elseif (2 == $data['pay_type']) {
-        $data['pay_type_name'] = "银行卡转账";
+        $data['pay_type_name'] = "C扫码";
       } elseif (3 == $data['pay_type']) {
+          $data['pay_type_name'] = "D扫码";
+      } elseif (4 == $data['pay_type']) {
+          $data['pay_type_name'] = "银行卡转账";
+      } elseif (5 == $data['pay_type']) {
           $data['pay_type_name'] = "第三方";
       }
+        // 支付类型 - 天天
+//        if (0 == $data['pay_type']) {
+//            $data['pay_type_name'] = "A扫码";
+//        } elseif (1 == $data['pay_type']) {
+//            $data['pay_type_name'] = "B扫码";
+//        } elseif (2 == $data['pay_type']) {
+//            $data['pay_type_name'] = "C扫码";
+//        } elseif (3 == $data['pay_type']) {
+//            $data['pay_type_name'] = "D扫码";
+//        } elseif (4 == $data['pay_type']) {
+//            $data['pay_type_name'] = "E扫码";
+//        } elseif (5 == $data['pay_type']) {
+//            $data['pay_type_name'] = "银行卡转账";
+//        } elseif (6 == $data['pay_type']) {
+//            $data['pay_type_name'] = "第三方";
+//        }
 
       // 状态
       if (0 == $data['pay_status']) {

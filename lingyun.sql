@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50643
 File Encoding         : 65001
 
-Date: 2019-06-28 21:03:59
+Date: 2019-06-30 18:28:18
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -28,19 +28,20 @@ CREATE TABLE `ly_admin_access` (
   `sort` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '排序',
   `status` tinyint(3) NOT NULL DEFAULT '0' COMMENT '状态',
   `group_name` varchar(60) DEFAULT NULL COMMENT '组别',
+  `level` tinyint(4) DEFAULT NULL COMMENT '权限级别  0-超管 1-推广组长  2-推广组员',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='后台管理员与用户组对应关系表';
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='后台管理员与用户组对应关系表';
 
 -- ----------------------------
 -- Records of ly_admin_access
 -- ----------------------------
-INSERT INTO `ly_admin_access` VALUES ('1', '1', '1', '1438651748', '1438651748', '0', '1', 'admin');
-INSERT INTO `ly_admin_access` VALUES ('7', '6', '15', '1561197935', '1561644172', '0', '1', '小金刚');
-INSERT INTO `ly_admin_access` VALUES ('10', '9', '16', '1561205782', '1561644248', '0', '1', '小金刚');
-INSERT INTO `ly_admin_access` VALUES ('11', '11', '15', '1561382304', '1561382304', '0', '1', '呆萌小霸王');
-INSERT INTO `ly_admin_access` VALUES ('12', '13', '16', '1561620507', '1561620507', '0', '1', '小金刚');
-INSERT INTO `ly_admin_access` VALUES ('16', '16', '17', '1561694773', '1561726007', '0', '1', '财务');
-INSERT INTO `ly_admin_access` VALUES ('17', '18', '16', '1561698297', '1561698297', '0', '1', '呆萌小霸王');
+INSERT INTO `ly_admin_access` VALUES ('1', '1', '1', '1438651748', '1438651748', '0', '1', 'admin', null);
+INSERT INTO `ly_admin_access` VALUES ('2', '2', '2', '1561889821', '1561889821', '0', '1', 'fhcp11', '1');
+INSERT INTO `ly_admin_access` VALUES ('3', '3', '2', '1561889907', '1561889907', '0', '1', 'fhcp22', '1');
+INSERT INTO `ly_admin_access` VALUES ('4', '4', '2', '1561890020', '1561890020', '0', '1', 'fhcp33', '1');
+INSERT INTO `ly_admin_access` VALUES ('5', '5', '2', '1561890103', '1561890103', '0', '1', 'fhcp55', '1');
+INSERT INTO `ly_admin_access` VALUES ('6', '6', '2', '1561890155', '1561890155', '0', '1', 'fhcp66', '1');
+INSERT INTO `ly_admin_access` VALUES ('7', '7', '2', '1561890192', '1561890192', '0', '1', 'fhcp77', '1');
 
 -- ----------------------------
 -- Table structure for ly_admin_addon
@@ -141,10 +142,8 @@ CREATE TABLE `ly_admin_group` (
 -- Records of ly_admin_group
 -- ----------------------------
 INSERT INTO `ly_admin_group` VALUES ('1', '0', '超级管理员', '', '', '1426881003', '1427552428', '0', '1');
-INSERT INTO `ly_admin_group` VALUES ('15', '0', '推广组长', '', '{\"Admin\":[\"17\",\"18\",\"23\",\"24\",\"25\",\"26\",\"27\",\"28\",\"29\",\"30\",\"31\",\"54\",\"55\",\"56\",\"57\",\"58\",\"59\"]}', '1561197850', '1561725386', '0', '1');
-INSERT INTO `ly_admin_group` VALUES ('16', '15', '推广组组员', '', '{\"Admin\":[\"17\",\"18\",\"54\",\"55\",\"56\",\"57\",\"58\",\"59\"]}', '1561198029', '1561725300', '0', '1');
-INSERT INTO `ly_admin_group` VALUES ('17', '1', '财务', '', '{\"Admin\":[\"17\",\"18\",\"19\",\"20\",\"21\",\"22\",\"23\",\"24\",\"25\",\"26\",\"27\",\"28\",\"29\",\"30\",\"31\",\"36\",\"37\",\"38\",\"39\",\"40\",\"41\",\"42\",\"43\",\"44\",\"53\",\"54\",\"55\",\"56\",\"57\",\"58\",\"59\"]}', '1561694730', '1561698905', '0', '1');
-INSERT INTO `ly_admin_group` VALUES ('18', '0', '客服', '', '{\"Admin\":[\"36\",\"37\",\"38\",\"39\",\"40\"]}', '1561706708', '1561709083', '0', '1');
+INSERT INTO `ly_admin_group` VALUES ('2', '0', '推广组长', '', '{\"Admin\":[\"17\",\"18\",\"23\",\"24\",\"25\",\"26\",\"27\",\"54\",\"55\",\"56\",\"57\",\"58\",\"59\"]}', '1561197850', '1561880695', '0', '1');
+INSERT INTO `ly_admin_group` VALUES ('3', '2', '推广组组员', '', '{\"Admin\":[\"17\",\"18\",\"54\",\"55\",\"56\",\"57\",\"58\",\"59\"]}', '1561198029', '1561725300', '0', '1');
 
 -- ----------------------------
 -- Table structure for ly_admin_hook
@@ -347,7 +346,7 @@ CREATE TABLE `ly_admin_user` (
   `score` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '积分',
   `money` decimal(11,2) NOT NULL DEFAULT '0.00' COMMENT '余额',
   `reg_ip` bigint(20) NOT NULL DEFAULT '0' COMMENT '注册IP',
-  `level` tinyint(4) NOT NULL DEFAULT '3' COMMENT '权限级别  1-超管 2-推广组长  3-推广组员',
+  `level` tinyint(4) unsigned NOT NULL COMMENT '权限级别  0-超管 1-推广组长  2-推广组员',
   `group_name` varchar(60) DEFAULT NULL COMMENT '组别',
   `reg_type` varchar(15) NOT NULL DEFAULT '' COMMENT '注册方式',
   `create_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
@@ -355,20 +354,18 @@ CREATE TABLE `ly_admin_user` (
   `status` tinyint(3) NOT NULL DEFAULT '0' COMMENT '状态',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `username` (`username`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='用户账号表';
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='用户账号表';
 
 -- ----------------------------
 -- Records of ly_admin_user
 -- ----------------------------
 INSERT INTO `ly_admin_user` VALUES ('1', '1', '超级管理员', 'admin', '5ea90e22d17f2673649210a83027449c', 'xy35500@qq.com', '0', '13908888777', '0', '0', '0', '0.00', '0', '0', 'admin', '', '1438651748', '1510819892', '1');
-INSERT INTO `ly_admin_user` VALUES ('9', '1', '推广1组张三', 'admin002', 'afe390ceb41577c29364fd580c0a681d', '384755755@qq.com', '0', '13994598588', '0', '0', '0', '0.00', '2130706433', '2', '小金刚', 'admin001', '1561205766', '1561701579', '1');
-INSERT INTO `ly_admin_user` VALUES ('6', '1', '推广1组组长', 'admin001', 'f4a893ca6e25f9f985ab1ab39953368a', '384755555@qq.com', '0', '13994558588', '0', '0', '0', '0.00', '2130706433', '1', '小金刚', 'admin', '1561197898', '1561696919', '1');
-INSERT INTO `ly_admin_user` VALUES ('11', '1', '推广2组', 'admin003', 'f66fe31d0868cea5064b885923df459b', '56841@qq.com', '0', '13945885233', '0', '0', '0', '0.00', '2130706433', '1', '呆萌小霸王', 'admin', '1561382281', '1561382281', '1');
-INSERT INTO `ly_admin_user` VALUES ('13', '1', '王麻子', 'admin004', 'fe7db20205673f4ba7debd7f28163159', '5524555614@qq.com', '0', '15935865666', '0', '0', '0', '0.00', '2130706433', '2', '小金刚', 'admin001', '1561620478', '1561696564', '1');
-INSERT INTO `ly_admin_user` VALUES ('14', '1', '王五11', 'admin005', 'fe7db20205673f4ba7debd7f28163159', '5524544614@qq.com', '0', '15935865216', '0', '0', '0', '0.00', '2130706433', '2', '呆萌小霸王', 'admin001', '1561629909', '1561695977', '1');
-INSERT INTO `ly_admin_user` VALUES ('15', '1', '网红', 'admin006', 'ddc40312627413f83fd2de7ef2a499fe', '55211774614@qq.com', '0', '15935865116', '0', '0', '0', '0.00', '2130706433', '2', '呆萌小霸王', 'admin003', '1561635739', '1561635739', '1');
-INSERT INTO `ly_admin_user` VALUES ('16', '1', '财务', 'admin6', '5934c2cb5a87570b508f3eea25d469a7', '552433614@qq.com', '0', '15935865333', '0', '0', '0', '0.00', '2130706433', '0', '财务', 'admin', '1561694588', '1561696447', '1');
-INSERT INTO `ly_admin_user` VALUES ('18', '1', '小马', 'admin007', 'f6f1ddc8c20ad0695f7ded55d80f854a', '552412614@qq.com', '0', '15937765616', '0', '0', '0', '0.00', '2130706433', '2', '呆萌小霸王', 'admin001', '1561696819', '1561696819', '1');
+INSERT INTO `ly_admin_user` VALUES ('2', '1', 'fhcp11', 'fhcp11', 'df47ab9244054ac4fad9a809221f5509', '', '0', '', '0', '0', '0', '0.00', '2130706433', '1', 'fhcp11', 'admin', '1561889797', '1561890313', '1');
+INSERT INTO `ly_admin_user` VALUES ('3', '1', 'fhcp22', 'fhcp22', 'f9a20d4b3e6d2b4ed788975831401daf', '', '0', '', '0', '0', '0', '0.00', '2130706433', '1', 'fhcp22', 'admin', '1561889890', '1561890324', '1');
+INSERT INTO `ly_admin_user` VALUES ('4', '1', 'fhcp33', 'fhcp33', '3b413a8aaae4a5683c00b9f015fa84fa', '', '0', '', '0', '0', '0', '0.00', '2130706433', '1', 'fhcp33', 'admin', '1561889944', '1561889944', '1');
+INSERT INTO `ly_admin_user` VALUES ('5', '1', 'fhcp55', 'fhcp55', '61fd9e57515b7fabef62d6b7831641f1', '', '0', '', '0', '0', '0', '0.00', '2130706433', '1', 'fhcp55', 'admin', '1561890092', '1561890092', '1');
+INSERT INTO `ly_admin_user` VALUES ('6', '1', 'fhcp66', 'fhcp66', '28eb05cfd1328ce8da3961eaee8eb5c2', '', '0', '', '0', '0', '0', '0.00', '2130706433', '1', 'fhcp66', 'admin', '1561890134', '1561890134', '1');
+INSERT INTO `ly_admin_user` VALUES ('7', '1', 'fhcp77', 'fhcp77', 'd7df232251450352bb0c489c48f06278', '', '0', '', '0', '0', '0', '0.00', '2130706433', '1', 'fhcp77', 'admin', '1561890181', '1561890181', '1');
 
 -- ----------------------------
 -- Table structure for ly_bankpay
@@ -612,15 +609,8 @@ CREATE TABLE `ly_tg_order` (
   `operatime` int(11) DEFAULT NULL COMMENT '操作时间',
   `groupname` varchar(60) DEFAULT NULL COMMENT '组别',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ly_tg_order
 -- ----------------------------
-INSERT INTO `ly_tg_order` VALUES ('1', '2019062456100495', '0', '3', 'andy', '100.00', '0.00', '/Uploads/2019-06-28/5d15cc8208cb1.png', '0', null, null, '测试一下', 'admin001', '', '1561372840', null, '小金刚');
-INSERT INTO `ly_tg_order` VALUES ('11', '2019062455555110', '0', '1', 'kkk', '50.00', '0.00', '/Uploads/2019-06-24/5d10cc9970084.png', '0', null, null, '测试一下', 'admin002', '', '1561379469', null, '小金刚');
-INSERT INTO `ly_tg_order` VALUES ('13', '2019062410257999', '1', '2', 'vvv', '120.00', '0.00', '/Uploads/2019-06-26/5d135bc6c2cd0.png', '2', null, null, '推广2组组长', 'admin003', 'admin', '1561382420', '1561705367', '呆萌小霸王');
-INSERT INTO `ly_tg_order` VALUES ('15', '2019062651551011', '0', '0', 'IPGS7G', '130.00', '0.00', '/Uploads/2019-06-26/5d136416036e3.png', '0', null, null, '测试', 'admin003', null, '1561551881', null, '呆萌小霸王');
-INSERT INTO `ly_tg_order` VALUES ('17', '2019062852100100', '0', '0', 'wahaha', '100.00', '0.00', '/Uploads/2019-06-28/5d160a46ecc6b.png', '0', null, null, 'wahaha测试', 'admin001', null, '1561725513', null, '小金刚');
-INSERT INTO `ly_tg_order` VALUES ('18', '2019062849509998', '0', '0', 'gegememe', '100.00', '0.00', '/Uploads/2019-06-28/5d160a85685fa.png', '0', null, null, 'gegememe', 'admin002', '', '1561725591', null, '小金刚');
-INSERT INTO `ly_tg_order` VALUES ('19', '2019062810251989', '1', '3', 'kkxx', '60.00', '0.00', '/Uploads/2019-06-28/5d160aa4308d1.png', '0', null, null, 'kkxx', 'admin002', null, '1561725623', null, '小金刚');
