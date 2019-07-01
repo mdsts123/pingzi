@@ -72,7 +72,7 @@ class TgOrderController extends AdminController {
         ->addTopButton('delete')  // 添加删除按钮
         ->setTabNav($tab_list, $group)
             ->setSearch('请输入订单号/会员账号/收款人/付款人/提交用户', U('index'))
-            ->addTableColumn('id', 'ID')
+            //->addTableColumn('id', 'ID')
             ->addTableColumn('orderno', '订单号')
             ->addTableColumn('img_src', '凭证', 'picture', null, true)
             ->addTableColumn('cmit_time', '提交时间')
@@ -189,6 +189,7 @@ class TgOrderController extends AdminController {
         // 获取推广订单信息
         $tg_order = D('TgOrder');
         $info = $tg_order->find($id);
+
         if(0 == $info['commit_type']){
             $info['commit_type_name'] = "充值";
         }elseif (1 == $info['commit_type']){
