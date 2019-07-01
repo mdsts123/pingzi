@@ -17,9 +17,10 @@ class Sfzfdd extends \Think\Controller
 
     protected function _initialize()
     {
-        $this->MerchantId = 'a11-1274325248';//站长id
-        $this->Memberkey = '6f5251c24b354569b6df6a8349378c45';//密钥
-        $this->url = 'http://payback.2448880.com/foxpay/forth/pay/index';//接入地址
+        // 凤凰
+        $this->MerchantId = 'a131453857728';//站长id
+        $this->Memberkey = 'aa7ed710071a4a6abfb2dd64f7cf95f4';//密钥
+        $this->url = 'http://payback.4199968.com/foxpay/forth/pay/index';//接入地址
     }
     /**
      * 四方支付订单生成接口
@@ -53,7 +54,7 @@ class Sfzfdd extends \Think\Controller
         //站长系统订单号，该值需在商户系统内唯一，SRC接口会校验该值是否唯一(必填非加入签名)
         $siFang['OrderId'] = trim($data['MerchantOrderNumber']);
         //站长系统程序的服务器ip地址(必填非加入签名)
-        $siFang['ClientIP'] = '175.41.18.34';
+        $siFang['ClientIP'] = '170.178.183.182';
         //终端：PC、Mobile、APP
         $SourceName = 'PC';
         if(isMobile()){

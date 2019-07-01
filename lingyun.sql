@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50643
 File Encoding         : 65001
 
-Date: 2019-06-30 18:28:18
+Date: 2019-07-01 13:10:49
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -289,7 +289,7 @@ CREATE TABLE `ly_admin_upload` (
   `sort` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '排序',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '状态',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='文件上传表';
+) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='文件上传表';
 
 -- ----------------------------
 -- Records of ly_admin_upload
@@ -327,6 +327,9 @@ INSERT INTO `ly_admin_upload` VALUES ('33', '6', '2X.png', '/Uploads/2019-06-28/
 INSERT INTO `ly_admin_upload` VALUES ('34', '9', '7O.png', '/Uploads/2019-06-28/5d160a85685fa.png', '', 'png', '98064', 'a1a75b799feb3d3374b4dc1e62827db0', '1cf4be5de70ba9b7576aacc55d3afae302e4b0f3', 'Local', '0', '1561725573', '1561725573', '0', '1');
 INSERT INTO `ly_admin_upload` VALUES ('35', '9', '2X.png', '/Uploads/2019-06-28/5d160aa4308d1.png', '', 'png', '82613', '4cabf487e0992237d490147bcc4170f1', '68d01831efa931d4701ebac164c56dfeb37eecaf', 'Local', '0', '1561725604', '1561725604', '0', '1');
 INSERT INTO `ly_admin_upload` VALUES ('36', '9', 'photo_2019-05-06_16-36-48.jpg', '/Uploads/2019-06-28/5d160ad261419.jpg', '', 'jpg', '23540', '2f2ea190f1fce311737acc5ec157437d', 'e1686b876f674dd78d77742a96696444e76992e6', 'Local', '0', '1561725650', '1561725650', '0', '1');
+INSERT INTO `ly_admin_upload` VALUES ('37', '2', 'ss.png', '/Uploads/2019-06-30/5d189e67ed36d.png', '', 'png', '87819', '74be886a8d6a7a059e3fc10ce15d1a4f', '26bfddc7a46a22fb7e155983d7deb90fd824ca1d', 'Local', '0', '1561894503', '1561894503', '0', '1');
+INSERT INTO `ly_admin_upload` VALUES ('38', '2', 'ss.png', '/Uploads/2019-06-30/5d189e7f4f751.png', '', 'png', '87819', '74be886a8d6a7a059e3fc10ce15d1a4f', '26bfddc7a46a22fb7e155983d7deb90fd824ca1d', 'Local', '0', '1561894527', '1561894527', '0', '1');
+INSERT INTO `ly_admin_upload` VALUES ('39', '2', '2X.png', '/Uploads/2019-06-30/5d189e8a440d5.png', '', 'png', '82613', '4cabf487e0992237d490147bcc4170f1', '68d01831efa931d4701ebac164c56dfeb37eecaf', 'Local', '0', '1561894538', '1561894538', '0', '1');
 
 -- ----------------------------
 -- Table structure for ly_admin_user
@@ -609,8 +612,9 @@ CREATE TABLE `ly_tg_order` (
   `operatime` int(11) DEFAULT NULL COMMENT '操作时间',
   `groupname` varchar(60) DEFAULT NULL COMMENT '组别',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ly_tg_order
 -- ----------------------------
+INSERT INTO `ly_tg_order` VALUES ('4', '2019063052484910', '1', '3', 'andy', '100.00', '0.00', '/Uploads/2019-06-30/5d189e8a440d5.png', '0', null, null, '测试', 'fhcp11', null, '1561894529', null, 'fhcp11');
