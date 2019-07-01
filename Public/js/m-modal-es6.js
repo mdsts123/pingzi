@@ -77,10 +77,23 @@ class Modal extends API {
   //定义事件
   constructor() {
     super();
+    this.compatiblePrompt()
     this.preventOperationEvents();
     this.initEvents();
   }
   //定义操作
+  /**
+   * 兼容提示
+   * ie全不支持Promise
+   */
+  compatiblePrompt() {
+    if (!window['Promise']) {
+      $('.m-accidentalTip').show();
+      alert('请使用急速模式或谷歌浏览器');
+    }else{
+      $('.m-accidentalTip').hide();
+    }
+  }
   //阻止操作按钮默认事件
   preventOperationEvents() {
     this.u.removeHref("[name='operation']");

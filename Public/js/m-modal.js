@@ -150,16 +150,33 @@ function (_API) {
 
     _defineProperty(_assertThisInitialized(_this), "events", []);
 
+    _this.compatiblePrompt();
+
     _this.preventOperationEvents();
 
     _this.initEvents();
 
     return _this;
   } //定义操作
-  //阻止操作按钮默认事件
+
+  /**
+   * 兼容提示
+   * ie全不支持Promise
+   */
 
 
   _createClass(Modal, [{
+    key: "compatiblePrompt",
+    value: function compatiblePrompt() {
+      if (!window['Promise']) {
+        $('.m-accidentalTip').show();
+        alert('请使用急速模式或谷歌浏览器');
+      } else {
+        $('.m-accidentalTip').hide();
+      }
+    } //阻止操作按钮默认事件
+
+  }, {
     key: "preventOperationEvents",
     value: function preventOperationEvents() {
       this.u.removeHref("[name='operation']");
