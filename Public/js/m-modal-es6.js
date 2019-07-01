@@ -1,3 +1,4 @@
+// $.load('adfadfdf')
 /**
  *工具类
  */
@@ -23,6 +24,17 @@ class Utils {
     select += '';
     $(select).removeAttr('href');
   }
+  /**
+   * 内部状态码审核
+   */
+  verifyInStatusCode(num) {
+    num -= 0;
+    //目前 200 和201 都ok
+    if (num === 200 || num === 201) {
+      return true;
+    }
+    return false;
+  }
 }
 
 /**
@@ -37,28 +49,31 @@ class API {
         url: '/admin.php?s=/Admin/TgOrder/payTgOrder/id/4.html',
         success(res) {
           res = JSON.parse(res);
-          resolve(res.data);
+          if (!_utils.verifyInStatusCode(res.code)) {
+            $.alert('反馈数据错误，请联系技术人员解决。')
+            return reject(res);
+          } else {
+            resolve(res.data);
+          }
         },
       });
     });
   }
 
   api_toTgOrder(data) {
-    console.log(1);
-
-    let url = '/admin.php?s=/Admin/TgOrder/toTgOrder';
     return new Promise((resolve, reject) => {
       $.ajax({
         type: 'post',
-        url,
+        url:'/admin.php?s=/Admin/TgOrder/toTgOrder',
         data,
         success(res) {
-          url = null;
           res = JSON.parse(res);
-          if (res.code !== 200) {
+          if (!_utils.verifyInStatusCode(res.code)) {
+            $.alert('反馈数据错误，请联系技术人员解决。')
             return reject(res);
+          } else {
+            resolve(res.data);
           }
-          resolve(res);
         },
       });
     });
@@ -72,16 +87,21 @@ class Modal extends API {
   eventEl;
   toTgOrderData = {};
   status = 0; //默认未处理
-  u = new Utils();
   events = []; //时间列表
   //定义事件
   constructor() {
     super();
-    this.compatiblePrompt()
+    this.windowDeployUtils();
+    this.compatiblePrompt();
     this.preventOperationEvents();
     this.initEvents();
   }
   //定义操作
+  windowDeployUtils() {
+    if (window) {
+      window['_utils'] = new Utils();
+    }
+  }
   /**
    * 兼容提示
    * ie全不支持Promise
@@ -89,14 +109,14 @@ class Modal extends API {
   compatiblePrompt() {
     if (!window['Promise']) {
       $('.m-accidentalTip').show();
-      alert('请使用急速模式或谷歌浏览器');
-    }else{
+      $.alert('请使用急速模式或谷歌浏览器');
+    } else {
       $('.m-accidentalTip').hide();
     }
   }
   //阻止操作按钮默认事件
   preventOperationEvents() {
-    this.u.removeHref("[name='operation']");
+    _utils.removeHref("[name='operation']");
   }
   /**
    * 初始 状态选项
@@ -150,7 +170,7 @@ class Modal extends API {
   <!-- 图片详情 image-text -->
   <div class="m-row data-container">
   <div class="m-col-6 m-img-box">
-    <img src="${this.u.nullfy2str(data.img_src)}" alt="">
+    <img src="${_utils.nullfy2str(data.img_src)}" alt="">
   </div>
   <div class="m-col-6 ">
     <div class="m-debar">
@@ -161,33 +181,33 @@ class Modal extends API {
           <thead>
             <tr>
               <th>ID</th>
-              <th>${this.u.nullfy2str(data.id)}</th>
+              <th>${_utils.nullfy2str(data.id)}</th>
             </tr>
           </thead>
           <tbody>
-          <tr><td>订单号</td><td>${this.u.nullfy2str(data.orderno)}</td></tr>
-          <tr><td>提交类型</td><td>${this.u.nullfy2str(
+          <tr><td>订单号</td><td>${_utils.nullfy2str(data.orderno)}</td></tr>
+          <tr><td>提交类型</td><td>${_utils.nullfy2str(
             data.commit_type_name,
           )}</td></tr>
-          <tr><td>支付类型</td><td>${this.u.nullfy2str(
+          <tr><td>支付类型</td><td>${_utils.nullfy2str(
             data.pay_type_name,
           )}</td></tr>
-          <tr><td>会员账号</td><td>${this.u.nullfy2str(data.username)}</td></tr>
-          <tr><td>充值金额</td><td>${this.u.nullfy2str(data.amount)}</td></tr>
-          <tr><td>赠送金额</td><td>${this.u.nullfy2str(
+          <tr><td>会员账号</td><td>${_utils.nullfy2str(data.username)}</td></tr>
+          <tr><td>充值金额</td><td>${_utils.nullfy2str(data.amount)}</td></tr>
+          <tr><td>赠送金额</td><td>${_utils.nullfy2str(
             data.giv_amount,
           )}</td></tr>
-          <tr><td>状态</td><td>${this.u.nullfy2str(
+          <tr><td>状态</td><td>${_utils.nullfy2str(
             data.pay_status_name,
           )}</td></tr>
-          <tr><td>收款人</td><td>${this.u.nullfy2str(data.collname)}</td></tr>
-          <tr><td>付款人</td><td>${this.u.nullfy2str(data.payname)}</td></tr>
-          <tr><td>备注</td><td>${this.u.nullfy2str(data.desc)}</td></tr>
-          <tr><td>提交用户</td><td>${this.u.nullfy2str(
+          <tr><td>收款人</td><td>${_utils.nullfy2str(data.collname)}</td></tr>
+          <tr><td>付款人</td><td>${_utils.nullfy2str(data.payname)}</td></tr>
+          <tr><td>备注</td><td>${_utils.nullfy2str(data.desc)}</td></tr>
+          <tr><td>提交用户</td><td>${_utils.nullfy2str(
             data.commitname,
           )}</td></tr>
-          <tr><td>组别</td><td>${this.u.nullfy2str(data.groupname)}</td></tr>
-          <tr><td>提交时间</td><td>${this.u.nullfy2str(
+          <tr><td>组别</td><td>${_utils.nullfy2str(data.groupname)}</td></tr>
+          <tr><td>提交时间</td><td>${_utils.nullfy2str(
             data.cmit_time,
           )}</td></tr>
           </tbody>
@@ -235,8 +255,10 @@ class Modal extends API {
     this.closeModal();
   }
   handleOpen() {
+    $.load('loading……');
     let m = this;
     this.api_getDetail().then(function(data) {
+      $.loaded();
       m.changeSureBtnClass();
       setTimeout(function name() {
         m.changeSureBtnClass();
@@ -252,21 +274,22 @@ class Modal extends API {
   handleSbumit() {
     let m = this;
     let state = $('#pay_status').val();
-    if (!this.u.verifyNumber(state)) {
+    if (!_utils.verifyNumber(state)) {
       alert('输入内容不合规范，请重新登录。请确保安全环境后再次执行！');
-      this.u.logout();
+      _utils.logout();
       return;
     }
-
     this.toTgOrderData.pay_status = state;
+    $.load('提交中……');
     this.api_toTgOrder(this.toTgOrderData)
       .then(data => {
-        m.u.refresh();
+        $.loaded();
+        _utils.refresh();
         m.closeModal();
         m = state = null;
       })
-      .catch(res => {
-        alert(res.message);
+      .catch(err => {
+        $.alert(err.message);
         m.closeModal();
       });
   }
