@@ -639,6 +639,8 @@ class ListBuilder extends ControllerController
           $data['pay_type_name'] = "银行卡转账";
       } elseif (5 == $data['pay_type']) {
           $data['pay_type_name'] = "第三方";
+      } elseif (6 == $data['pay_type']) {
+          $data['pay_type_name'] = "快充";
       }
         // 支付类型 - 天天
 //        if (0 == $data['pay_type']) {
@@ -655,6 +657,8 @@ class ListBuilder extends ControllerController
 //            $data['pay_type_name'] = "银行卡转账";
 //        } elseif (6 == $data['pay_type']) {
 //            $data['pay_type_name'] = "第三方";
+//        } elseif (7 == $data['pay_type']) {
+//            $data['pay_type_name'] = "快充";
 //        }
 
       // 状态

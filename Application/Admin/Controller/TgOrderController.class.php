@@ -127,8 +127,8 @@ class TgOrderController extends AdminController {
             ->addFormItem('cmit_time', 'hidden', '提交时间', '提交时间')
             ->addFormItem('groupname', 'hidden', '组别', '组别')
                 ->addFormItem('commit_type', 'radio', '提交类型', '提交类型', array('0' => '充值', '1' => '彩金'))
-                ->addFormItem('pay_type', 'radio', '付款类型', '付款类型', array('0' => 'A扫码', '1' => 'B扫码','2'=> 'C扫码', '3'=>'D扫码', '4' => '银行卡转账', '5' => '第三方')) //凤凰
-            //    ->addFormItem('pay_type', 'radio', '付款类型', '付款类型', array('0' => 'A扫码', '1' => 'B扫码','2'=> 'C扫码', '3'=>'D扫码','4'=>'E扫码', '5' => '银行卡转账', '6' => '第三方'))
+                ->addFormItem('pay_type', 'radio', '付款类型', '付款类型', array('0' => 'A扫码', '1' => 'B扫码','2'=> 'C扫码', '3'=>'D扫码', '4' => '银行卡转账', '5' => '第三方','6'=>'快充')) //凤凰
+                //    ->addFormItem('pay_type', 'radio', '付款类型', '付款类型', array('0' => 'A扫码', '1' => 'B扫码','2'=> 'C扫码', '3'=>'D扫码','4'=>'E扫码', '5' => '银行卡转账', '6' => '第三方','7'=>'快充'))
                 ->addFormItem('username', 'text', '会员账号', '会员账号')
                 ->addFormItem('reusername', 'text', '确认账号', '确认账号')
                 ->addFormItem('amount', 'text', '充值金额', '充值金额')
@@ -169,8 +169,8 @@ class TgOrderController extends AdminController {
                 ->addFormItem('cmit_time', 'hidden', '提交时间', '提交时间')
                 ->addFormItem('img_src', 'picture', '上传凭证', '上传凭证')
                 ->addFormItem('commit_type', 'radio', '提交类型', '提交类型', array('0' => '充值', '1' => '彩金'))
-                ->addFormItem('pay_type', 'radio', '付款类型', '付款类型', array('0' => 'A扫码', '1' => 'B扫码','2'=> 'C扫码', '3'=>'D扫码', '4' => '银行卡转账', '5' => '第三方')) //凤凰
-            //    ->addFormItem('pay_type', 'radio', '付款类型', '付款类型', array('0' => 'A扫码', '1' => 'B扫码','2'=> 'C扫码', '3'=>'D扫码','4'=>'E扫码', '5' => '银行卡转账', '6' => '第三方'))
+                ->addFormItem('pay_type', 'radio', '付款类型', '付款类型', array('0' => 'A扫码', '1' => 'B扫码','2'=> 'C扫码', '3'=>'D扫码', '4' => '银行卡转账', '5' => '第三方','6'=>'快充')) //凤凰
+            //    ->addFormItem('pay_type', 'radio', '付款类型', '付款类型', array('0' => 'A扫码', '1' => 'B扫码','2'=> 'C扫码', '3'=>'D扫码','4'=>'E扫码', '5' => '银行卡转账', '6' => '第三方','7'=>'快充'))
                 ->addFormItem('username', 'text', '会员账号', '会员账号')
                 ->addFormItem('amount', 'text', '充值金额', '充值金额')
                 ->addFormItem('desc', 'text', '备注', '备注')
@@ -207,6 +207,8 @@ class TgOrderController extends AdminController {
             $info['pay_type_name'] = "银行卡转账";
         }elseif (5 == $info['pay_type']){
             $info['pay_type_name'] = "第三方";
+        }elseif (6 == $info['pay_type']){
+            $info['pay_type_name'] = "快充";
         }
 
         // 天天
@@ -224,6 +226,8 @@ class TgOrderController extends AdminController {
 //            $info['pay_type_name'] = "银行卡转账";
 //        }elseif (6 == $info['pay_type']){
 //            $info['pay_type_name'] = "第三方";
+//        }elseif (7 == $info['pay_type']){
+//            $info['pay_type_name'] = "快充";
 //        }
 
         if(0 == $info['pay_status']){
