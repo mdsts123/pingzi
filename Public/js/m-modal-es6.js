@@ -1,4 +1,3 @@
-// $.load('adfadfdf')
 /**
  *工具类
  */
@@ -20,21 +19,6 @@ class Utils {
   nullfy2str(data) {
     return data ? data : '';
   }
-  removeHref(select) {
-    select += '';
-    $(select).removeAttr('href');
-  }
-  /**
-   * 内部状态码审核
-   */
-  verifyInStatusCode(num) {
-    num -= 0;
-    //目前 200 和201 都ok
-    if (num === 200 || num === 201) {
-      return true;
-    }
-    return false;
-  }
 }
 
 /**
@@ -42,20 +26,23 @@ class Utils {
  */
 class API {
   constructor() {}
-  api_getDetail() {
+  api_getDetail(url) {
     return new Promise((resolve, reject) => {
       $.ajax({
         type: 'GET',
-        url: '/admin.php?s=/Admin/TgOrder/payTgOrder/id/4.html',
+        url,
         success(res) {
           res = JSON.parse(res);
-          if (!_utils.verifyInStatusCode(res.code)) {
-            $.alert('反馈数据错误，请联系技术人员解决。')
-            return reject(res);
+          if (res.code) {
+            resolve(res);
           } else {
-            resolve(res.data);
+            $.alert('数据错误，请联系技术人员');
           }
         },
+        error(err) {
+          reject({ message: err.statusText });
+        },
+        complete() {},
       });
     });
   }
@@ -64,17 +51,20 @@ class API {
     return new Promise((resolve, reject) => {
       $.ajax({
         type: 'post',
-        url:'/admin.php?s=/Admin/TgOrder/toTgOrder',
+        url: '/admin.php?s=/Admin/TgOrder/toTgOrder',
         data,
         success(res) {
           res = JSON.parse(res);
-          if (!_utils.verifyInStatusCode(res.code)) {
-            $.alert('反馈数据错误，请联系技术人员解决。')
-            return reject(res);
+          if (res.code) {
+            resolve(res);
           } else {
-            resolve(res.data);
+            $.alert('数据错误，请联系技术人员');
           }
         },
+        error(err) {
+          reject({ message: err.statusText });
+        },
+        complete() {},
       });
     });
   }
@@ -88,6 +78,7 @@ class Modal extends API {
   toTgOrderData = {};
   status = 0; //默认未处理
   events = []; //时间列表
+  apiToTgOrder = '';
   //定义事件
   constructor() {
     super();
@@ -97,6 +88,9 @@ class Modal extends API {
     this.initEvents();
   }
   //定义操作
+  resTopUpFailure(res){
+    $.tips(res.message,300)
+  }
   windowDeployUtils() {
     if (window) {
       window['_utils'] = new Utils();
@@ -116,7 +110,12 @@ class Modal extends API {
   }
   //阻止操作按钮默认事件
   preventOperationEvents() {
-    _utils.removeHref("[name='operation']");
+    $('.label-pill').each(function(index, el) {
+      if (el.text === '操作') {
+        $(el).attr('data-href', el.href);
+        $(el).removeAttr('href');
+      }
+    });
   }
   /**
    * 初始 状态选项
@@ -255,18 +254,23 @@ class Modal extends API {
     this.closeModal();
   }
   handleOpen() {
+    let href = $(this.eventEl).attr('data-href');
     $.load('loading……');
     let m = this;
-    this.api_getDetail().then(function(data) {
-      $.loaded();
-      m.changeSureBtnClass();
-      setTimeout(function name() {
-        m.changeSureBtnClass();
-      }, 500);
-      m.renderContent(data);
-      m.openModal();
-      // m=null
-    });
+    this.api_getDetail(href)
+      .then(function(res) {
+        $.loaded();
+        m.renderContent(res.data);
+        m.openModal();
+        setTimeout(function name() {
+          m.changeSureBtnClass();
+        }, 500);
+      })
+      .catch(err => {
+        $.loaded();
+        $.alert(err.message);
+      });
+    href = null; //同步删
   }
   handleChange() {
     this.changeSureBtnClass();
@@ -280,17 +284,26 @@ class Modal extends API {
       return;
     }
     this.toTgOrderData.pay_status = state;
+    m.closeModal();
     $.load('提交中……');
     this.api_toTgOrder(this.toTgOrderData)
-      .then(data => {
+      .then(res => {
         $.loaded();
-        _utils.refresh();
-        m.closeModal();
+        // console.log(res.code);
+        switch (res.code) {
+          case 200:
+            _utils.refresh();
+            break;
+          case 201:
+            m.resTopUpFailure();
+            break;
+          default:
+            break;
+        }
         m = state = null;
       })
       .catch(err => {
         $.alert(err.message);
-        m.closeModal();
       });
   }
 
