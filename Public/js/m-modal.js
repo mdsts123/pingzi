@@ -22,6 +22,8 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+// $.load('adfadfdf')
+
 /**
  *工具类
  */
@@ -63,6 +65,21 @@ function () {
       select += '';
       $(select).removeAttr('href');
     }
+    /**
+     * 内部状态码审核
+     */
+
+  }, {
+    key: "verifyInStatusCode",
+    value: function verifyInStatusCode(num) {
+      num -= 0; //目前 200 和201 都ok
+
+      if (num === 200 || num === 201) {
+        return true;
+      }
+
+      return false;
+    }
   }]);
 
   return Utils;
@@ -88,7 +105,13 @@ function () {
           url: '/admin.php?s=/Admin/TgOrder/payTgOrder/id/4.html',
           success: function success(res) {
             res = JSON.parse(res);
-            resolve(res.data);
+
+            if (!_utils.verifyInStatusCode(res.code)) {
+              $.alert('反馈数据错误，请联系技术人员解决。');
+              return reject(res);
+            } else {
+              resolve(res.data);
+            }
           }
         });
       });
@@ -96,22 +119,20 @@ function () {
   }, {
     key: "api_toTgOrder",
     value: function api_toTgOrder(data) {
-      console.log(1);
-      var url = '/admin.php?s=/Admin/TgOrder/toTgOrder';
       return new Promise(function (resolve, reject) {
         $.ajax({
           type: 'post',
-          url: url,
+          url: '/admin.php?s=/Admin/TgOrder/toTgOrder',
           data: data,
           success: function success(res) {
-            url = null;
             res = JSON.parse(res);
 
-            if (res.code !== 200) {
+            if (!_utils.verifyInStatusCode(res.code)) {
+              $.alert('反馈数据错误，请联系技术人员解决。');
               return reject(res);
+            } else {
+              resolve(res.data);
             }
-
-            resolve(res);
           }
         });
       });
@@ -146,9 +167,9 @@ function (_API) {
 
     _defineProperty(_assertThisInitialized(_this), "status", 0);
 
-    _defineProperty(_assertThisInitialized(_this), "u", new Utils());
-
     _defineProperty(_assertThisInitialized(_this), "events", []);
+
+    _this.windowDeployUtils();
 
     _this.compatiblePrompt();
 
@@ -159,18 +180,25 @@ function (_API) {
     return _this;
   } //定义操作
 
-  /**
-   * 兼容提示
-   * ie全不支持Promise
-   */
-
 
   _createClass(Modal, [{
+    key: "windowDeployUtils",
+    value: function windowDeployUtils() {
+      if (window) {
+        window['_utils'] = new Utils();
+      }
+    }
+    /**
+     * 兼容提示
+     * ie全不支持Promise
+     */
+
+  }, {
     key: "compatiblePrompt",
     value: function compatiblePrompt() {
       if (!window['Promise']) {
         $('.m-accidentalTip').show();
-        alert('请使用急速模式或谷歌浏览器');
+        $.alert('请使用急速模式或谷歌浏览器');
       } else {
         $('.m-accidentalTip').hide();
       }
@@ -179,7 +207,7 @@ function (_API) {
   }, {
     key: "preventOperationEvents",
     value: function preventOperationEvents() {
-      this.u.removeHref("[name='operation']");
+      _utils.removeHref("[name='operation']");
     }
     /**
      * 初始 状态选项
@@ -240,7 +268,7 @@ function (_API) {
         amount: data.amount,
         orderno: data.amount
       };
-      var html = "\n  <div class=\"m-modal-content detail\">\n  <!-- \u56FE\u7247\u8BE6\u60C5 image-text -->\n  <div class=\"m-row data-container\">\n  <div class=\"m-col-6 m-img-box\">\n    <img src=\"".concat(this.u.nullfy2str(data.img_src), "\" alt=\"\">\n  </div>\n  <div class=\"m-col-6 \">\n    <div class=\"m-debar\">\n      <!-- \u5217\u8868 -->\n      <!-- \u56FE\u7247\u6570\u636E -->\n      <div class=\"m-scroll\">\n        <table class=\"m-table \">\n          <thead>\n            <tr>\n              <th>ID</th>\n              <th>").concat(this.u.nullfy2str(data.id), "</th>\n            </tr>\n          </thead>\n          <tbody>\n          <tr><td>\u8BA2\u5355\u53F7</td><td>").concat(this.u.nullfy2str(data.orderno), "</td></tr>\n          <tr><td>\u63D0\u4EA4\u7C7B\u578B</td><td>").concat(this.u.nullfy2str(data.commit_type_name), "</td></tr>\n          <tr><td>\u652F\u4ED8\u7C7B\u578B</td><td>").concat(this.u.nullfy2str(data.pay_type_name), "</td></tr>\n          <tr><td>\u4F1A\u5458\u8D26\u53F7</td><td>").concat(this.u.nullfy2str(data.username), "</td></tr>\n          <tr><td>\u5145\u503C\u91D1\u989D</td><td>").concat(this.u.nullfy2str(data.amount), "</td></tr>\n          <tr><td>\u8D60\u9001\u91D1\u989D</td><td>").concat(this.u.nullfy2str(data.giv_amount), "</td></tr>\n          <tr><td>\u72B6\u6001</td><td>").concat(this.u.nullfy2str(data.pay_status_name), "</td></tr>\n          <tr><td>\u6536\u6B3E\u4EBA</td><td>").concat(this.u.nullfy2str(data.collname), "</td></tr>\n          <tr><td>\u4ED8\u6B3E\u4EBA</td><td>").concat(this.u.nullfy2str(data.payname), "</td></tr>\n          <tr><td>\u5907\u6CE8</td><td>").concat(this.u.nullfy2str(data.desc), "</td></tr>\n          <tr><td>\u63D0\u4EA4\u7528\u6237</td><td>").concat(this.u.nullfy2str(data.commitname), "</td></tr>\n          <tr><td>\u7EC4\u522B</td><td>").concat(this.u.nullfy2str(data.groupname), "</td></tr>\n          <tr><td>\u63D0\u4EA4\u65F6\u95F4</td><td>").concat(this.u.nullfy2str(data.cmit_time), "</td></tr>\n          </tbody>\n        </table>\n      </div>\n\n    </div>\n\n  </div>\n  </div>\n  <section class=\"state\">\n\n  <div id=\"modalForm\" class=\"m-tool-bar clearfix\" method=\"post\">\n\n    <button id=\"sureBtn\" class=\"btn m-fr btn-primary\" onclick=\"m.on('submit')\">\u786E\u8BA4</button>\n    <button class=\"btn m-fr btn-info\" onclick=\"m.on('close')\">\u53D6\u6D88</button>\n    <p class=\"select-box m-fr\">\n    <b>\u8BF7\u9009\u62E9\u8BA2\u5355\u72B6\u6001</b>\n    <select name=\"pay_status\" id=\"pay_status\" onchange=\"m.on('pay-status-change',this)\" >\n      ").concat(this.renderOption(data.pays, data.pay_status - 0), "\n    </select>\n    </p>\n\n  </div>\n  </section>\n\n  <!-- \u64CD\u4F5C -->\n  <span class=\"m-close\" onclick=\"m.on('close')\">&times;</span>\n  </div>");
+      var html = "\n  <div class=\"m-modal-content detail\">\n  <!-- \u56FE\u7247\u8BE6\u60C5 image-text -->\n  <div class=\"m-row data-container\">\n  <div class=\"m-col-6 m-img-box\">\n    <img src=\"".concat(_utils.nullfy2str(data.img_src), "\" alt=\"\">\n  </div>\n  <div class=\"m-col-6 \">\n    <div class=\"m-debar\">\n      <!-- \u5217\u8868 -->\n      <!-- \u56FE\u7247\u6570\u636E -->\n      <div class=\"m-scroll\">\n        <table class=\"m-table \">\n          <thead>\n            <tr>\n              <th>ID</th>\n              <th>").concat(_utils.nullfy2str(data.id), "</th>\n            </tr>\n          </thead>\n          <tbody>\n          <tr><td>\u8BA2\u5355\u53F7</td><td>").concat(_utils.nullfy2str(data.orderno), "</td></tr>\n          <tr><td>\u63D0\u4EA4\u7C7B\u578B</td><td>").concat(_utils.nullfy2str(data.commit_type_name), "</td></tr>\n          <tr><td>\u652F\u4ED8\u7C7B\u578B</td><td>").concat(_utils.nullfy2str(data.pay_type_name), "</td></tr>\n          <tr><td>\u4F1A\u5458\u8D26\u53F7</td><td>").concat(_utils.nullfy2str(data.username), "</td></tr>\n          <tr><td>\u5145\u503C\u91D1\u989D</td><td>").concat(_utils.nullfy2str(data.amount), "</td></tr>\n          <tr><td>\u8D60\u9001\u91D1\u989D</td><td>").concat(_utils.nullfy2str(data.giv_amount), "</td></tr>\n          <tr><td>\u72B6\u6001</td><td>").concat(_utils.nullfy2str(data.pay_status_name), "</td></tr>\n          <tr><td>\u6536\u6B3E\u4EBA</td><td>").concat(_utils.nullfy2str(data.collname), "</td></tr>\n          <tr><td>\u4ED8\u6B3E\u4EBA</td><td>").concat(_utils.nullfy2str(data.payname), "</td></tr>\n          <tr><td>\u5907\u6CE8</td><td>").concat(_utils.nullfy2str(data.desc), "</td></tr>\n          <tr><td>\u63D0\u4EA4\u7528\u6237</td><td>").concat(_utils.nullfy2str(data.commitname), "</td></tr>\n          <tr><td>\u7EC4\u522B</td><td>").concat(_utils.nullfy2str(data.groupname), "</td></tr>\n          <tr><td>\u63D0\u4EA4\u65F6\u95F4</td><td>").concat(_utils.nullfy2str(data.cmit_time), "</td></tr>\n          </tbody>\n        </table>\n      </div>\n\n    </div>\n\n  </div>\n  </div>\n  <section class=\"state\">\n\n  <div id=\"modalForm\" class=\"m-tool-bar clearfix\" method=\"post\">\n\n    <button id=\"sureBtn\" class=\"btn m-fr btn-primary\" onclick=\"m.on('submit')\">\u786E\u8BA4</button>\n    <button class=\"btn m-fr btn-info\" onclick=\"m.on('close')\">\u53D6\u6D88</button>\n    <p class=\"select-box m-fr\">\n    <b>\u8BF7\u9009\u62E9\u8BA2\u5355\u72B6\u6001</b>\n    <select name=\"pay_status\" id=\"pay_status\" onchange=\"m.on('pay-status-change',this)\" >\n      ").concat(this.renderOption(data.pays, data.pay_status - 0), "\n    </select>\n    </p>\n\n  </div>\n  </section>\n\n  <!-- \u64CD\u4F5C -->\n  <span class=\"m-close\" onclick=\"m.on('close')\">&times;</span>\n  </div>");
       $('#order .m-modal').html(html).show();
       setTimeout(function () {
         m.handleModalRendered();
@@ -262,8 +290,10 @@ function (_API) {
   }, {
     key: "handleOpen",
     value: function handleOpen() {
+      $.load('loading……');
       var m = this;
       this.api_getDetail().then(function (data) {
+        $.loaded();
         m.changeSureBtnClass();
         setTimeout(function name() {
           m.changeSureBtnClass();
@@ -283,19 +313,25 @@ function (_API) {
       var m = this;
       var state = $('#pay_status').val();
 
-      if (!this.u.verifyNumber(state)) {
+      if (!_utils.verifyNumber(state)) {
         alert('输入内容不合规范，请重新登录。请确保安全环境后再次执行！');
-        this.u.logout();
+
+        _utils.logout();
+
         return;
       }
 
       this.toTgOrderData.pay_status = state;
+      $.load('提交中……');
       this.api_toTgOrder(this.toTgOrderData).then(function (data) {
-        m.u.refresh();
+        $.loaded();
+
+        _utils.refresh();
+
         m.closeModal();
         m = state = null;
-      }).catch(function (res) {
-        alert(res.message);
+      }).catch(function (err) {
+        $.alert(err.message);
         m.closeModal();
       });
     } //执行器
