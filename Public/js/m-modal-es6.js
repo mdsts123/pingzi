@@ -88,8 +88,8 @@ class Modal extends API {
     this.initEvents();
   }
   //定义操作
-  resTopUpFailure(res){
-    $.tips(res.message,300)
+  resTopUpFailure(res) {
+    $.tips(res.message, 300);
   }
   windowDeployUtils() {
     if (window) {

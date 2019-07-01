@@ -22,8 +22,6 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-// $.load('adfadfdf')
-
 /**
  *工具类
  */
@@ -59,27 +57,6 @@ function () {
     value: function nullfy2str(data) {
       return data ? data : '';
     }
-  }, {
-    key: "removeHref",
-    value: function removeHref(select) {
-      select += '';
-      $(select).removeAttr('href');
-    }
-    /**
-     * 内部状态码审核
-     */
-
-  }, {
-    key: "verifyInStatusCode",
-    value: function verifyInStatusCode(num) {
-      num -= 0; //目前 200 和201 都ok
-
-      if (num === 200 || num === 201) {
-        return true;
-      }
-
-      return false;
-    }
   }]);
 
   return Utils;
@@ -98,21 +75,26 @@ function () {
 
   _createClass(API, [{
     key: "api_getDetail",
-    value: function api_getDetail() {
+    value: function api_getDetail(url) {
       return new Promise(function (resolve, reject) {
         $.ajax({
           type: 'GET',
-          url: '/admin.php?s=/Admin/TgOrder/payTgOrder/id/4.html',
+          url: url,
           success: function success(res) {
             res = JSON.parse(res);
 
-            if (!_utils.verifyInStatusCode(res.code)) {
-              $.alert('反馈数据错误，请联系技术人员解决。');
-              return reject(res);
+            if (res.code) {
+              resolve(res);
             } else {
-              resolve(res.data);
+              $.alert('数据错误，请联系技术人员');
             }
-          }
+          },
+          error: function error(err) {
+            reject({
+              message: err.statusText
+            });
+          },
+          complete: function complete() {}
         });
       });
     }
@@ -127,13 +109,18 @@ function () {
           success: function success(res) {
             res = JSON.parse(res);
 
-            if (!_utils.verifyInStatusCode(res.code)) {
-              $.alert('反馈数据错误，请联系技术人员解决。');
-              return reject(res);
+            if (res.code) {
+              resolve(res);
             } else {
-              resolve(res.data);
+              $.alert('数据错误，请联系技术人员');
             }
-          }
+          },
+          error: function error(err) {
+            reject({
+              message: err.statusText
+            });
+          },
+          complete: function complete() {}
         });
       });
     }
@@ -169,6 +156,8 @@ function (_API) {
 
     _defineProperty(_assertThisInitialized(_this), "events", []);
 
+    _defineProperty(_assertThisInitialized(_this), "apiToTgOrder", '');
+
     _this.windowDeployUtils();
 
     _this.compatiblePrompt();
@@ -182,6 +171,11 @@ function (_API) {
 
 
   _createClass(Modal, [{
+    key: "resTopUpFailure",
+    value: function resTopUpFailure(res) {
+      $.tips(res.message, 300);
+    }
+  }, {
     key: "windowDeployUtils",
     value: function windowDeployUtils() {
       if (window) {
@@ -207,7 +201,12 @@ function (_API) {
   }, {
     key: "preventOperationEvents",
     value: function preventOperationEvents() {
-      _utils.removeHref("[name='operation']");
+      $('.label-pill').each(function (index, el) {
+        if (el.text === '操作') {
+          $(el).attr('data-href', el.href);
+          $(el).removeAttr('href');
+        }
+      });
     }
     /**
      * 初始 状态选项
@@ -290,17 +289,21 @@ function (_API) {
   }, {
     key: "handleOpen",
     value: function handleOpen() {
+      var href = $(this.eventEl).attr('data-href');
       $.load('loading……');
       var m = this;
-      this.api_getDetail().then(function (data) {
+      this.api_getDetail(href).then(function (res) {
         $.loaded();
-        m.changeSureBtnClass();
+        m.renderContent(res.data);
+        m.openModal();
         setTimeout(function name() {
           m.changeSureBtnClass();
         }, 500);
-        m.renderContent(data);
-        m.openModal(); // m=null
+      }).catch(function (err) {
+        $.loaded();
+        $.alert(err.message);
       });
+      href = null; //同步删
     }
   }, {
     key: "handleChange",
@@ -322,17 +325,28 @@ function (_API) {
       }
 
       this.toTgOrderData.pay_status = state;
+      m.closeModal();
       $.load('提交中……');
-      this.api_toTgOrder(this.toTgOrderData).then(function (data) {
-        $.loaded();
+      this.api_toTgOrder(this.toTgOrderData).then(function (res) {
+        $.loaded(); // console.log(res.code);
 
-        _utils.refresh();
+        switch (res.code) {
+          case 200:
+            _utils.refresh();
 
-        m.closeModal();
+            break;
+
+          case 201:
+            m.resTopUpFailure();
+            break;
+
+          default:
+            break;
+        }
+
         m = state = null;
       }).catch(function (err) {
         $.alert(err.message);
-        m.closeModal();
       });
     } //执行器
 
