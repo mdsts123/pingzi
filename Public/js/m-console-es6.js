@@ -335,9 +335,35 @@ class Modal extends API {
 let m = new Modal();
 
 /**
- * 只是针对编辑页面表单元素定义功能 这个不用class
+ 后端是
  */
 //订单编辑页面
+class formModule{
+  eventEl;
+  events = []; //时间列表
+  constructor(){
+    this.initEvents();
+  }
+  //定义操作
+  initEvents() {
+    this.events['loaded'] = this.handleLoaded;
+    // this.events['close'] = this.handleClose;
+    // this.events['submit'] = this.handleSbumit;
+    // this.events['pay-status-change'] = this.handleChange;
+  }
+  //------------------------
+
+  //------------------------
+  //定义钩子
+  handleLoaded(){
+
+  }
+  on(name, eventEl) {
+    this.eventEl = eventEl;
+    name += '';
+    this.events[name].call(this);
+  }
+}
 (function orderEdit() {
   let commit_type;
   let events = {};
@@ -347,29 +373,29 @@ let m = new Modal();
    */
   function initEvents() {
     events['commit_type'] = {
-      change: commitTypeChange,
+      change: handleCommitTypeChange,
+      init:handleCommitTypeInit
     };
   }
-  function commitTypeChange() {
-    if (this.value === '1') {
-      $('.item_commit_type_child').show();
-    } else {
-      $('.item_commit_type_child').hide();
-    }
-  }
+
   //获得值
   function getCommitType() {
     commit_type = $("[name='commit_type'][checked]").val();
   }
   //定义钩子
-  function handleOrderControlLabelInitValue() {}
+  function handleCommitTypeInit(){
+    getCommitType();
+    handleCommitTypeChange();
+  }
+
   //触发事件 新增 彩金 事件
-  function emitOrderControlLabelEvents() {
-    $("input[name='commit_type']").on('change', events['']);
+  function emitEvents() {
+    events['commit_type']['init']
+    $("input[name='commit_type']").on('change', events['commit_type']['change']);
   }
   function init() {
-    getCommitType();
-    emitOrderControlLabelEvents();
+    initEvents()
+    emitEvents();
   }
-  init;
+  init();
 })();

@@ -14,7 +14,7 @@
     <div class="builder-container">
         <div class="row">
             <div class="col-xs-12">
-                <form action="{$post_url}" method="post" class="form-horizontal form form-builder">
+                <form action="{$post_url}" method="post" class="form-horizontal form form-builder" onload="f.on('loaded',this)">
                     <div class="form-type-list">
                         <volist name="form_items" id="form" key="k">
                             <switch name="form.type">
