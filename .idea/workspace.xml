@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb6adadf-e135-436b-9080-e19af3f3883d" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Application/Admin/View/Public/layout.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Public/layout.html" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Builder/FormType/radio.html" afterPath="$PROJECT_DIR$/Application/Common/Builder/FormType/radio.html" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Builder/listbuilder.html" afterPath="$PROJECT_DIR$/Application/Common/Builder/listbuilder.html" />
-      <change beforePath="$PROJECT_DIR$/Public/css/m-index.css" afterPath="$PROJECT_DIR$/Public/css/m-index.css" />
-      <change beforePath="$PROJECT_DIR$/Public/css/m-index.less" afterPath="$PROJECT_DIR$/Public/css/m-index.less" />
       <change beforePath="$PROJECT_DIR$/Public/js/m-console-es6.js" afterPath="$PROJECT_DIR$/Public/js/m-console-es6.js" />
       <change beforePath="$PROJECT_DIR$/Public/js/m-console.js" afterPath="$PROJECT_DIR$/Public/js/m-console.js" />
-      <change beforePath="$PROJECT_DIR$/Public/js/m-modal-es6.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Public/js/m-modal.js" afterPath="" />
       <change beforePath="$PROJECT_DIR$/Public/libs/alert.min.js" afterPath="$PROJECT_DIR$/Public/libs/alert.min.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,12 +15,60 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TgOrderController.class.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TgOrderController.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/TgOrderController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="605">
-              <caret line="149" column="30" lean-forward="false" selection-start-line="149" selection-start-column="30" selection-end-line="149" selection-end-column="30" />
+            <state relative-caret-position="505">
+              <caret line="163" column="7" lean-forward="false" selection-start-line="163" selection-start-column="7" selection-end-line="163" selection-end-column="7" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="alert.min.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Public/libs/alert.min.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="25">
+              <caret line="1" column="12" lean-forward="false" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="m-console-es6.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Public/js/m-console-es6.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="201" column="74" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="347" selection-end-column="0" />
+              <folding>
+                <marker date="1562071159860" expanded="true" signature="3685:6067" ph="..." />
+                <marker date="1562071159860" expanded="true" signature="3749:5476" ph="..." />
+                <marker date="1562071159860" expanded="true" signature="3783:3850" ph="..." />
+                <marker date="1562071159860" expanded="true" signature="3875:5467" ph="..." />
+                <marker date="1562071159860" expanded="true" signature="3901:5457" ph="..." />
+                <marker date="1562071159860" expanded="true" signature="3968:5445" ph="..." />
+                <marker date="1562071159860" expanded="true" signature="4001:5432" ph="..." />
+                <marker date="1562071159860" expanded="true" signature="4019:4152" ph="..." />
+                <marker date="1562071159860" expanded="true" signature="4036:4133" ph="..." />
+                <marker date="1562071159860" expanded="true" signature="4170:5415" ph="..." />
+                <marker date="1562071159860" expanded="true" signature="5502:5980" ph="..." />
+                <marker date="1562071159860" expanded="true" signature="5568:5967" ph="..." />
+                <marker date="1562071159860" expanded="true" signature="5766:5957" ph="..." />
+                <marker date="1562071159860" expanded="true" signature="5874:5948" ph="..." />
+                <marker date="1562071159860" expanded="false" signature="6045:6052" ph="×" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="m-console.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Public/js/m-console.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3191">
+              <caret line="395" column="32" lean-forward="false" selection-start-line="395" selection-start-column="32" selection-end-line="395" selection-end-column="32" />
+              <folding>
+                <marker date="1562071203944" expanded="true" signature="13278:13285" ph="×" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -48,6 +88,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1244">
               <caret line="119" column="6" lean-forward="false" selection-start-line="119" selection-start-column="6" selection-end-line="119" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="layout.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Application/Admin/View/Public/layout.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="575">
+              <caret line="26" column="75" lean-forward="true" selection-start-line="26" selection-start-column="75" selection-end-line="26" selection-end-column="75" />
               <folding />
             </state>
           </provider>
@@ -140,8 +190,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Application/Install/Data/install.sql" />
-        <option value="$PROJECT_DIR$/Application/Admin/Controller/ModuleController.class.php" />
         <option value="$PROJECT_DIR$/Application/Admin/Controller/IndexController.class.php" />
         <option value="$PROJECT_DIR$/Application/Admin/View/Index/index.html" />
         <option value="$PROJECT_DIR$/Framework/Common/functions.php" />
@@ -191,6 +239,8 @@
         <option value="$PROJECT_DIR$/Public/js/m-modal.js" />
         <option value="$PROJECT_DIR$/Public/js/m-modal-es6.js" />
         <option value="$PROJECT_DIR$/Public/libs/alert.min.js" />
+        <option value="$PROJECT_DIR$/Public/js/m-console-es6.js" />
+        <option value="$PROJECT_DIR$/Public/js/m-console.js" />
       </list>
     </option>
   </component>
@@ -257,6 +307,34 @@
             <path>
               <item name="lingyun" type="b2602c69:ProjectViewProjectNode" />
               <item name="lingyun" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Application" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Admin" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="View" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="lingyun" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lingyun" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Application" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Admin" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="View" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Public" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="lingyun" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lingyun" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Application" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Common" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="lingyun" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lingyun" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Application" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Common" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Builder" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="lingyun" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lingyun" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Public" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -270,6 +348,13 @@
               <item name="lingyun" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Public" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="libs" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="lingyun" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lingyun" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="libs" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="lyui" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -354,12 +439,12 @@
       <workItem from="1561969185199" duration="13952000" />
       <workItem from="1562040099011" duration="1496000" />
       <workItem from="1562053541791" duration="28000" />
-      <workItem from="1562056619868" duration="12293000" />
+      <workItem from="1562056619868" duration="12791000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="425742000" />
+    <option name="totallyTimeSpent" value="426240000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -418,27 +503,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Model/AccessModel.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/403.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/404.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Admin/Model/GroupModel.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1075">
@@ -737,6 +801,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/TgOrderController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="505">
+          <caret line="163" column="7" lean-forward="false" selection-start-line="163" selection-start-column="7" selection-end-line="163" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/libs/alert.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="1" column="12" lean-forward="false" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/js/m-console-es6.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="201" column="74" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="347" selection-end-column="0" />
+          <folding>
+            <marker date="1562071159860" expanded="true" signature="3685:6067" ph="..." />
+            <marker date="1562071159860" expanded="true" signature="3749:5476" ph="..." />
+            <marker date="1562071159860" expanded="true" signature="3783:3850" ph="..." />
+            <marker date="1562071159860" expanded="true" signature="3875:5467" ph="..." />
+            <marker date="1562071159860" expanded="true" signature="3901:5457" ph="..." />
+            <marker date="1562071159860" expanded="true" signature="3968:5445" ph="..." />
+            <marker date="1562071159860" expanded="true" signature="4001:5432" ph="..." />
+            <marker date="1562071159860" expanded="true" signature="4019:4152" ph="..." />
+            <marker date="1562071159860" expanded="true" signature="4036:4133" ph="..." />
+            <marker date="1562071159860" expanded="true" signature="4170:5415" ph="..." />
+            <marker date="1562071159860" expanded="true" signature="5502:5980" ph="..." />
+            <marker date="1562071159860" expanded="true" signature="5568:5967" ph="..." />
+            <marker date="1562071159860" expanded="true" signature="5766:5957" ph="..." />
+            <marker date="1562071159860" expanded="true" signature="5874:5948" ph="..." />
+            <marker date="1562071159860" expanded="false" signature="6045:6052" ph="×" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/js/m-console.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3191">
+          <caret line="395" column="32" lean-forward="false" selection-start-line="395" selection-start-column="32" selection-end-line="395" selection-end-column="32" />
+          <folding>
+            <marker date="1562071203944" expanded="true" signature="13278:13285" ph="×" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Common/Builder/listbuilder.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1244">
@@ -745,18 +859,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Public/libs/alert.min.js">
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Public/layout.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1548">
-          <caret line="1" column="12" lean-forward="true" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/TgOrderController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="605">
-          <caret line="149" column="30" lean-forward="false" selection-start-line="149" selection-start-column="30" selection-end-line="149" selection-end-column="30" />
+        <state relative-caret-position="575">
+          <caret line="26" column="75" lean-forward="true" selection-start-line="26" selection-start-column="75" selection-end-line="26" selection-end-column="75" />
           <folding />
         </state>
       </provider>
