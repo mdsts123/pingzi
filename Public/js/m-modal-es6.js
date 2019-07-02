@@ -90,7 +90,7 @@ class Modal extends API {
   //定义操作
 
   fn200(res) {
-    $.pop(res.message,1500)
+    $.pop(res.message, 1500);
   }
   fn201(res) {
     $.alert(res.message);
@@ -295,7 +295,7 @@ class Modal extends API {
         $.loaded();
         switch (res.code) {
           case 200:
-              m.fn200(res);
+            m.fn200(res);
             break;
           case 201:
             m.fn201(res);
