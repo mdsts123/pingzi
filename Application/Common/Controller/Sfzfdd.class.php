@@ -53,6 +53,7 @@ class Sfzfdd extends \Think\Controller
         $siFang['Amount'] = sprintf("%.2f",$data['Amount']);
         //站长系统订单号，该值需在商户系统内唯一，SRC接口会校验该值是否唯一(必填非加入签名)
         $siFang['OrderId'] = trim($data['MerchantOrderNumber']);
+
         //站长系统程序的服务器ip地址(必填非加入签名)
         $siFang['ClientIP'] = '170.178.183.182';
         //终端：PC、Mobile、APP
@@ -74,6 +75,7 @@ class Sfzfdd extends \Think\Controller
 
         $arg = $arg.'Sign='.$siFangSign;
         $url = $data['url']?$data['url']:$this->url;
+
         $resultData = $this->request($arg, $url, 'POST');
 		//$test = new Log();
 		//$test::record($data['MemberAccount']);
