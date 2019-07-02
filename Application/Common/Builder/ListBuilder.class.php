@@ -626,10 +626,25 @@ class ListBuilder extends ControllerController
         $data['level_name'] = "推广组员";
       }
 
+        // 提交类型
+        if (0 == $data['commit_type']) {
+            $data['commit_type_name'] = "充值";
+        }elseif (1 == $data['commit_type']) {
+            $data['commit_type_name'] = "彩金";
+        }
+
+        // 彩金类型
+        if (1 == $data['commit_type_child']) {
+            $data['commit_type_child_name'] = "解封彩金";
+        }elseif (2 == $data['commit_type_child']) {
+            $data['commit_type_child_name'] = "复活彩金";
+        }
+
       // 支付类型 - 凤凰
       if (0 == $data['pay_type']) {
           $data['pay_type_name'] = "快充";
       }
+
         // 支付类型 - 天天
 //        if (0 == $data['pay_type']) {
 //            $data['pay_type_name'] = "A扫码";

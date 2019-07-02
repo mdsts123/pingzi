@@ -64,6 +64,8 @@ class Sfzfdd extends \Think\Controller
         $siFang['SourceName'] = trim($SourceName);
         //生成签名
         $siFangSign = $this->prepareOrderSign($siFang);
+        // 预留字段，原样输出，不加如签名 - 彩金
+        $siFang['Attach'] = $data['Attach'];
         $arg  = "";
         while (list ($key, $val) = each ($siFang)) {
             if($val<>''){
