@@ -27,10 +27,12 @@ class Utils {
 class API {
   constructor() {}
   api_getDetail(url) {
+    let isRes = false;
     return new Promise((resolve, reject) => {
       $.ajax({
         type: 'GET',
         url,
+        timeout: 5000,
         success(res) {
           res = JSON.parse(res);
           if (res.code) {
@@ -40,20 +42,25 @@ class API {
           }
         },
         error(err) {
-          reject({ message: err.statusText });
+          reject({ message: '连接错误！' });
         },
-        complete() {},
+        complete() {
+          isRes = true;
+        },
       });
     });
   }
 
   api_toTgOrder(data) {
+    let isRes = false;
     return new Promise((resolve, reject) => {
       $.ajax({
         type: 'post',
         url: '/admin.php?s=/Admin/TgOrder/toTgOrder',
         data,
+        timeout: 5000,
         success(res) {
+          isRes = true;
           res = JSON.parse(res);
           if (res.code) {
             resolve(res);
@@ -62,9 +69,11 @@ class API {
           }
         },
         error(err) {
-          reject({ message: err.statusText });
+          reject({ message: '连接错误！' });
         },
-        complete() {},
+        complete() {
+          isRes = true;
+        },
       });
     });
   }
@@ -321,4 +330,19 @@ class Modal extends API {
     this.events[name].call(this);
   }
 }
+
+//订单 新增 彩金 事件
+function handleOrderControlLabelEvents() {
+  $("input[name='commit_type']").on('change', function(e) {
+    if (this.value === '1') {
+      $('.item_commit_type_child').show();
+    } else {
+      $('.item_commit_type_child').hide();
+    }
+  });
+}
+
+//暴露模态实列
 let m = new Modal();
+
+handleOrderControlLabelEvents();
