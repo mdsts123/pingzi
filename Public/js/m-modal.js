@@ -171,9 +171,14 @@ function (_API) {
 
 
   _createClass(Modal, [{
-    key: "resTopUpFailure",
-    value: function resTopUpFailure(res) {
-      $.tips(res.message, 300);
+    key: "fn200",
+    value: function fn200(res) {
+      $.pop(res.message, 1500);
+    }
+  }, {
+    key: "fn201",
+    value: function fn201(res) {
+      $.alert(res.message);
     }
   }, {
     key: "windowDeployUtils",
@@ -265,7 +270,7 @@ function (_API) {
         pay_status: data.pay_status,
         username: data.username,
         amount: data.amount,
-        orderno: data.amount
+        orderno: data.orderno
       };
       var html = "\n  <div class=\"m-modal-content detail\">\n  <!-- \u56FE\u7247\u8BE6\u60C5 image-text -->\n  <div class=\"m-row data-container\">\n  <div class=\"m-col-6 m-img-box\">\n    <img src=\"".concat(_utils.nullfy2str(data.img_src), "\" alt=\"\">\n  </div>\n  <div class=\"m-col-6 \">\n    <div class=\"m-debar\">\n      <!-- \u5217\u8868 -->\n      <!-- \u56FE\u7247\u6570\u636E -->\n      <div class=\"m-scroll\">\n        <table class=\"m-table \">\n          <thead>\n            <tr>\n              <th>ID</th>\n              <th>").concat(_utils.nullfy2str(data.id), "</th>\n            </tr>\n          </thead>\n          <tbody>\n          <tr><td>\u8BA2\u5355\u53F7</td><td>").concat(_utils.nullfy2str(data.orderno), "</td></tr>\n          <tr><td>\u63D0\u4EA4\u7C7B\u578B</td><td>").concat(_utils.nullfy2str(data.commit_type_name), "</td></tr>\n          <tr><td>\u652F\u4ED8\u7C7B\u578B</td><td>").concat(_utils.nullfy2str(data.pay_type_name), "</td></tr>\n          <tr><td>\u4F1A\u5458\u8D26\u53F7</td><td>").concat(_utils.nullfy2str(data.username), "</td></tr>\n          <tr><td>\u5145\u503C\u91D1\u989D</td><td>").concat(_utils.nullfy2str(data.amount), "</td></tr>\n          <tr><td>\u8D60\u9001\u91D1\u989D</td><td>").concat(_utils.nullfy2str(data.giv_amount), "</td></tr>\n          <tr><td>\u72B6\u6001</td><td>").concat(_utils.nullfy2str(data.pay_status_name), "</td></tr>\n          <tr><td>\u6536\u6B3E\u4EBA</td><td>").concat(_utils.nullfy2str(data.collname), "</td></tr>\n          <tr><td>\u4ED8\u6B3E\u4EBA</td><td>").concat(_utils.nullfy2str(data.payname), "</td></tr>\n          <tr><td>\u5907\u6CE8</td><td>").concat(_utils.nullfy2str(data.desc), "</td></tr>\n          <tr><td>\u63D0\u4EA4\u7528\u6237</td><td>").concat(_utils.nullfy2str(data.commitname), "</td></tr>\n          <tr><td>\u7EC4\u522B</td><td>").concat(_utils.nullfy2str(data.groupname), "</td></tr>\n          <tr><td>\u63D0\u4EA4\u65F6\u95F4</td><td>").concat(_utils.nullfy2str(data.cmit_time), "</td></tr>\n          </tbody>\n        </table>\n      </div>\n\n    </div>\n\n  </div>\n  </div>\n  <section class=\"state\">\n\n  <div id=\"modalForm\" class=\"m-tool-bar clearfix\" method=\"post\">\n\n    <button id=\"sureBtn\" class=\"btn m-fr btn-primary\" onclick=\"m.on('submit')\">\u786E\u8BA4</button>\n    <button class=\"btn m-fr btn-info\" onclick=\"m.on('close')\">\u53D6\u6D88</button>\n    <p class=\"select-box m-fr\">\n    <b>\u8BF7\u9009\u62E9\u8BA2\u5355\u72B6\u6001</b>\n    <select name=\"pay_status\" id=\"pay_status\" onchange=\"m.on('pay-status-change',this)\" >\n      ").concat(this.renderOption(data.pays, data.pay_status - 0), "\n    </select>\n    </p>\n\n  </div>\n  </section>\n\n  <!-- \u64CD\u4F5C -->\n  <span class=\"m-close\" onclick=\"m.on('close')\">&times;</span>\n  </div>");
       $('#order .m-modal').html(html).show();
@@ -328,16 +333,15 @@ function (_API) {
       m.closeModal();
       $.load('提交中……');
       this.api_toTgOrder(this.toTgOrderData).then(function (res) {
-        $.loaded(); // console.log(res.code);
+        $.loaded();
 
         switch (res.code) {
           case 200:
-            _utils.refresh();
-
+            m.fn200(res);
             break;
 
           case 201:
-            m.resTopUpFailure();
+            m.fn201(res);
             break;
 
           default:

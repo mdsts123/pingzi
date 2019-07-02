@@ -88,8 +88,12 @@ class Modal extends API {
     this.initEvents();
   }
   //定义操作
-  resTopUpFailure(res) {
-    $.tips(res.message, 300);
+
+  fn200(res) {
+    $.pop(res.message,1500)
+  }
+  fn201(res) {
+    $.alert(res.message);
   }
   windowDeployUtils() {
     if (window) {
@@ -162,7 +166,7 @@ class Modal extends API {
       pay_status: data.pay_status,
       username: data.username,
       amount: data.amount,
-      orderno: data.amount,
+      orderno: data.orderno,
     };
     let html = `
   <div class="m-modal-content detail">
@@ -289,13 +293,12 @@ class Modal extends API {
     this.api_toTgOrder(this.toTgOrderData)
       .then(res => {
         $.loaded();
-        // console.log(res.code);
         switch (res.code) {
           case 200:
-            _utils.refresh();
+              m.fn200(res);
             break;
           case 201:
-            m.resTopUpFailure();
+            m.fn201(res);
             break;
           default:
             break;
