@@ -199,9 +199,8 @@ class Modal extends API {
           </thead>
           <tbody>
           <tr><td>订单号</td><td>${_utils.nullfy2str(data.orderno)}</td></tr>
-          <tr><td>提交类型</td><td>${_utils.nullfy2str(
-            data.commit_type_name
-          )}</td></tr>
+          <tr><td>提交类型</td><td>${_utils.nullfy2str(data.commit_type_name)}</td></tr>
+          <tr><td>彩金类型</td><td>${_utils.nullfy2str(data.commit_type_child_name)}</td></tr>
           <tr><td>支付类型</td><td>${_utils.nullfy2str(
             data.pay_type_name,
           )}</td></tr>

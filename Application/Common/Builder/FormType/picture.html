@@ -8,7 +8,8 @@
                     <notempty name="[type]form.value">
                         <div id="[type]{$group_k}_upload_preview_{$[type]k}" class="col-sm-3 file-item thumbnail">
                             <i class="fa fa-times-circle remove-picture"></i>
-                            <img src="{$[type]form.value|get_cover}" data-id="{$[type]form.value}">
+                            <!--<img src="{$[type]form.value|get_cover}" data-id="{$[type]form.value}">-->
+                            <img src="{$[type]form.value}" data-id="{$[type]form.value}">
                         </div>
                     <else />
                         <div id="[type]{$group_k}_upload_preview_{$[type]k}" class="col-sm-3 file-item thumbnail hidden">
