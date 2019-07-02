@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb6adadf-e135-436b-9080-e19af3f3883d" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Application/Admin/View/Public/layout.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Public/layout.html" />
       <change beforePath="$PROJECT_DIR$/Public/js/m-modal-es6.js" afterPath="$PROJECT_DIR$/Public/js/m-modal-es6.js" />
       <change beforePath="$PROJECT_DIR$/Public/js/m-modal.js" afterPath="$PROJECT_DIR$/Public/js/m-modal.js" />
+      <change beforePath="$PROJECT_DIR$/Public/libs/alert.min.js" afterPath="$PROJECT_DIR$/Public/libs/alert.min.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,11 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TgOrderController.class.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TgOrderController.class.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/TgOrderController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="469">
-              <caret line="221" column="41" lean-forward="false" selection-start-line="221" selection-start-column="19" selection-end-line="221" selection-end-column="41" />
+            <state relative-caret-position="2505">
+              <caret line="225" column="42" lean-forward="false" selection-start-line="225" selection-start-column="42" selection-end-line="225" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -42,18 +41,6 @@
             <state relative-caret-position="1319">
               <caret line="122" column="71" lean-forward="false" selection-start-line="122" selection-start-column="71" selection-end-line="122" selection-end-column="71" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="m-modal.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Public/js/m-modal.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="274" column="877" lean-forward="false" selection-start-line="274" selection-start-column="877" selection-end-line="274" selection-end-column="877" />
-              <folding>
-                <marker date="1562068956411" expanded="true" signature="10858:10865" ph="×" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -145,7 +132,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Framework/Mode/Api/functions.php" />
         <option value="$PROJECT_DIR$/Application/Install/Data/install.sql" />
         <option value="$PROJECT_DIR$/Application/Admin/Controller/ModuleController.class.php" />
         <option value="$PROJECT_DIR$/Application/Admin/Controller/IndexController.class.php" />
@@ -190,12 +176,13 @@
         <option value="$PROJECT_DIR$/Application/Common/Controller/Sfzfxd.class.php" />
         <option value="$PROJECT_DIR$/Data/db.php" />
         <option value="$PROJECT_DIR$/Application/Admin/Controller/OrderController.class.php" />
-        <option value="$PROJECT_DIR$/Public/js/m-modal-es6.js" />
         <option value="$PROJECT_DIR$/Application/Common/Builder/Layout/Admin/list.html" />
         <option value="$PROJECT_DIR$/Application/Common/Builder/ListBuilder.class.php" />
         <option value="$PROJECT_DIR$/Application/Common/Controller/Sfzfdd.class.php" />
         <option value="$PROJECT_DIR$/Application/Admin/Controller/TgOrderController.class.php" />
         <option value="$PROJECT_DIR$/Public/js/m-modal.js" />
+        <option value="$PROJECT_DIR$/Public/js/m-modal-es6.js" />
+        <option value="$PROJECT_DIR$/Public/libs/alert.min.js" />
       </list>
     </option>
   </component>
@@ -269,6 +256,12 @@
               <item name="lingyun" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Public" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="lingyun" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lingyun" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="libs" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -353,12 +346,12 @@
       <workItem from="1561969185199" duration="13952000" />
       <workItem from="1562040099011" duration="1496000" />
       <workItem from="1562053541791" duration="28000" />
-      <workItem from="1562056619868" duration="10491000" />
+      <workItem from="1562056619868" duration="12143000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="423940000" />
+    <option name="totallyTimeSpent" value="425592000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -417,13 +410,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="1" column="8" lean-forward="true" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Admin/Model/AccessModel.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -591,13 +577,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Public/js/m-modal-es6.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="168" column="28" lean-forward="true" selection-start-line="168" selection-start-column="28" selection-end-line="168" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Home/Controller/Pay095qqController.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="894">
@@ -686,14 +665,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/UserController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-375">
-          <caret line="93" column="43" lean-forward="false" selection-start-line="93" selection-start-column="19" selection-end-line="93" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Public/css/m-index.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -734,10 +705,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/TgOrderController.class.php">
+    <entry file="file://$PROJECT_DIR$/Public/js/m-modal.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="221" column="41" lean-forward="false" selection-start-line="221" selection-start-column="19" selection-end-line="221" selection-end-column="41" />
+        <state relative-caret-position="491">
+          <caret line="274" column="1007" lean-forward="false" selection-start-line="274" selection-start-column="1007" selection-end-line="274" selection-end-column="1007" />
+          <folding>
+            <marker date="1562069738087" expanded="true" signature="12971:12978" ph="×" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/js/m-modal-es6.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="691">
+          <caret line="266" column="14" lean-forward="true" selection-start-line="266" selection-start-column="14" selection-end-line="266" selection-end-column="14" />
+          <folding>
+            <marker date="1562069918663" expanded="true" signature="3601:5905" ph="..." />
+            <marker date="1562069918663" expanded="true" signature="3665:5314" ph="..." />
+            <marker date="1562069918663" expanded="true" signature="3699:3766" ph="..." />
+            <marker date="1562069918663" expanded="true" signature="3791:5305" ph="..." />
+            <marker date="1562069918663" expanded="true" signature="3817:5295" ph="..." />
+            <marker date="1562069918663" expanded="true" signature="3884:5283" ph="..." />
+            <marker date="1562069918663" expanded="true" signature="3917:5270" ph="..." />
+            <marker date="1562069918663" expanded="true" signature="3935:4068" ph="..." />
+            <marker date="1562069918663" expanded="true" signature="3952:4049" ph="..." />
+            <marker date="1562069918663" expanded="true" signature="4086:5253" ph="..." />
+            <marker date="1562069918663" expanded="true" signature="5340:5818" ph="..." />
+            <marker date="1562069918663" expanded="true" signature="5406:5805" ph="..." />
+            <marker date="1562069918663" expanded="true" signature="5604:5795" ph="..." />
+            <marker date="1562069918663" expanded="true" signature="5712:5786" ph="..." />
+            <marker date="1562069918663" expanded="true" signature="5883:5890" ph="×" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/UserController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-375">
+          <caret line="93" column="43" lean-forward="false" selection-start-line="93" selection-start-column="19" selection-end-line="93" selection-end-column="43" />
           <folding />
         </state>
       </provider>
@@ -750,13 +755,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Public/js/m-modal.js">
+    <entry file="file://$PROJECT_DIR$/Public/libs/alert.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="274" column="877" lean-forward="false" selection-start-line="274" selection-start-column="877" selection-end-line="274" selection-end-column="877" />
+        <state relative-caret-position="25">
+          <caret line="1" column="4500" lean-forward="true" selection-start-line="1" selection-start-column="4500" selection-end-line="1" selection-end-column="4500" />
           <folding>
-            <marker date="1562068956411" expanded="true" signature="10858:10865" ph="×" />
+            <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/TgOrderController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2505">
+          <caret line="225" column="42" lean-forward="false" selection-start-line="225" selection-start-column="42" selection-end-line="225" selection-end-column="42" />
+          <folding />
         </state>
       </provider>
     </entry>
