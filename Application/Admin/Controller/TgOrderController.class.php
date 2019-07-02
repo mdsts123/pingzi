@@ -72,9 +72,9 @@ class TgOrderController extends AdminController {
         ->addTopButton('delete')  // 添加删除按钮
         ->setTabNav($tab_list, $group)
             ->setSearch('请输入订单号/会员账号/收款人/付款人/提交用户', U('index'))
-            //->addTableColumn('id', 'ID')
+            ->addTableColumn('id', '序号')
             ->addTableColumn('orderno', '订单号')
-            ->addTableColumn('img_src', '凭证', 'picture', null, true)
+            ->addTableColumn('img_src', '凭证','picture',null,true)
             ->addTableColumn('cmit_time', '提交时间')
             ->addTableColumn('pay_type_name', '支付类型')
             ->addTableColumn('username', '会员账号')
@@ -126,8 +126,9 @@ class TgOrderController extends AdminController {
             ->addFormItem('img_src', 'picture', '上传凭证', '上传凭证')
             ->addFormItem('cmit_time', 'hidden', '提交时间', '提交时间')
             ->addFormItem('groupname', 'hidden', '组别', '组别')
-                ->addFormItem('commit_type', 'radio', '提交类型', '提交类型', array('0' => '充值', '1' => '彩金'))
-                ->addFormItem('pay_type', 'radio', '付款类型', '付款类型', array('0' => 'A扫码', '1' => 'B扫码','2'=> 'C扫码', '3'=>'D扫码', '4' => '银行卡转账', '5' => '第三方','6'=>'快充')) //凤凰
+                ->addFormItem('commit_type', 'radio', '提交类型', '提交类型', array('0' => '充值', '1'=> '彩金')) // '1'=> '解封彩金', '2'=>'复活彩金'
+                ->addFormItem('commit_type_child', 'radio', '彩金', '彩金', array('0' => '解封彩金', '1'=> '复活彩金')) // '1'=> '解封彩金', '2'=>'复活彩金'
+                ->addFormItem('pay_type', 'radio', '付款类型', '付款类型', array('0' => '快充')) //凤凰
                 //    ->addFormItem('pay_type', 'radio', '付款类型', '付款类型', array('0' => 'A扫码', '1' => 'B扫码','2'=> 'C扫码', '3'=>'D扫码','4'=>'E扫码', '5' => '银行卡转账', '6' => '第三方','7'=>'快充'))
                 ->addFormItem('username', 'text', '会员账号', '会员账号')
                 ->addFormItem('reusername', 'text', '确认账号', '确认账号')
@@ -168,8 +169,8 @@ class TgOrderController extends AdminController {
             ->addFormItem('id', 'hidden', 'ID', 'ID')
                 ->addFormItem('cmit_time', 'hidden', '提交时间', '提交时间')
                 ->addFormItem('img_src', 'picture', '上传凭证', '上传凭证')
-                ->addFormItem('commit_type', 'radio', '提交类型', '提交类型', array('0' => '充值', '1' => '彩金'))
-                ->addFormItem('pay_type', 'radio', '付款类型', '付款类型', array('0' => 'A扫码', '1' => 'B扫码','2'=> 'C扫码', '3'=>'D扫码', '4' => '银行卡转账', '5' => '第三方','6'=>'快充')) //凤凰
+                ->addFormItem('commit_type', 'radio', '提交类型', '提交类型', array('0' => '充值'))
+                ->addFormItem('pay_type', 'radio', '付款类型', '付款类型', array('0' =>'快充')) //凤凰
             //    ->addFormItem('pay_type', 'radio', '付款类型', '付款类型', array('0' => 'A扫码', '1' => 'B扫码','2'=> 'C扫码', '3'=>'D扫码','4'=>'E扫码', '5' => '银行卡转账', '6' => '第三方','7'=>'快充'))
                 ->addFormItem('username', 'text', '会员账号', '会员账号')
                 ->addFormItem('amount', 'text', '充值金额', '充值金额')
@@ -192,23 +193,9 @@ class TgOrderController extends AdminController {
 
         if(0 == $info['commit_type']){
             $info['commit_type_name'] = "充值";
-        }elseif (1 == $info['commit_type']){
-            $info['commit_type_name'] = "彩金";
         }
         // 凤凰
         if(0 == $info['pay_type']){
-            $info['pay_type_name'] = "A扫码";
-        }elseif (1 == $info['pay_type']){
-            $info['pay_type_name'] = "B扫码";
-        }elseif (2 == $info['pay_type']){
-            $info['pay_type_name'] = "C扫码";
-        }elseif (3 == $info['pay_type']){
-            $info['pay_type_name'] = "D扫码";
-        }elseif (4 == $info['pay_type']){
-            $info['pay_type_name'] = "银行卡转账";
-        }elseif (5 == $info['pay_type']){
-            $info['pay_type_name'] = "第三方";
-        }elseif (6 == $info['pay_type']){
             $info['pay_type_name'] = "快充";
         }
 
