@@ -2,8 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb6adadf-e135-436b-9080-e19af3f3883d" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Public/js/m-modal-es6.js" afterPath="$PROJECT_DIR$/Public/js/m-modal-es6.js" />
-      <change beforePath="$PROJECT_DIR$/Public/js/m-modal.js" afterPath="$PROJECT_DIR$/Public/js/m-modal.js" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/Application/Admin/View/Public/layout.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Public/layout.html" />
+      <change beforePath="$PROJECT_DIR$/Application/Common/Builder/FormType/radio.html" afterPath="$PROJECT_DIR$/Application/Common/Builder/FormType/radio.html" />
+      <change beforePath="$PROJECT_DIR$/Application/Common/Builder/listbuilder.html" afterPath="$PROJECT_DIR$/Application/Common/Builder/listbuilder.html" />
+      <change beforePath="$PROJECT_DIR$/Public/css/m-index.css" afterPath="$PROJECT_DIR$/Public/css/m-index.css" />
+      <change beforePath="$PROJECT_DIR$/Public/css/m-index.less" afterPath="$PROJECT_DIR$/Public/css/m-index.less" />
+      <change beforePath="$PROJECT_DIR$/Public/js/m-console-es6.js" afterPath="$PROJECT_DIR$/Public/js/m-console-es6.js" />
+      <change beforePath="$PROJECT_DIR$/Public/js/m-console.js" afterPath="$PROJECT_DIR$/Public/js/m-console.js" />
+      <change beforePath="$PROJECT_DIR$/Public/js/m-modal-es6.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Public/js/m-modal.js" afterPath="" />
       <change beforePath="$PROJECT_DIR$/Public/libs/alert.min.js" afterPath="$PROJECT_DIR$/Public/libs/alert.min.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,8 +26,8 @@
       <file leaf-file-name="TgOrderController.class.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/TgOrderController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2505">
-              <caret line="225" column="42" lean-forward="false" selection-start-line="225" selection-start-column="42" selection-end-line="225" selection-end-column="42" />
+            <state relative-caret-position="605">
+              <caret line="149" column="30" lean-forward="false" selection-start-line="149" selection-start-column="30" selection-end-line="149" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -38,8 +46,8 @@
       <file leaf-file-name="listbuilder.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/Common/Builder/listbuilder.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1319">
-              <caret line="122" column="71" lean-forward="false" selection-start-line="122" selection-start-column="71" selection-end-line="122" selection-end-column="71" />
+            <state relative-caret-position="1244">
+              <caret line="119" column="6" lean-forward="false" selection-start-line="119" selection-start-column="6" selection-end-line="119" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -346,12 +354,12 @@
       <workItem from="1561969185199" duration="13952000" />
       <workItem from="1562040099011" duration="1496000" />
       <workItem from="1562053541791" duration="28000" />
-      <workItem from="1562056619868" duration="12143000" />
+      <workItem from="1562056619868" duration="12293000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="425592000" />
+    <option name="totallyTimeSpent" value="425742000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -362,7 +370,7 @@
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3274596" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3264418" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -709,9 +717,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="491">
           <caret line="274" column="1007" lean-forward="false" selection-start-line="274" selection-start-column="1007" selection-end-line="274" selection-end-column="1007" />
-          <folding>
-            <marker date="1562069738087" expanded="true" signature="12971:12978" ph="×" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -719,23 +725,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="691">
           <caret line="266" column="14" lean-forward="true" selection-start-line="266" selection-start-column="14" selection-end-line="266" selection-end-column="14" />
-          <folding>
-            <marker date="1562069918663" expanded="true" signature="3601:5905" ph="..." />
-            <marker date="1562069918663" expanded="true" signature="3665:5314" ph="..." />
-            <marker date="1562069918663" expanded="true" signature="3699:3766" ph="..." />
-            <marker date="1562069918663" expanded="true" signature="3791:5305" ph="..." />
-            <marker date="1562069918663" expanded="true" signature="3817:5295" ph="..." />
-            <marker date="1562069918663" expanded="true" signature="3884:5283" ph="..." />
-            <marker date="1562069918663" expanded="true" signature="3917:5270" ph="..." />
-            <marker date="1562069918663" expanded="true" signature="3935:4068" ph="..." />
-            <marker date="1562069918663" expanded="true" signature="3952:4049" ph="..." />
-            <marker date="1562069918663" expanded="true" signature="4086:5253" ph="..." />
-            <marker date="1562069918663" expanded="true" signature="5340:5818" ph="..." />
-            <marker date="1562069918663" expanded="true" signature="5406:5805" ph="..." />
-            <marker date="1562069918663" expanded="true" signature="5604:5795" ph="..." />
-            <marker date="1562069918663" expanded="true" signature="5712:5786" ph="..." />
-            <marker date="1562069918663" expanded="true" signature="5883:5890" ph="×" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -749,26 +739,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/Common/Builder/listbuilder.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1319">
-          <caret line="122" column="71" lean-forward="false" selection-start-line="122" selection-start-column="71" selection-end-line="122" selection-end-column="71" />
+        <state relative-caret-position="1244">
+          <caret line="119" column="6" lean-forward="false" selection-start-line="119" selection-start-column="6" selection-end-line="119" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Public/libs/alert.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="1" column="4500" lean-forward="true" selection-start-line="1" selection-start-column="4500" selection-end-line="1" selection-end-column="4500" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state relative-caret-position="-1548">
+          <caret line="1" column="12" lean-forward="true" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/TgOrderController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2505">
-          <caret line="225" column="42" lean-forward="false" selection-start-line="225" selection-start-column="42" selection-end-line="225" selection-end-column="42" />
+        <state relative-caret-position="605">
+          <caret line="149" column="30" lean-forward="false" selection-start-line="149" selection-start-column="30" selection-end-line="149" selection-end-column="30" />
           <folding />
         </state>
       </provider>
