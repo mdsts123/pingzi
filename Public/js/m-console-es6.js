@@ -176,6 +176,7 @@ class Modal extends API {
       username: data.username,
       amount: data.amount,
       orderno: data.orderno,
+      commit_type_child_name: data.commit_type_child_name,
     };
     let html = `
   <div class="m-modal-content detail">
@@ -199,7 +200,7 @@ class Modal extends API {
           <tbody>
           <tr><td>订单号</td><td>${_utils.nullfy2str(data.orderno)}</td></tr>
           <tr><td>提交类型</td><td>${_utils.nullfy2str(
-            data.commit_type_name,
+            data.commit_type_name
           )}</td></tr>
           <tr><td>支付类型</td><td>${_utils.nullfy2str(
             data.pay_type_name,
@@ -331,18 +332,45 @@ class Modal extends API {
   }
 }
 
-//订单 新增 彩金 事件
-function handleOrderControlLabelEvents() {
-  $("input[name='commit_type']").on('change', function(e) {
+//暴露模态实列
+let m = new Modal();
+
+/**
+ * 只是针对编辑页面表单元素定义功能 这个不用class
+ */
+//订单编辑页面
+(function orderEdit() {
+  let commit_type;
+  let events = {};
+  //定义操作
+  /**
+   * 给表单元素定义事件
+   */
+  function initEvents() {
+    events['commit_type'] = {
+      change: commitTypeChange,
+    };
+  }
+  function commitTypeChange() {
     if (this.value === '1') {
       $('.item_commit_type_child').show();
     } else {
       $('.item_commit_type_child').hide();
     }
-  });
-}
-
-//暴露模态实列
-let m = new Modal();
-
-handleOrderControlLabelEvents();
+  }
+  //获得值
+  function getCommitType() {
+    commit_type = $("[name='commit_type'][checked]").val();
+  }
+  //定义钩子
+  function handleOrderControlLabelInitValue() {}
+  //触发事件 新增 彩金 事件
+  function emitOrderControlLabelEvents() {
+    $("input[name='commit_type']").on('change', events['']);
+  }
+  function init() {
+    getCommitType();
+    emitOrderControlLabelEvents();
+  }
+  init;
+})();
