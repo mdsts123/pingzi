@@ -19,6 +19,16 @@ class Utils {
   nullfy2str(data) {
     return data ? data : '';
   }
+  /**
+   *最后添加空格 方便正则匹配
+   * @param {string} url
+   */
+
+  url2GetFileNmae(str) {
+    str += ' '; //加空格方便正则匹配
+    str = str.match(/\w+(?=\.\w+ )/);
+    return str ? str[0] : str;
+  }
 }
 
 /**
@@ -91,7 +101,6 @@ class Modal extends API {
   //定义事件
   constructor() {
     super();
-    this.windowDeployUtils();
     this.compatiblePrompt();
     this.preventOperationEvents();
     this.initEvents();
@@ -103,11 +112,6 @@ class Modal extends API {
   }
   fn201(res) {
     $.alert(res.message);
-  }
-  windowDeployUtils() {
-    if (window) {
-      window['_utils'] = new Utils();
-    }
   }
   /**
    * 兼容提示
@@ -199,8 +203,12 @@ class Modal extends API {
           </thead>
           <tbody>
           <tr><td>订单号</td><td>${_utils.nullfy2str(data.orderno)}</td></tr>
-          <tr><td>提交类型</td><td>${_utils.nullfy2str(data.commit_type_name)}</td></tr>
-          <tr><td>彩金类型</td><td>${_utils.nullfy2str(data.commit_type_child_name)}</td></tr>
+          <tr><td>提交类型</td><td>${_utils.nullfy2str(
+            data.commit_type_name,
+          )}</td></tr>
+          <tr><td>彩金类型</td><td>${_utils.nullfy2str(
+            data.commit_type_child_name,
+          )}</td></tr>
           <tr><td>支付类型</td><td>${_utils.nullfy2str(
             data.pay_type_name,
           )}</td></tr>
@@ -331,71 +339,69 @@ class Modal extends API {
   }
 }
 
-//暴露模态实列
-let m = new Modal();
-
 /**
- 后端是
+ 后端是以整个form html为组件。这里把form定义类 添加每个页面form具体功能
  */
-//订单编辑页面
-class formModule{
+class FormModule {
   eventEl;
   events = []; //时间列表
-  constructor(){
+  constructor() {
     this.initEvents();
+    this.watchEvents();
   }
-  //定义操作
+  //定义操作 表单全局
+  //---初始事件
   initEvents() {
     this.events['loaded'] = this.handleLoaded;
-    // this.events['close'] = this.handleClose;
-    // this.events['submit'] = this.handleSbumit;
-    // this.events['pay-status-change'] = this.handleChange;
   }
-  //------------------------
-
-  //------------------------
-  //定义钩子
-  handleLoaded(){
-
+  watchEvents() {
+    let f = this;
+    $("[name='commit_type']").on('change', e => {
+      f.handleChangeItemCommitType.call(f, e.target);
+    });
   }
+  //=====================订单编辑表单
+  //---定义钩子
+  handleChangeItemCommitType(el) {
+    el = el || $("[name='commit_type'][checked]");
+    if ($(el).val() === '1') {
+      $('.item_commit_type_child').show();
+    } else {
+      $('.item_commit_type_child').hide();
+    }
+  }
+  //=====================订单编辑表单end
+  //定义钩子 表单全局
+  handleLoaded(form) {
+    let formID = _utils.url2GetFileNmae($(form).attr('action'));
+    switch (formID) {
+      case 'edit':
+        this.handleChangeItemCommitType();
+        break;
+      case 'add':
+        this.handleChangeItemCommitType();
+        break;
+      default:
+        break;
+    }
+    formID = null;
+  }
+  /**
+   *
+   * @param {string} name 指定事件
+   * @param {node} eventEl 表单元素
+   */
   on(name, eventEl) {
     this.eventEl = eventEl;
     name += '';
-    this.events[name].call(this);
+    if (!this.events[name]) return;
+    this.events[name].call(this, eventEl);
   }
 }
-(function orderEdit() {
-  let commit_type;
-  let events = {};
-  //定义操作
-  /**
-   * 给表单元素定义事件
-   */
-  function initEvents() {
-    events['commit_type'] = {
-      change: handleCommitTypeChange,
-      init:handleCommitTypeInit
-    };
-  }
-
-  //获得值
-  function getCommitType() {
-    commit_type = $("[name='commit_type'][checked]").val();
-  }
-  //定义钩子
-  function handleCommitTypeInit(){
-    getCommitType();
-    handleCommitTypeChange();
-  }
-
-  //触发事件 新增 彩金 事件
-  function emitEvents() {
-    events['commit_type']['init']
-    $("input[name='commit_type']").on('change', events['commit_type']['change']);
-  }
-  function init() {
-    initEvents()
-    emitEvents();
-  }
-  init();
-})();
+//暴露模态实列
+window['_utils'] = new Utils();
+let m = new Modal();
+let _f = new FormModule();
+$(document).ready(function() {
+  _f.on('loaded', $('form')[0]);
+});
