@@ -19,6 +19,16 @@ class Utils {
   nullfy2str(data) {
     return data ? data : '';
   }
+  /**
+   *最后添加空格 方便正则匹配
+   * @param {string} url
+   */
+
+  url2GetFileNmae(str) {
+    str += ' '; //加空格方便正则匹配
+    str = str.match(/\w+(?=\.\w+ )/);
+    return str ? str[0] : str;
+  }
 }
 
 /**
@@ -91,7 +101,6 @@ class Modal extends API {
   //定义事件
   constructor() {
     super();
-    this.windowDeployUtils();
     this.compatiblePrompt();
     this.preventOperationEvents();
     this.initEvents();
@@ -103,11 +112,6 @@ class Modal extends API {
   }
   fn201(res) {
     $.alert(res.message);
-  }
-  windowDeployUtils() {
-    if (window) {
-      window['_utils'] = new Utils();
-    }
   }
   /**
    * 兼容提示
@@ -176,6 +180,7 @@ class Modal extends API {
       username: data.username,
       amount: data.amount,
       orderno: data.orderno,
+      commit_type_child_name: data.commit_type_child_name,
     };
     let html = `
   <div class="m-modal-content detail">
@@ -198,8 +203,12 @@ class Modal extends API {
           </thead>
           <tbody>
           <tr><td>订单号</td><td>${_utils.nullfy2str(data.orderno)}</td></tr>
-          <tr><td>提交类型</td><td>${_utils.nullfy2str(data.commit_type_name)}</td></tr>
-          <tr><td>彩金类型</td><td>${_utils.nullfy2str(data.commit_type_child_name)}</td></tr>
+          <tr><td>提交类型</td><td>${_utils.nullfy2str(
+            data.commit_type_name,
+          )}</td></tr>
+          <tr><td>彩金类型</td><td>${_utils.nullfy2str(
+            data.commit_type_child_name,
+          )}</td></tr>
           <tr><td>支付类型</td><td>${_utils.nullfy2str(
             data.pay_type_name,
           )}</td></tr>
@@ -330,18 +339,69 @@ class Modal extends API {
   }
 }
 
-//订单 新增 彩金 事件
-function handleOrderControlLabelEvents() {
-  $("input[name='commit_type']").on('change', function(e) {
-    if (this.value === '1') {
+/**
+ 后端是以整个form html为组件。这里把form定义类 添加每个页面form具体功能
+ */
+class FormModule {
+  eventEl;
+  events = []; //时间列表
+  constructor() {
+    this.initEvents();
+    this.watchEvents();
+  }
+  //定义操作 表单全局
+  //---初始事件
+  initEvents() {
+    this.events['loaded'] = this.handleLoaded;
+  }
+  watchEvents() {
+    let f = this;
+    $("[name='commit_type']").on('change', e => {
+      f.handleChangeItemCommitType.call(f, e.target);
+    });
+  }
+  //=====================订单编辑表单
+  //---定义钩子
+  handleChangeItemCommitType(el) {
+    el = el || $("[name='commit_type'][checked]");
+    if ($(el).val() === '1') {
       $('.item_commit_type_child').show();
     } else {
       $('.item_commit_type_child').hide();
     }
-  });
+  }
+  //=====================订单编辑表单end
+  //定义钩子 表单全局
+  handleLoaded(form) {
+    let formID = _utils.url2GetFileNmae($(form).attr('action'));
+    switch (formID) {
+      case 'edit':
+        this.handleChangeItemCommitType();
+        break;
+      case 'add':
+        this.handleChangeItemCommitType();
+        break;
+      default:
+        break;
+    }
+    formID = null;
+  }
+  /**
+   *
+   * @param {string} name 指定事件
+   * @param {node} eventEl 表单元素
+   */
+  on(name, eventEl) {
+    this.eventEl = eventEl;
+    name += '';
+    if (!this.events[name]) return;
+    this.events[name].call(this, eventEl);
+  }
 }
-
 //暴露模态实列
+window['_utils'] = new Utils();
 let m = new Modal();
-
-handleOrderControlLabelEvents();
+let _f = new FormModule();
+$(document).ready(function() {
+  _f.on('loaded', $('form')[0]);
+});
