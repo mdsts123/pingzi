@@ -188,8 +188,6 @@ function (_API) {
 
     return _this;
   } //定义操作
-
-
   _createClass(Modal, [{
     key: "fn200",
     value: function fn200(res) {
