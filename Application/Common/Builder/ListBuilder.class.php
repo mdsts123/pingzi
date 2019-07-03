@@ -598,10 +598,18 @@ class ListBuilder extends ControllerController
           $data['name'] = "支付宝";
       }elseif (4 == $data['cid']){
           $data['name'] = "QQ";
+      }elseif (6 == $data['cid']){
+          $data['name'] = "网银转账";
       }elseif (8 == $data['cid']){
           $data['name'] = "银联扫码";
-      }elseif (9 == $data['cid']){
+      }elseif (9 == $data['cid']) {
+          $data['name'] = "百度钱包";
+      }elseif (10 == $data['cid']) {
+          $data['name'] = "京东钱包";
+      }elseif (11 == $data['cid']){
           $data['name'] = "五码合一";
+      }elseif (12 == $data['cid']){
+          $data['name'] = "微信条形码";
       }
 
       // 推广订单 - 提交时间

@@ -71,7 +71,7 @@ class PayTypeController extends AdminController{
             $builder = new \Common\Builder\FormBuilder();
             $builder->setMetaTitle('新增') //设置页面标题
             ->setPostUrl(U('add'))    //设置表单提交地址
-            ->addFormItem('cid', 'select', '接口类型', '接口支付类型',array('3'=>'支付宝','1'=>'微信','2'=>'网银','4'=>'QQ','8'=>'银联扫码','9'=>'五码合一'))
+            ->addFormItem('cid', 'select', '接口类型', '接口支付类型',array('1'=>'微信','2'=>'网银','3'=>'支付宝','4'=>'QQ','6'=>'网银转账','8'=>'银联扫码','9'=>'百度钱包','10'=>'京东钱包','11'=>'五码合一','12'=>'微信条形码'))
                 ->addFormItem('img_src', 'picture', '支付二维码', '支付的二维码')
                 ->addFormItem('sort', 'text', '排序值', '(越大越靠前)')
                 ->addFormItem('status', 'select', '状态', '',array('1'=>'启用','0'=>'禁用'))
